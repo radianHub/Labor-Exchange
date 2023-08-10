@@ -1,0 +1,7 @@
+<aura:component >
+    <aura:attribute name="event" type="Object"/>
+    <aura:attribute name="eventConfig" type="Object"/>
+    <aura:attribute name="fields" type="List" default="[]"/>
+	<lightning:overlayLibrary aura:id="overlayLib"/> 
+	<c:lexEventConfirmation onclose="{!c.handleClose}" fields="{!v.fields}" event="{!v.event}" eventConfig="{!v.eventConfig}"></c:lexEventConfirmation>
+</aura:component>

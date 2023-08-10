@@ -1,0 +1,40 @@
+<aura:component access="global" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="LEXWatchVideoController">
+    <aura:attribute name="eventId" type="String"/>
+    <aura:attribute name="showVideo" type="Boolean"/>
+    <aura:attribute name="eventName" type="String"/>
+    <aura:attribute name="videoURL" type="String"/>
+    <aura:attribute name="videoDownloadURL" type="String"/>
+    <aura:attribute name="videoName" type="String"/>
+    <aura:attribute name="isLoading" type="boolean" default="false"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.isLoading}">
+        <div class="exampleHolder">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+
+    <aura:if isTrue="{!not(v.isLoading)}">
+        <lightning:layout class="container slds-m-top_small" multipleRows="true">
+            <div style="width: 100%;">
+                <div class="slds-col" style="text-align: center; margin-bottom:1%;">
+                    <div class="slds-text-heading_large"><b>{!v.eventName}</b></div>
+                </div>
+            </div>
+            <div style="width: 100%;">
+                <div class="slds-col" style="text-align: center; margin-bottom:1%;">
+                    <aura:if isTrue="{!v.showVideo}">
+                        <div class="slds-col">
+                            <iframe class="styleVideo" src="{!v.videoURL}" sandbox="allow-same-origin allow-scripts allow-forms" ></iframe>
+                        </div>
+                        <br/>
+                        <aura:set attribute="else">
+                            <div class="slds-text-heading_medium"><b>Video Not Available</b></div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </lightning:layout>
+    </aura:if>
+</aura:component>

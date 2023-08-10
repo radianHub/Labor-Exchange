@@ -1,0 +1,21 @@
+.THIS .agreementList>li{
+    font-size: 0.85rem;
+    padding: 9px 0;
+}
+
+.THIS .agreementList {
+    list-style:decimal !important;
+}
+
+.THIS div.header {
+    text-align:center;
+}
+
+.THIS button[disabled] {
+    font-weight: normal !important;
+}
+
+.THIS h1 {
+    font-weight: 900;
+    font-size:22px;
+}

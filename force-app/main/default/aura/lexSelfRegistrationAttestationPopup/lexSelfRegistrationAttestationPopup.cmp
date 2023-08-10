@@ -1,0 +1,35 @@
+<aura:component controller="LEXSelfRegistrationBodyController">
+	<aura:attribute name="agreed" type="Boolean" default="false" />
+    <aura:attribute name="config" type="Object"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:layout horizontalAlign="center" multipleRows="true">
+        <lightning:layoutItem padding="around-medium" size="12" largeDeviceSize="11" smallDeviceSize="12">              
+            <div class="header">
+                <h1>{!v.config.attestationheader}</h1>
+            </div>
+            <br/>
+            <ol class="agreementList">
+                <aura:iteration items="{!v.config.attList}" var="obj" >
+                    <li>
+                        <p>
+                            {!obj}
+                        </p>
+                    </li>
+                </aura:iteration>
+            </ol>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-medium" size="12" largeDeviceSize="7" smallDeviceSize="12">              
+            <lightning:input type="checkbox" name="checkbox" label="{!v.config.authorizationcheckboxlabel}" checked="{!v.agreed}"></lightning:input>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-medium" size="12" largeDeviceSize="4" smallDeviceSize="12"> 
+            <div style="text-align:end;">
+                <aura:if isTrue="{!v.agreed}">
+                    <lightning:button label="{!v.config.authorizationiagreebuttonlabel}" variant="brand" onclick="{!c.handleAgree}"></lightning:button>
+                </aura:if>
+                <aura:if isTrue="{!not(v.agreed)}">
+                    <lightning:button label="{!v.config.authorizationiagreebuttonlabel}" variant="brand" disabled="true"></lightning:button>
+                </aura:if>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

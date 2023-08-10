@@ -1,0 +1,19 @@
+<design:component>
+	<design:attribute name="applicationListHeader" label="Header"/>
+    <design:attribute name="headerColor" label="Header Color" type="Color" default="rgb(84, 105, 141)" />
+    <design:attribute name="description" label="Description"/>
+    
+    <design:attribute name="showRedirectButton" label="Show Redirect to Job Search Button"/>
+    <design:attribute name="redirectButtonLabel" label="Redirect to Job Search Button Label"/>
+    <design:attribute name="redirectButtonRedirectUrl" label="Redirect Url (Redirect to Job Search)"/>
+    
+    <design:attribute name="showContactUsButton" label="Show Contact Us Button"/>
+    <design:attribute name="contactUsButtonLabel" label="Contact Us: Button Label"/>
+    <design:attribute name="contactUsHeader" label="Contact Us: Header"/>
+    <design:attribute name="contactUsDescription" label="Contact Us: Description"/>
+    <design:attribute name="contactUsPlaceholderText" label="Contact Us: Placeholder Text"/>
+    <design:attribute name="contactUsSubmitButtonLabel" label="Contact Us: Submit Button Label"/>
+    <design:attribute name="contactUsCancelButtonLabel" label="Contact Us: Cancel Button Label"/>
+    <design:attribute name="contactUsSuccessMessage" label="Contact Us: Success Message"/>
+    <design:attribute name="noJobApplicationMessage" label="No Job Applications Message"/>
+</design:component>
