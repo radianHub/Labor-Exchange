@@ -1,0 +1,163 @@
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
+			<span style={headerCSS}>
+				<h1 style="font-weight: 900; font-size: 30px text-align: center">{config.applicationListHeader}</h1>
+				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">{config.description}</p>
+			</span>
+		</lightning-layout-item>
+	</lightning-layout>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			if:true={isDesktop}
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
+			<table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+				<thead lwc:if={applicationsFound}>
+					<tr class="slds-line-height_reset">
+						<template
+							if:true={myApplicationFields}
+							for:each={myApplicationFields}
+							for:item="field">
+							<th
+								class=""
+								scope="col"
+								key={field.fieldLabel}
+								style="background-color: #e5e5e5; font-size: 1rem; padding: 1rem">
+								<div
+									class="slds-truncate"
+									title={field.fieldLabel}>
+									{field.fieldLabel}
+								</div>
+							</th>
+						</template>
+						<th
+							if:true={showButtonColumn}
+							class=""
+							scope="col"
+							style="background-color: #e5e5e5; padding-top: 1rem; padding-bottom: 1rem">
+							<a
+								if:true={config.showRedirectButton}
+								style="width: 100%; min-width: 150px; line-height: normal; color: rgb(255, 255, 255); height: 42px; font-weight: normal"
+								class="slds-button slds-button_brand"
+								href={config.redirectButtonRedirectUrl}>
+								{config.redirectButtonLabel}
+							</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<template
+						if:true={applicationFields}
+						for:each={applicationFields}
+						for:item="application">
+						<tr key={application.key}>
+							<template
+								if:true={application.details}
+								for:each={application.details}
+								for:item="item">
+								<td
+									data-label={item.label}
+									key={item.label}>
+									<div
+										if:true={item.isStandardField}
+										class="slds-truncate"
+										title={item.value}
+										style="font-size: 1rem; color: #747474">
+										<c-lex-formatted-field field={item}></c-lex-formatted-field>
+									</div>
+									<div
+										if:true={item.isJobName}
+										class="slds-truncate"
+										title={item.value}
+										style="font-size: 1rem; color: #747474">
+										<lightning-button
+											variant="base"
+											label={item.value}
+											title={item.label}
+											value={application.key}
+											onclick={clickJobNameBtn}>
+										</lightning-button>
+									</div>
+									<div
+										if:true={item.isAppNumber}
+										class="slds-truncate"
+										title={item.value}
+										style="font-size: 1rem; color: #747474">
+										<lightning-button
+											variant="base"
+											label={item.value}
+											title={item.label}
+											value={application.key}
+											onclick={clickAppNumberBtn}>
+										</lightning-button>
+									</div>
+								</td>
+							</template>
+							<td if:true={showButtonColumn}>
+								<lightning-button
+									if:true={config.showContactUsButton}
+									variant="brand"
+									label={config.contactUsButtonLabel}
+									title={config.contactUsButtonLabel}
+									icon-name="utility:comments"
+									class="contact-button"
+									name={application.key}
+									onclick={handleEmailCandidate}
+									data-contact-id={application.contactId}></lightning-button>
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</lightning-layout-item>
+		<lightning-layout-item
+			if:false={isDesktop}
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
+			<lightning-layout multiple-rows="true">
+				<template
+					if:true={applicationData}
+					for:each={applicationFields}
+					for:item="application">
+					<lightning-layout-item
+						key={application.Id}
+						size="12">
+						<c-lex-application-tile
+							record={application}
+							fields={myApplicationFields}
+							config={config}
+							is-desktop={isDesktop}
+							onrefreshapex={handleRefreshApex}></c-lex-application-tile>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</lightning-layout-item>
+		<lightning-layout-item
+			if:false={applicationsFound}
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
+			<span style="font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold"
+				>{config.noJobApplicationMessage}</span
+			>
+		</lightning-layout-item>
+	</lightning-layout>
+</template>

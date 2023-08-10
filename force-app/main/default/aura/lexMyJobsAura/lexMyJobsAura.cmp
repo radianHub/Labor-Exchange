@@ -1,0 +1,158 @@
+<aura:component
+	implements="forceCommunity:availableForAllPageTypes"
+	access="global">
+	<!-- * MY JOBS CONFIG -->
+	<aura:attribute
+		name="header"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="headerColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="description"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="newJobBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="showNewJobBtn"
+		type="boolean"
+		access="global" />
+
+	<!-- * SEARCH JOBS CONFIG -->
+	<aura:attribute
+		name="filterHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="filterDescription"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="filterField"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="filterInputLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="clearFiltersBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="searchBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="searchInputLabel"
+		type="string"
+		access="global" />
+
+	<!-- * FOUND JOBS CONFIG -->
+	<aura:attribute
+		name="jobsHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="jobsSubHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="jobTileHeaderColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="jobTileFooterColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="viewDetailsBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="editJobBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="noResultMessage"
+		type="string"
+		access="global" />
+
+	<!-- * VIEW DETAILS CONFIG -->
+	<aura:attribute
+		name="detailsHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="skillPillColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="editJobDetailBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="backBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="archiveBtnLabel"
+		type="string"
+		access="global" />
+
+	<!-- * CREATE/EDIT JOB CONFIG -->
+	<aura:attribute
+		name="editJobHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="createJobHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="editJobObjName"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="saveBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="cancelBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="createSaveMsg"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="editSaveMsg"
+		type="string"
+		access="global" />
+
+	<!-- * LWC SETUP -->
+	<lightning:overlayLibrary aura:id="overlayLib" />
+	<aura:attribute
+		name="config"
+		type="Object" />
+	<aura:handler
+		name="init"
+		value="{!this}"
+		action="{!c.doInit}" />
+
+	<c:lexMyJobs
+		config="{!v.config}"
+		onrefreshcomponent="{!c.refreshData}">
+	</c:lexMyJobs>
+
+	<aura:html tag="style">
+		.search-button button, .search-button button:hover, .search-button button:active { height: 42px; line-height: normal; width: 100%; } .job-button button,
+		.job-button button:hover, .job-button button:active { height: 42px; line-height: normal; width: 100%; } .new-job-button button, .new-job-button
+		button:hover, .new-job-button button:active { height: 42px; line-height: normal; }
+	</aura:html>
+</aura:component>

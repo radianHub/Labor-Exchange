@@ -1,0 +1,26 @@
+.image-container {
+    position: relative;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.bg-image {
+    height: 233px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    filter: brightness(0.5);
+}
+
+.inner-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.text-bold {
+    font-weight: 700;
+}

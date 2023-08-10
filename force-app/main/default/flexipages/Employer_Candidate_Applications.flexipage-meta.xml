@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>applicationListHeader</name>
+                    <value>Applications</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsButtonLabel</name>
+                    <value>Contact Applicant</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsCancelButtonLabel</name>
+                    <value>Cancel</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsDescription</name>
+                    <value>You can send an email to the applicant from here.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsHeader</name>
+                    <value>Want to Contact the Applicant?</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsPlaceholderText</name>
+                    <value>Type here...</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsSubmitButtonLabel</name>
+                    <value>Submit</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactUsSuccessMessage</name>
+                    <value>Success!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>A list of applications</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Submitted Job Applications</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noJobApplicationMessage</name>
+                    <value>No Applications to show</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectButtonLabel</name>
+                    <value>Redirect Button</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectButtonRedirectUrl</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showContactUsButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRedirectButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tile1Name</name>
+                    <value>New Applications</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tile2Name</name>
+                    <value>Pending Applications</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tile3Name</name>
+                    <value>Processed Applications</value>
+                </componentInstanceProperties>
+                <componentName>lexCandidateApplication</componentName>
+                <identifier>lexCandidateApplication</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Candidate Applications</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Candidate Applications</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

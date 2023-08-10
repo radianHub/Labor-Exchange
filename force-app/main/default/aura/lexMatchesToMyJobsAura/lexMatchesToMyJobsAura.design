@@ -1,0 +1,86 @@
+<design:component>
+	<!-- * MATCHES TO MY JOBS CONFIG -->
+	<design:attribute
+		name="header"
+		label="Header"
+		default="Matches to My Jobs" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="Review matches to my jobs to find viable applicants" />
+	<design:attribute
+		name="noUserErrorMessage"
+		label="No User Error Message"
+		default="No user record found" />
+	<design:attribute
+		name="noContactErrorMessage"
+		label="No User Contact Error Message"
+		default="No user contact record found" />
+
+	<!-- * FOUND MATCHES CONFIG -->
+	<design:attribute
+		name="matchesHeader"
+		label="Matches Header"
+		default="Matches" />
+	<design:attribute
+		name="matchesSubheader"
+		label="Matches Subheader"
+		default="View job matches" />
+	<design:attribute
+		name="matchTileHeaderColor"
+		label="Match Tile Header Color"
+		type="Color"
+		default="rgb(235, 235, 235)" />
+	<design:attribute
+		name="matchTileFooterColor"
+		label="Match Tile Footer Color"
+		type="Color"
+		default="rgb(88, 119, 169)" />
+	<design:attribute
+		name="jobFilterLabel"
+		label="Job Filter Label"
+		default="Filter by Position" />
+	<design:attribute
+		name="jobFilterPlaceholder"
+		label="Job Filter Placeholder"
+		default="Select a Job" />
+	<design:attribute
+		name="contactMatchButtonLabel"
+		label="Contact Match Button Label"
+		default="Contact Match" />
+	<design:attribute
+		name="alreadyContactedMatchButtonLabel"
+		label="Already Contact Match Button Lable"
+		default="Already Contacted" />
+	<design:attribute
+		name="noMatchesMessage"
+		label="No Matches Message"
+		default="We are sorry but your job listing did not return any matches." />
+
+	<!-- * CONTACT CANDIDATE -->
+	<design:attribute
+		name="contactCandidateModalHeader"
+		label="Contact Candidate Label Header"
+		default="Send Email" />
+	<design:attribute
+		name="contactCandidateMessageLabel"
+		label="Contact Candidate Message Label"
+		default="Please enter a message below" />
+	<design:attribute
+		name="showContactCandidateFooter"
+		label="Show Contact Candidate Footer"
+		default="true" />
+	<design:attribute
+		name="contactCandidateSendButtonLabel"
+		label="Contact Candidate Send Button Label"
+		default="Send" />
+	<design:attribute
+		name="contactCandidateCloseButtonLabel"
+		label="Contact Candidate Close Button Label"
+		default="Cancel" />
+</design:component>

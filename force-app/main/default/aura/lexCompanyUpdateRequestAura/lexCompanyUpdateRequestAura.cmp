@@ -1,0 +1,11 @@
+<aura:component>
+	<aura:attribute
+		name="recordId"
+		type="String" />
+	<aura:attribute
+		name="config"
+		type="Object" />
+	<lightning:overlayLibrary aura:id="overlayLib" />
+
+	<!-- <c:lexCompanyUpdateRequest recordId="{!v.recordId}" config="{!v.config}" onclose="{!c.handleClose}"></c:lexCompanyUpdateRequest> -->
+</aura:component>

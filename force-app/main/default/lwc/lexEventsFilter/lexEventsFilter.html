@@ -1,0 +1,68 @@
+<template>
+    <lightning-spinner
+        if:true={isLoading} 
+        alternative-text="Loading" 
+        size="large"
+        class="slds-is-absolute"
+    ></lightning-spinner>
+    <lightning-layout if:true={filterOptions} horizontal-align="spread" multiple-rows="true" style="background-color: #ebebeb;">
+        <lightning-layout-item size="12">
+            <lightning-layout horizontal-align="spread" multiple-rows="true">
+                <lightning-layout-item padding="around-medium" size="12" large-device-size="3" small-device-size="12">
+                    <span style="font-size: 1rem;font-weight: bold;">
+                        {eventConfig.filterHeader}
+                    </span>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-medium" size="12" large-device-size="6" small-device-size="12">
+                    <lightning-input if:false={isMobile} type="text" placeholder={eventConfig.searchInputLabel}
+                        label={eventConfig.searchInputLabel} variant="label-hidden" name="keyword" 
+                    ></lightning-input>
+                    <lightning-input if:true={isMobile} type="text" label={eventConfig.searchInputLabel} name="keyword" ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-medium" size="12" large-device-size="3" small-device-size="12">
+                    <lightning-input if:false={isMobile} variant="label-hidden" type="date" placeholder={eventConfig.startDateInputLabel} label={eventConfig.startDateInputLabel} name="startDate"></lightning-input>
+                    <lightning-input if:true={isMobile} type="date" placeholder={eventConfig.startDateInputLabel} label={eventConfig.startDateInputLabel} name="startDate"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-medium" size="12" large-device-size="12" small-device-size="12">
+                    <span style="font-size:1rem;">{eventConfig.filterHelp}</span>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <div class="slds-grid slds-wrap">
+                <template if:true={moreFilters} for:each={moreFilters} for:item="filter">
+                    <div class={filterCSS} key={filter.fieldName}>
+                        <lightning-button if:true={filter.isFilterApplied} variant="brand" icon-name="utility:filterList"  class="filter-button" label={filter.title} name={filter.fieldName} onclick={handleSelectFilterValues}></lightning-button>
+                        <lightning-icon if:true={filter.isFilterApplied}
+                            icon-name="utility:success" 
+                            alternative-text="Filter Applied" 
+                            class="slds-p-left_small"
+                            variant="success"
+                            title={eventConfig.filterApplied}>
+                        </lightning-icon>
+                        <lightning-button if:false={filter.isFilterApplied} variant="brand" icon-name="utility:filterList"  class="no-filter-button" label={filter.title} name={filter.fieldName} onclick={handleSelectFilterValues}></lightning-button>
+                    </div>
+                </template>
+                <div class={filterCSS}>
+                    <lightning-button 
+                        variant="brand" 
+                        label={eventConfig.searchBtnLabel} 
+                        title={eventConfig.searchBtnLabel} 
+                        icon-name="utility:search" 
+                        class="search-button"
+                        onclick={handleSearch}
+                    ></lightning-button>
+                </div>
+                <div class={filterCSS}>
+                    <lightning-button variant="brand" 
+                        class="search-button" 
+                        icon-name="utility:clear" 
+                        label={eventConfig.clearFilterLabel}
+                        title={eventConfig.clearFilterLabel}
+                        onclick={handleClearFilters}>
+                    </lightning-button>
+                </div>
+              </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

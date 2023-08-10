@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;img class=&quot;sfdcCbImage&quot; alt=&quot;&quot; src=&quot;{!contentAsset.LaunchpadLogo.1}&quot;&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:richTextInline</componentName>
+                <identifier>forceCommunity_richTextInline</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>defaultTilebackgroundColor</name>
+                    <value>rgb(8, 92, 160)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Please select one of the options below</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>footer</name>
+                    <value>If you are having trouble logging in or need help, call us at (888)888-8888</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>forgotpasswordlabel</name>
+                    <value>Please click here if you forgot your password</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Account Log In</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>invalidInputErrorMessage</name>
+                    <value>The email or password you entered does not match our records. Please try again.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>loginButtonLabel</name>
+                    <value>Log In</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>passwordLoginLabel</name>
+                    <value>Please enter your Password</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectURLForgotPassword</name>
+                    <value>/Employer/s/login/ForgotPassword</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectURLtile2</name>
+                    <value>/Employer/s/login/SelfRegister</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectURLtile3</name>
+                    <value>/Employer/s/login/SelfRegister</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>selectedtileColor</name>
+                    <value>rgb(134, 136, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTile1</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTile1Login</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTile2</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTile3</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tileColor</name>
+                    <value>rgb(255, 255, 255)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tiletitle1</name>
+                    <value>Login to my Account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tiletitle2</name>
+                    <value>Create a new Account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tiletitle3</name>
+                    <value>I don&apos;t know if I have an Account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>usernameLoginLabel</name>
+                    <value>Please enter your Email Address</value>
+                </componentInstanceProperties>
+                <componentName>lexLoginComponent</componentName>
+                <identifier>lexLoginComponent</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Login</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Login</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommLoginPage</type>
+</FlexiPage>

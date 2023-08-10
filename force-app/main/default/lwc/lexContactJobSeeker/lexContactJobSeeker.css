@@ -1,0 +1,18 @@
+h1 {
+    font-size: 26px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+p.sub-text {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: lighter;
+}

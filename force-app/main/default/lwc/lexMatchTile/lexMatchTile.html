@@ -1,0 +1,55 @@
+<template>
+	<div class="candidate-container">
+		<div
+			class={candidateContainerCSS}
+			style={headerCSS}>
+			<p class="slds-text-heading_medium text-bold slds-p-horizontal_medium">{title}</p>
+			<p class="slds-text-heading_small slds-m-top_xx-small crayon-color slds-p-horizontal_medium">{subTitle}</p>
+
+			<hr />
+
+			<lightning-layout
+				class="slds-p-horizontal_medium"
+				vertical-align="center"
+				multiple-rows="true"
+				style="text-align: left">
+				<template
+					if:true={details}
+					for:each={details}
+					for:item="item">
+					<lightning-layout-item
+						if:true={item.value}
+						size="12"
+						key={item.label}>
+						<div if:true={item.value}>
+							<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+							<span style="font-size: 1rem; font-weight: bold">
+								<c-lex-formatted-field field={item}></c-lex-formatted-field>
+							</span>
+						</div>
+						<div if:false={item.value}>&nbsp;</div>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</div>
+		<div
+			if:true={showFooter}
+			class={footerCSS}
+			style={footerStyle}>
+			<lightning-layout vertical-align="center">
+				<lightning-layout-item
+					size="12"
+					padding="around-medium">
+					<lightning-button
+						variant="brand"
+						label={contactButtonLabel}
+						title={contactButtonLabel}
+						icon-name="utility:comments"
+						disabled={contactButtonDisabled}
+						class="save-button"
+						onclick={handleEmailCandidate}></lightning-button>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+	</div>
+</template>

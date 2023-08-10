@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>Descriptioncolor</name>
+                    <value>rgba(0, 0, 0, 0.8)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>Headercolor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>Page1Description</name>
+                    <value>Please provide your Contact information so we can check and see if you already have an Account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>Page1Header</name>
+                    <value>Let&apos;s Get Started</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>Page2Description</name>
+                    <value>Let’s get you signed up!  It will only take you a few minutes to finish the form.  Hover over the &quot;i&quot; icon for more information about each question.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>Page2Header</name>
+                    <value>Account Sign Up</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>accountrecordtypeassignment</name>
+                    <value>Employer</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>attestationheader</name>
+                    <value>AUTHORIZATION, WAIVER AND RELEASE FOR USE OF PERSONAL INFORMATION</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>authorizationChbkLabel</name>
+                    <value>Please click here to accept the Authorization &amp; Waiver</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>authorizationChbkLabelshow</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>authorizationcheckboxlabel</name>
+                    <value>I have read and voluntarily sign this Authorization, Waiver, and Release.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>authorizationiagreebuttonlabel</name>
+                    <value>I Agree</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>confirmPasswordLabel</name>
+                    <value>Please Confirm Your Password</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactrecordtypeassignment</name>
+                    <value>Employer</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>existingAccountMessage</name>
+                    <value>It looks like your account is already in our system, please click &quot;Login to my Account&quot; and then click &quot;Forgot Your Password&quot; to reset your password. If that doesn&apos;t work, call us at (888)888-8888 M-F between 8AM and 5PM.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>existingActiveUserMessage</name>
+                    <value>It looks like your email is already in our system, please click &quot;Login to my Account&quot; and then click &quot;Forgot Your Password&quot; to reset your password. If that doesn&apos;t work, call us at (888)888-8888 M-F between 8AM and 5PM.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>existingContactMessage</name>
+                    <value>It looks like your email is already in our system, please click &quot;Login to my Account&quot; and then click &quot;Forgot Your Password&quot; to reset your password. If that doesn&apos;t work, call us at (888)888-8888 M-F between 8AM and 5PM.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>footer</name>
+                    <value>If you are having trouble logging in or need help, call us at (888)888-8888.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>minimumMaximumAgeerrorMessage</name>
+                    <value>Birthdate must be between {0} and  {1}.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>nextStepBtn</name>
+                    <value>Click to Continue</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>passwordLabel</name>
+                    <value>Please Set Your Password</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>passwordMismatchError</name>
+                    <value>Password and Confirm Password do not match.  Please re-enter.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>passwordSectionTitle</name>
+                    <value>Set Up Your Password</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pattern</name>
+                    <value>.{9,}</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>patternMessage</name>
+                    <value>Your Password must be  at least 9 characters</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectURlLogin</name>
+                    <value>/Employer/s/login</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerBtn</name>
+                    <value>Register</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>requiredFieldMessage</name>
+                    <value>Please fill out all required fields</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>requiredFieldMsg</name>
+                    <value>Please update this Field</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>step1of2</name>
+                    <value>Step 1 of 2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>step2of2</name>
+                    <value>Step 2 of 2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>userprofileassignment</name>
+                </componentInstanceProperties>
+                <componentName>lexSelfRegistrationBodyAura</componentName>
+                <identifier>lexSelfRegistrationBodyAura</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Register</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>loginButtonLabel</name>
+                    <value>Login to my Account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>loginUrl</name>
+                    <value>/LaborExchange/s/login</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>staticResource</name>
+                    <value>LECommunityLogo</value>
+                </componentInstanceProperties>
+                <componentName>lexSelfRegistrationHeader</componentName>
+                <identifier>lexSelfRegistrationHeader</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>featured</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>sidebar</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>sidebarAlt</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Register</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommSelfRegisterPage</type>
+</FlexiPage>

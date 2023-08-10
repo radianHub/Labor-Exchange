@@ -1,0 +1,98 @@
+<design:component>
+	<!-- * COMPANY PROFILE CONFIG -->
+	<design:attribute
+		name="header"
+		label="Header"
+		default="Company Profile" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="Use this page to update your company profile." />
+	<design:attribute
+		name="subheaderColor"
+		label="Sub Headers Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+
+	<design:attribute
+		name="editButtonLabel"
+		label="Edit Button Label"
+		default="Edit" />
+	<design:attribute
+		name="saveButtonLabel"
+		label="Save Button Label"
+		default="Save" />
+	<design:attribute
+		name="cancelButtonLabel"
+		label="Cancel Button Label"
+		default="Cancel" />
+	<design:attribute
+		name="requiredFieldMessage"
+		label="Required Field Message"
+		default="Please fill out the required fields." />
+	<design:attribute
+		name="successMessage"
+		label="Success Message"
+		default="Success!" />
+	<design:attribute
+		name="redirectMyProfileURL"
+		label="Redirect Url (Company Profile)"
+		default="/s/company-profile" />
+
+	<!-- * CONTACT LIST CONFIG -->
+	<design:attribute
+		name="showContact"
+		label="Show New Contact Button"
+		default="true" />
+	<design:attribute
+		name="contactListHeader"
+		label="Contact List Header"
+		default="Company Contacts" />
+	<design:attribute
+		name="contactListSubheader"
+		label="Contact List Description"
+		default="Use this section to see, edit, or update your company contacts" />
+	<design:attribute
+		name="noContactMessage"
+		label="No Contacts Message"
+		default="No contacts available" />
+	<design:attribute
+		name="newContactButtonLabel"
+		label="Add Contacts Button Label"
+		default="Add New Contact" />
+	<design:attribute
+		name="editContactButtonLabel"
+		label="Edit Contacts Button Label"
+		default="Edit" />
+	<design:attribute
+		name="deleteContactButtonLabel"
+		label="Delete/Archive Contacts Button Label"
+		default="Archive" />
+
+	<!-- * CONTACT POPUP CONFIG -->
+	<design:attribute
+		name="newContactPopupHeader"
+		label="Contact Popup: Header"
+		default="Contact Information" />
+	<design:attribute
+		name="newContactPopupSubHeader"
+		label="Contact Popup: Sub Header"
+		default="Use this page to edit the contact information" />
+	<design:attribute
+		name="newContactPopupSaveButtonLabel"
+		label="Contact Popup: Save Button Label"
+		default="Save" />
+	<design:attribute
+		name="newContactPopupCancelButtonLabel"
+		label="Contact Popup: Cancel Button Label"
+		default="Cancel" />
+	<design:attribute
+		name="contactSuccessMessage"
+		label="Contact Popup: Success Message"
+		default="Success!" />
+</design:component>

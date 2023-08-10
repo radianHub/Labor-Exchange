@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Override_Setup_Help_Text__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Controls the ability to override the Help Text that is in Setup.  This Field is tied to the &quot;Custom Help Text&quot; Field.</inlineHelpText>
+    <label>Override Setup Help Text</label>
+    <type>Checkbox</type>
+</CustomField>
