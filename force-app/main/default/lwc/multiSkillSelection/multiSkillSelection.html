@@ -1,0 +1,72 @@
+<!-- sldsValidatorIgnore -->
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		class="slds-is-absolute"
+		alternative-text="Loading"
+		size="large"></lightning-spinner>
+	<div
+		if:true={hasTitle}
+		class="slds-text-heading_medium slds-m-vertical_medium">
+		{title}
+	</div>
+	<div>
+		<div
+			id="accordion"
+			role="tablist"
+			aria-multiselectable="true"
+			class="category-list">
+			<template
+				if:true={categories}
+				for:each={categories}
+				for:item="category">
+				<div
+					key={category.name}
+					class="panel panel-default panel-horizontal slds-p-vertical--x-small">
+					<div role="tab">
+						<h4 class="panel-title">
+							<button
+								type="button"
+								class="slds-button slds-button_outline-brand skills collapsed category"
+								role="button"
+								name={category.selector}
+								onclick={toggleSkillCategoryButton}>
+								{category.name}
+								<span
+									class="badge badge-light slds-m-left--x-small"
+									name={category.selector}>
+									{category.skillsCount}
+								</span>
+							</button>
+						</h4>
+					</div>
+					<div
+						class="slds-m-around_medium"
+						data-name={category.selector}
+						hidden={skillsHidden}>
+						<lightning-layout multiple-rows="true">
+							<template
+								if:true={category.skills}
+								for:each={category.skills}
+								for:item="skill">
+								<lightning-layout-item
+									key={skill.id}
+									size="12"
+									small-device-size="12"
+									medium-device-size="6"
+									large-device-size="4">
+									<lightning-input
+										type="checkbox"
+										label={skill.name}
+										name={skill.id}
+										checked={skill.isSelected}
+										onchange={checkSkillCheckBox}></lightning-input>
+								</lightning-layout-item>
+							</template>
+						</lightning-layout>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+</template>

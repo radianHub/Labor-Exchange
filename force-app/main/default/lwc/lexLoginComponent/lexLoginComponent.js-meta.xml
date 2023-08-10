@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+      <target>lightning__AppPage</target>
+      <target>lightning__RecordPage</target>
+      <target>lightning__HomePage</target>
+      <target>lightningCommunity__Default</target>
+      <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">   
+            <property name="header" type="String" label="Header" default="Account Log In" />
+            <property name="headerColor" label="Header Color" type="Color" default="rgb(84, 105, 141)" />
+            <property name="description" type="String" label="Description" default="Please select one of the options below" /> 
+            <property name="showTile1" type="Boolean" label="Show Tile 1" default="true" />
+            <property name="showTile1Login" type="Boolean" label="Tile 1: Login" default="true" />
+            <property name="tiletitle1" type="String" label="Tile 1 Title" default="Login to my Account" />
+            <property name="redirectURLtile1" type="String" label="Redirect Url (Tile 1)" default="" />
+            <property name="showTile2" type="Boolean" label="Show Tile 2" default="true" />
+            <property name="showTile2Login" type="Boolean" label="Tile 2: Login" default="false" />
+            <property name="tiletitle2" type="String" label="Tile 2 Title" default="Create a new Account" />
+            <property name="redirectURLtile2" type="String" label="Redirect Url (Tile 2)" default="/Employer/s/login/SelfRegister" />
+            <property name="showTile3" type="Boolean" label="Show Tile 3" default="true" />
+            <property name="showTile3Login" type="Boolean" label="Tile 3: Login" default="false" />
+            <property name="tiletitle3" type="String" label="Tile 3 Title" default="I don't know if I have an Account" /> 
+            <property name="redirectURLtile3" type="String" label="Redirect Url (Tile 3)" default="/Employer/s/login/SelfRegister" />
+            <property name="tileColor" label="Tile Color" type="Color" default="rgb(255, 255, 255)" />
+            <property name="defaultTilebackgroundColor" label="Tile Background Color" type="Color" default="rgb(8, 92, 160)" />
+            <property name="selectedtileColor" label="Selected Tile Color" type="Color" default="rgb(134, 136, 141)" />
+            <property name="usernameLoginLabel" type="String" label="User Name Label" default="Please enter your Email Address" />
+            <property name="passwordLoginLabel" type="String" label="Password Label" default="Please enter your Password" />
+            <property name="loginButtonLabel" type="String" label="Login Button Label" default="Log In" />
+            <property name="forgotpasswordlabel" type="String" label="Forgot Password Link Label" default="Please click here if you forgot your password" />
+            <property name="redirectURLForgotPassword" type="String" label="Redirect Url (Forgot Password)" default="/Employer/s/login/ForgotPassword" />
+            <property name="invalidInputErrorMessage" type="String" label="Invalid Input Error Message" default="The email or password you entered does not match our records. Please try again." />
+            <property name="footer" type="String" label="Footer" default="If you are having trouble logging in or need help, call us at (888)888-8888" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

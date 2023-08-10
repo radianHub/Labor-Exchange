@@ -1,0 +1,22 @@
+<template>
+    <lightning-layout vertical-align="center" horizontal-align="center" style="height:90px;z-index:10;border-bottom:1px solid lightgray;" class="registration-header">
+        <lightning-layout-item size="12" large-device-size="10" small-device-size="12">
+            <lightning-layout vertical-align="center">
+                <lightning-layout-item size="3" >
+                    <div style="text-align:center; float:left;">
+                        <img src={logoUrl} />
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size={size}>
+                    <div style={loginCSS}>
+                        <a href={loginUrl} class={loginButtonCSS}
+                            style="height:42px;color:#FFF">
+                            <lightning-icon class="slds-p-horizontal_x-small"  size="xx-small" variant="inverse" icon-name="utility:user" alternative-text="User" title="User"></lightning-icon>
+                            {label.loginButton}
+                        </a>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

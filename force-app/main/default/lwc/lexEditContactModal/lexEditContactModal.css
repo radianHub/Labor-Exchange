@@ -1,0 +1,29 @@
+lightning-icon {
+    display: none;
+}
+
+div.customError + lightning-icon {
+    display: unset;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+h1 span {
+    color: rgb(84, 105, 141);
+    font-size: 26px;
+    font-weight: 900;
+}
+
+p.subHeader {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: lighter;
+}
+
+select.multiselect {
+    height: 42px;
+}

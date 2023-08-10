@@ -1,0 +1,86 @@
+<template>
+	<lightning-modal-body class="slds-is-relative">
+		<lightning-spinner
+			if:true={isLoading}
+			alternative-text="Loading"
+			size="large"
+			class="slds-is-absolute"></lightning-spinner>
+		<lightning-layout
+			horizontal-align="center"
+			multiple-rows="true">
+			<lightning-layout-item
+				padding="around-small"
+				size="12"
+				large-device-size="12"
+				small-device-size="12">
+				<!-- If used in the Candidate Search Page -->
+				<h1
+					lwc:if={labels.contactCandidateHeader}
+					style={headerCSS}>
+					{labels.contactCandidateHeader}
+				</h1>
+				<!-- If used in the Candidate Applications Page -->
+				<h1
+					lwc:if={labels.contactUsHeader}
+					style={headerCSS}>
+					{labels.contactUsHeader}
+				</h1>
+			</lightning-layout-item>
+			<lightning-layout-item
+				size="12"
+				large-device-size="12"
+				small-device-size="10">
+				<lightning-layout
+					horizontal-align="center"
+					multiple-rows="true"
+					class="slds-m-around_medium">
+					<lightning-layout-item
+						size="12"
+						large-device-size="12"
+						small-device-size="10">
+						<!-- If used in the Candidate Search Page -->
+						<p lwc:if={labels.contactCandidateSubtext}>{labels.contactCandidateSubtext}</p>
+						<!-- If used in the Candidate Applications Page -->
+						<p lwc:if={labels.contactUsDescription}>{labels.contactUsDescription}</p>
+					</lightning-layout-item>
+					<lightning-layout-item
+						size="12"
+						large-device-size="12"
+						small-device-size="10">
+						<lightning-textarea
+							name="emailBody"
+							placeholder={labels.contactCandidatePlaceholderText}
+							value={emailBody}
+							max-length="32000">
+						</lightning-textarea>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-layout-item>
+			<lightning-layout-item
+				size="12"
+				large-device-size="12"
+				small-device-size="10"
+				style="text-align: center">
+				<br />
+				<div class="btn-container">
+					<lightning-button
+						variant="slds-button_neutral"
+						label="Cancel"
+						title="Cancel"
+						icon-name="utility:close"
+						class="slds-p-horizontal_x-small"
+						onclick={closeModal}>
+					</lightning-button>
+					<lightning-button
+						variant="brand"
+						label="Send Request"
+						title="Send Request"
+						icon-name="utility:replace"
+						class="slds-p-horizontal_x-small"
+						onclick={sendEmail}>
+					</lightning-button>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-modal-body>
+</template>

@@ -1,0 +1,101 @@
+<template>
+	<div class="slds-is-relative">
+		<lightning-spinner
+			if:true={isLoading}
+			alternative-text="Loading"
+			size="large"
+			class="slds-is-absolute">
+		</lightning-spinner>
+		<lightning-record-edit-form
+			record-id={jobId}
+			object-api-name={labels.editJobObjName}
+			onsuccess={successfulRecordSave}
+			onsubmit={saveRecordForm}>
+			<lightning-modal-body>
+				<lightning-messages></lightning-messages>
+				<div
+					class="slds-grid slds-wrap slds-gutters"
+					style={bodyStyling}>
+					<div
+						style={headerCSS}
+						class="slds-col slds-size_1-of-1">
+						<h1 style="font-weight: 900; font-size: 30px">{headerLabel}</h1>
+					</div>
+
+					<template
+						for:each={data}
+						for:item="field">
+						<div
+							class={fieldCSS}
+							key={field.name}
+							style="padding: 5px">
+							<template lwc:if={showEditField}>
+								<lightning-input-field
+									field-name={field.name}
+									value={field.value}
+									required={field.required}
+									variant="label-stacked">
+								</lightning-input-field>
+							</template>
+							<template lwc:else>
+								<lightning-output-field
+									field-name={field.name}
+									variant="label-stacked">
+								</lightning-output-field>
+							</template>
+						</div>
+					</template>
+				</div>
+				<div style={bodyStyling}>
+					<c-multi-skill-selection
+						title="Job Skills"
+						record-id={jobId}
+						onloadedskills={loadSkillEvent}
+						onselection={selectSkillEvent}>
+					</c-multi-skill-selection>
+				</div>
+			</lightning-modal-body>
+			<lightning-modal-footer>
+				<div class="btn-container">
+					<lightning-button
+						variant="slds-button_neutral"
+						icon-name="utility:close"
+						label={labels.cancelBtnLabel}
+						title={labels.cancelBtnLabel}
+						onclick={clickCancelBtn}>
+					</lightning-button>
+					<template lwc:if={isSave}>
+						<lightning-button
+							variant="brand"
+							icon-name="utility:save"
+							label={labels.saveBtnLabel}
+							title={labels.saveBtnLabel}
+							type="submit">
+						</lightning-button>
+					</template>
+					<template lwc:elseif={isCreate}>
+						<lightning-button
+							variant="brand"
+							icon-name="utility:edit"
+							label={labels.editBtnLabel}
+							title={labels.editBtnLabel}
+							onclick={clickEditBtn}>
+						</lightning-button>
+					</template>
+					<template lwc:elseif={isPreview}>
+						<lightning-button
+							variant="brand"
+							icon-name="utility:back"
+							label="Back"
+							title="Back"
+							onclick={clickBackBtn}>
+							<!-- label={labels.editBtnLabel}
+							title={labels.editBtnLabel}
+							onclick={clickEditBtn} -->
+						</lightning-button>
+					</template>
+				</div>
+			</lightning-modal-footer>
+		</lightning-record-edit-form>
+	</div>
+</template>
