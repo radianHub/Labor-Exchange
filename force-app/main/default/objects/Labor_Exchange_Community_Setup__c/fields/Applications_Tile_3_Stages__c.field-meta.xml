@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Applications_Tile_3_Stages__c</fullName>
+    <description>A comma-separated list which determines which Job Application stages are included in the third (rightmost) Job Applications tile within the lexCandidateApplication Aura component (most commonly used within the Labor Exchange Community on the Candidate Applications page).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter a comma-separated list of stages (from the Launchpad__Stages__c picklist on the Launchpad__Applicant_Tracking__c object) that you would like to include in the third (rightmost) Job Applications tile within the lexCandidateApplication Aura component. The lexCandidateApplication component is most commonly used within the Labor Exchange Community on the Candidate Applications page.</inlineHelpText>
+    <label>Applications Tile 3 Stages</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>
