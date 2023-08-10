@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="fieldName" type="String"/>
+    <aura:attribute name="selectedValues" type="List[]"/>
+</aura:event>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Override_Setup_Help_Text__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>This allows clients the ability to override the field’s existing help text information only for job seeker community. If left unchecked, it will default to whatever help text is set up for the field across the org,</inlineHelpText>
+    <label>Override Setup Help Text</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,146 @@
+<aura:component
+	implements="forceCommunity:availableForAllPageTypes"
+	access="global">
+	<aura:html tag="style">
+		.mymodal .slds-modal__container { margin: 0 auto; width: 80% !important; max-width: 100% !important; min-width: 20rem; } .confirmation
+		.slds-modal__container { margin: 0 auto; width: 40% !important; max-width: 100% !important; min-width: 20rem; } .maps .slds-modal__container { margin: 0
+		auto; width: 80% !important; max-width: 100% !important; min-width: 20rem; } .maps button.slds-button_brand, .maps button.slds-button_brand:hover, .maps
+		button.slds-button_brand:active, .confirmation button.slds-button_brand, .confirmation button.slds-button_brand:hover, .confirmation
+		button.slds-button_brand:active { color:#FFFFFF !important; height:42px; width: 15%; } .maps button.slds-button[disabled] { background-color: #BDBEC0
+		!important; border-color: #BDBEC0 !important; color:#FFFFFF !important; height:42px; width: 15%; } .viewCourse .slds-modal__container { margin: 0 auto;
+		width: 90% !important; max-width: 100% !important; min-width: 20rem; } .eventRegistration .slds-modal__container { margin: 0 auto; width: 50%
+		!important; max-width: 100% !important; min-width: 20rem; }
+
+		<aura:if isTrue="{!$Browser.isPhone}">
+			.slds-modal__container .modal-body { padding-left: 0px !important; padding-right: 0px !important; } .maps button.slds-button_brand, .maps
+			button.slds-button_brand:hover, .maps button.slds-button_brand:active, .confirmation button.slds-button_brand, .confirmation
+			button.slds-button_brand:hover, .confirmation button.slds-button_brand:active { color:#FFFFFF !important; height:42px; width: 30%; } .maps
+			button.slds-button[disabled] { background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; color:#FFFFFF !important; height:42px; width:
+			30%; } .maps button.backToHome { width: 50% !important; }
+		</aura:if>
+	</aura:html>
+	<lightning:overlayLibrary aura:id="overlayLib" />
+
+	<aura:attribute
+		name="header"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="headerColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="description"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="subheaderColor"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="homeTile"
+		type="boolean"
+		access="global" />
+
+	<aura:attribute
+		name="showFeaturedEvents"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="featuredEventsHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="featuredEventsDescription"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="showfeatureWorkshop"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="eventTileHeaderColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="eventTileFooterColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="watchVideoEventButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="registerEventButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="registerEventRedirectUrl"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="registerEventSuccessMessage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="alreadyRegisteredEventButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="availableinCommunityEventPage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="communityPriorityEvent"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="downloadDocuments"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="redirectHomeURL"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="config"
+		type="Object" />
+	<aura:attribute
+		name="eventConfig"
+		type="Object" />
+
+	<aura:handler
+		name="init"
+		value="{!this}"
+		action="{!c.doInit}" />
+
+	<aura:if isTrue="{!v.homeTile}">
+		<c:lexHomePage config="{!v.config}"></c:lexHomePage>
+	</aura:if>
+
+	<lightning:layout
+		horizontalAlign="center"
+		multipleRows="true">
+		<aura:if isTrue="{!v.showFeaturedEvents}">
+			<lightning:layoutItem
+				padding="around-medium"
+				size="12"
+				largeDeviceSize="11"
+				smallDeviceSize="9">
+				<h1 style="font-weight: 900; font-size: 30px">{!v.featuredEventsHeader}</h1>
+				<div style="font-weight: 100; font-size: 16px">{!v.featuredEventsDescription}</div>
+			</lightning:layoutItem>
+			<lightning:layoutItem
+				padding="around-medium"
+				size="12"
+				largeDeviceSize="12"
+				smallDeviceSize="9">
+				<c:lexEventsAura
+					pageName="Home"
+					eventConfig="{!v.eventConfig}"></c:lexEventsAura>
+			</lightning:layoutItem>
+		</aura:if>
+	</lightning:layout>
+</aura:component>

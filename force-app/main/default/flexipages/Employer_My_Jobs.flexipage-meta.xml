@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>archiveBtnLabel</name>
+                    <value>Archive Job</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>backBtnLabel</name>
+                    <value>Cancel</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>cancelBtnLabel</name>
+                    <value>Cancel</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>clearFiltersBtnLabel</name>
+                    <value>Clear Filters</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>createJobHeader</name>
+                    <value>Create New Job Listing</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>createSaveMsg</name>
+                    <value>Job successfully created!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Create new job listing, search for existing listings, view job details, and edit job statuses and information.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>detailsHeader</name>
+                    <value>Job Details</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editJobBtnLabel</name>
+                    <value>Edit Job</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editJobDetailBtnLabel</name>
+                    <value>Edit</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editJobHeader</name>
+                    <value>Update Job Listing</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editJobObjName</name>
+                    <value>Launchpad__Job__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editSaveMsg</name>
+                    <value>Job successfully updated!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterDescription</name>
+                    <value>You can filter existing jobs by open/closed status or view all existing jobs. Also filter by job expiration, either expiring soon (within 7 days) or already expired. Use the keyword search to search by job name and details.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterField</name>
+                    <value>A_Filter_Field__c,Expiration_Date__c,Name,Launchpad__Stage__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterHeader</name>
+                    <value>Search for jobs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterInputLabel</name>
+                    <value>Select a filter option</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>My Jobs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>jobTileFooterColor</name>
+                    <value>rgb(88, 119, 169)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>jobTileHeaderColor</name>
+                    <value>rgb(235, 235, 235)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>jobsHeader</name>
+                    <value>Jobs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>jobsSubHeader</name>
+                    <value>View job listings</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>newJobBtnLabel</name>
+                    <value>Create new job listing</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noResultMessage</name>
+                    <value>We are sorry but your Search Filter(s) did not return any results.  Please click &quot;Clear Filters&quot; and try again.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>saveBtnLabel</name>
+                    <value>Save</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchBtnLabel</name>
+                    <value>Search</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchInputLabel</name>
+                    <value>Search job by keyword</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showNewJobBtn</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>skillPillColor</name>
+                    <value>rgb(8, 92, 160)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>viewDetailsBtnLabel</name>
+                    <value>View Details</value>
+                </componentInstanceProperties>
+                <componentName>lexMyJobsAura</componentName>
+                <identifier>lexMyJobsAura</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>My Jobs</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>My Jobs</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

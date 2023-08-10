@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Launchpad__Event_Attendee_Enrollment_Compact_Layout</fullName>
+    <fields>Launchpad__Contact__c</fields>
+    <fields>Launchpad__Event__c</fields>
+    <fields>Launchpad__Status__c</fields>
+    <label>Event Attendee Enrollment Compact Layout</label>
+</CompactLayout>

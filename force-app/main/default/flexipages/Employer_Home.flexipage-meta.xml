@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>alreadyRegisteredEventButtonLabel</name>
+                    <value>Already Registered</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>availableinCommunityEventPage</name>
+                    <value>Launchpad__Available_in_Community__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>communityPriorityEvent</name>
+                    <value>Launchpad__Community_Priority_Event__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Please click a Tile below or Tab above to get started with your experience</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>downloadDocuments</name>
+                    <value>Download Documents</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>eventTileFooterColor</name>
+                    <value>rgb(180, 188, 201)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>eventTileHeaderColor</name>
+                    <value>rgb(235, 235, 235)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>featuredEventsDescription</name>
+                    <value>Watch On Demand Videos or save your seat and Register now!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>featuredEventsHeader</name>
+                    <value>Check out these Featured Events</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Welcome to the Launchpad Labor Exchange Community!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>homeTile</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventButtonLabel</name>
+                    <value>Register for Event</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventRedirectUrl</name>
+                    <value>/s/my-registered-events</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventSuccessMessage</name>
+                    <value>You have been Successfully Registered for the Event!ed</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showFeaturedEvents</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>watchVideoEventButtonLabel</name>
+                    <value>Watch Video</value>
+                </componentInstanceProperties>
+                <componentName>lexHome</componentName>
+                <identifier>lexHome</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>alreadyRegisteredEventButtonLabel</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>availableinCommunityEventPage</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>communityPriorityEvent</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>wefawef</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>downloadDocuments</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>eventTileFooterColor</name>
+                    <value>rgb(180, 188, 201)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>eventTileHeaderColor</name>
+                    <value>rgb(235, 235, 235)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>featuredEventsDescription</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>featuredEventsHeader</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Test header</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>homeTile</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventButtonLabel</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventRedirectUrl</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventSuccessMessage</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showFeaturedEvents</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>watchVideoEventButtonLabel</name>
+                </componentInstanceProperties>
+                <componentName>lexHome</componentName>
+                <identifier>lexHome2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Home</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Home</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

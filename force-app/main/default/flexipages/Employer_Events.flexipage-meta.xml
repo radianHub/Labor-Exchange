@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>alreadyRegisteredEventButtonLabel</name>
+                    <value>Already Registered!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>applyFilter</name>
+                    <value>Apply Filter</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>availableinCommunityEventPage</name>
+                    <value>Launchpad__Available_in_Community__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>clearFilterLabel</name>
+                    <value>Clear Filters</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>communityPriorityEvent</name>
+                    <value>Launchpad__Community_Priority_Event__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Build your Job Search skills with our on demand workshops (recorded workshop videos you can watch any time) and                  schedule workshops (live, scheduled webinars where you can questions and discuss ideas).                  Please select the workshops you would like to attend below.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>downloadDocuments</name>
+                    <value>Download Documents</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>eventTileFooterColor</name>
+                    <value>rgb(180, 188, 201)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>eventTileHeaderColor</name>
+                    <value>rgb(235, 235, 235)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterApplied</name>
+                    <value>Filter Applied</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterHeader</name>
+                    <value>Search for Events using filters</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterHelp</name>
+                    <value>Use filter options to narrow your results.  Once selected, Click &quot;Submit Search&quot;.  Click &quot;Clear Filters&quot; to remove all added filters.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Events and Workshops</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noResultMessage</name>
+                    <value>We are sorry but your Search Filter(s) did not return any results.  Please click &quot;Clear Filters&quot; and try again.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectEventButtonDescription</name>
+                    <value>View or change your registrations by clicking &quot;My Registered Workshops&quot;.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectEventButtonLabel</name>
+                    <value>View My Registered Events</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectEventButtonRedirectUrl</name>
+                    <value>/Employer/s/my-registered-events</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventButtonLabel</name>
+                    <value>Register</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventRedirectUrl</name>
+                    <value>/Employer/s/my-registered-events</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>registerEventSuccessMessage</name>
+                    <value>You have been Successfully Registered for the Event!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchBtnLabel</name>
+                    <value>Submit Search</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchFilterFields</name>
+                    <value>Launchpad__Event_Type__c, Launchpad__Type__c, Launchpad__Workshop_Topics__c, Name, Launchpad__Long_Description_for_Community__c, Launchpad__Short_Description_for_Community__c, Launchpad__Venue__c, Launchpad__Location_Street__c, Launchpad__Location_City__c, Launchpad__Location_Zip_Code__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchInputLabel</name>
+                    <value>Search By Title, Description or Location</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRedirectEventButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>startDateInputLabel</name>
+                    <value>Start Date</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>watchVideoEventButtonLabel</name>
+                    <value>Watch Video</value>
+                </componentInstanceProperties>
+                <componentName>lexEventsAura</componentName>
+                <identifier>lexEventsAura</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Events</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Events</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

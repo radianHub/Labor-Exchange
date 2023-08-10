@@ -1,0 +1,286 @@
+.comm-page-login-home .salesforceIdentityLoginBody2 .cCenterPanel,
+.comm-page-forgot-password .salesforceIdentityLoginBody2 .cCenterPanel,
+.comm-page-check-password .salesforceIdentityLoginBody2 .cCenterPanel {
+    max-width: fit-content !important;
+}
+    
+c-js-login-component input {
+        height:50px;
+        background-color: rgb(103, 137, 138) !important;
+        color:#FFFFFF  !important;
+    }
+    
+    c-js-login-component ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #FFFFFF;
+      opacity: 1; /* Firefox */
+    }
+
+    c-js-login-component :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #FFFFFF;
+    }
+
+    c-js-login-component ::-ms-input-placeholder { /* Microsoft Edge */
+      color: #FFFFFF;
+    }
+    
+    c-js-login-component .slds-has-error .slds-form-element__help {
+        color: #F5F5F5;
+    }
+    
+    .comm-page-login-home .salesforceIdentityLoginBody2 .cCenterPanel,
+    .comm-page-forgot-password .salesforceIdentityLoginBody2 .cCenterPanel,
+    .comm-page-check-password .salesforceIdentityLoginBody2 .cCenterPanel {
+        text-align:center !important;
+        margin-top:0% !important;
+        margin-bottom:0% !important;
+    }
+    
+    .comm-page-login-home .salesforceIdentityLoginBody2 .cCenterPanel:before,
+    .comm-page-forgot-password .salesforceIdentityLoginBody2 .cCenterPanel:before,
+    .comm-page-check-password .salesforceIdentityLoginBody2 .cCenterPanel:before {
+        display:none !important;
+    }
+    
+    .comm-page-login-home .salesforceIdentityLoginBody2 .ui-widget,
+    .comm-page-forgot-password .salesforceIdentityLoginBody2 .ui-widget,
+    .comm-page-check-password .salesforceIdentityLoginBody2 .ui-widget {
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+    }
+    
+    c-pc-login-component .slds-has-error .slds-input,
+	c-pc-login-component .slds-has-error .slds-input:focus, 
+    c-pc-login-component .slds-has-error .slds-input:active{
+    	border-color: rgb(241 208 70);
+    	box-shadow: rgb(241 208 70) 0 0 0 1px inset;
+    }
+    
+    .loginButton {
+        background-color: #C2E3CC !important;
+        color: #054547 !important;
+        font-size: 16px !important;
+        line-height: 2 !important;
+        font-weight: 600 !important;
+        border-radius:none !important;
+        margin-top:0px !important;
+        margin-bottom:0px !important;
+    }
+    
+    .loginButton .label {
+        color: #054547 !important;
+    }
+    
+    launchpad-pc-login-component .slds-spinner_container {
+        background-color:unset !important;
+    }
+    
+    .comm-page-self-register .salesforceIdentityLoginBody2 {
+        background-color:#FFFFFF;
+    }
+    
+    .comm-page-self-register .salesforceIdentityLoginBody2 .cCenterPanel .contentRegion {
+        padding:0px;
+    }
+    
+    .comm-page-self-register .salesforceIdentityLoginBody2 .cCenterPanel {
+        top: 0 !important;
+        width: 100% !important;
+        position: fixed !important;
+        margin: 0;
+        max-width: 100%;
+    }
+    
+    @media only screen and (max-width: 600px) {
+
+        .comm-page-self-register lightning-button button.slds-button  { 
+            height: 52px !important; 
+         } 
+        
+        .comm-page-self-register .slds-is-absolute {
+            position: fixed !important;
+        }
+        
+        .comm-page-self-register input[type="date"] {
+			width:345px !important;
+        }
+        
+        .comm-page-custom-my-profile input[type="date"] {
+			width:300px !important; 
+         } 
+         
+        .comm-page-custom-skills-building input[type="date"] { 
+			width:280px !important; 
+         } 
+         
+        .comm-page-custom-special-programs .comm-layout-column h1.header  { 
+            font-size:38px !important; 
+         } 
+         
+        .comm-page-custom-special-programs .comm-layout-column p.description { 
+            font-size:14px !important; 
+         } 
+         
+        .comm-page-custom-special-programs .comm-layout-column .bodyMobile  { 
+            padding: 0px !important; 
+         } 
+         
+        .comm-page-custom-special-programs .comm-layout-column .gridBodyMobile  { 
+            padding: 1.5rem 0px !important; 
+            margin: 0px; 
+         } 
+         
+        .forceMobileOverlay .uiButton--brand  { 
+            background-color: #054547 !important; 
+            border-color: #054547 !important; 
+            padding: 0 1rem !important; 
+            color: #FFFFFF !important; 
+         } 
+         
+        .forceMobileOverlay .panel-header  { 
+            padding:1rem !important; 
+         } 
+     } 
+     
+    .comm-page-self-register .salesforceIdentityLoginBody2:before, 
+    .comm-page-self-register .salesforceIdentityLoginBody2 .cCenterPanel:before  { 
+        display:none; 
+     } 
+         
+    .comm-page-self-register .salesforceIdentityLoginBody2 .cHeaderPanel .ui-widget, 
+    .comm-page-custom-my-profile .salesforceIdentityLoginBody2 .cHeaderPanel .ui-widget  { 
+        padding:0px !important; 
+     } 
+     
+    .comm-page-self-register input, 
+    .comm-page-custom-my-profile input  { 
+        height: 42px !important; 
+     } 
+     
+     @media only screen and (min-width: 600px) {
+    .comm-page-self-register lightning-button button.slds-button  { 
+        height: 42px !important; 
+     } 
+    }
+     
+    .slds-notify_toast, .slds-notify--toast  { 
+        min-width:unset !important; 
+     } 
+     
+    .comm-page-self-register .slds-has-error .slds-input, 
+    .comm-page-self-register .slds-has-error .slds-textarea, 
+    .comm-page-custom-my-profile .slds-has-error .slds-input, 
+    .comm-page-custom-my-profile .slds-has-error .slds-textarea  { 
+        box-shadow: none !important; 
+        color: var(--sds-c-input-text-color); 
+        background-clip: none !important; 
+        border: 1px solid rgb(212, 212, 212) !important; 
+    	background-color: rgb(255, 255, 255) !important; 
+     } 
+     
+    .comm-page-self-register lightning-input, 
+    .comm-page-self-register lightning-input[type=date], 
+    .comm-page-custom-my-profile .myProfile lightning-input, 
+    .comm-page-custom-my-profile .myProfile lightning-input[type=date]  { 
+        width:100% !important; 
+     } 
+     
+    .comm-page-self-register lightning-input.customError, 
+    .comm-page-custom-my-profile lightning-input.customError  { 
+        width: 90% !important; 
+     } 
+     
+    .comm-page-self-register div.customError + lightning-icon.error, 
+    .comm-page-self-register div:not(.customError) + lightning-icon.error + div.success, 
+    .comm-page-self-register div.customError > .requiredError, 
+    .comm-page-custom-my-profile div.customError + lightning-icon.error, 
+    .comm-page-custom-my-profile div:not(.customError) + lightning-icon.error + div.success, 
+    .comm-page-custom-my-profile div.customError > .requiredError  { 
+        display: unset !important; 
+     } 
+     
+    .comm-page-self-register div.customError > .requiredError, 
+    .comm-page-custom-my-profile div.customError > .requiredError  { 
+        color: rgb(234, 0, 30); 
+		font-size: 0.75rem; 
+        margin-top: 0.125rem; 
+        display: block; 
+     } 
+     
+    .comm-page-self-register div:not(.customError) + lightning-icon.error, 
+    .comm-page-self-register div.customError + lightning-icon.error + div.success, 
+    .comm-page-self-register div:not(.customError) > .requiredError, 
+    .comm-page-self-register lightning-input label abbr, 
+    .comm-page-self-register lightning-dual-listbox.slds-has-error .slds-form-element__help, 
+    .comm-page-custom-my-profile div:not(.customError) + lightning-icon.error, 
+    .comm-page-custom-my-profile div.customError + lightning-icon.error + div.success, 
+    .comm-page-custom-my-profile div:not(.customError) > .requiredError, 
+    .comm-page-custom-my-profile lightning-input label abbr, 
+    .comm-page-custom-my-profile lightning-dual-listbox.slds-has-error .slds-form-element__help  { 
+        display: none !important; 
+     } 
+     
+    .comm-page-self-register lightning-input label, 
+    .comm-page-custom-my-profile lightning-input label  { 
+    	font-size: 15px; 
+     } 
+     
+    .comm-page-self-register launchpad-pc-self-registration-body  { 
+        height: calc(100% - 100px); 
+        overflow-y: scroll; 
+        position: fixed; 
+        width: 100%; 
+     } 
+     
+    .comm-page-self-register u>a, 
+    .comm-page-self-register u>a:hover, 
+    .comm-page-self-register .mobileFooterCSS a,  
+    .comm-page-self-register .mobileFooterCSS a:hover  { 
+        color: #FFFFFF !important; 
+     } 
+     
+    .comm-page-login-home .salesforceIdentityLoginBody2 .cCenterPanel .footer a, 
+    .comm-page-forgot-password .salesforceIdentityLoginBody2 .cCenterPanel .footer a, 
+    .comm-page-check-password .salesforceIdentityLoginBody2 .cCenterPanel .footer a, 
+    .comm-page-login-home .salesforceIdentityLoginBody2 .cCenterPanel .footer a:hover, 
+    .comm-page-forgot-password .salesforceIdentityLoginBody2 .cCenterPanel .footer a:hover, 
+    .comm-page-check-password .salesforceIdentityLoginBody2 .cCenterPanel .footer a:hover  { 
+        color: #C2E3CC !important; 
+     } 
+     
+    .comm-page-self-register .slds-listbox_vertical .slds-listbox__option:focus,  
+    .comm-page-self-register .slds-listbox_vertical .slds-listbox__option:hover,  
+    .comm-page-self-register .slds-listbox_vertical .slds-listbox__option.slds-has-focus,  
+    .comm-page-self-register .slds-listbox--vertical .slds-listbox__option:focus,  
+    .comm-page-self-register .slds-listbox--vertical .slds-listbox__option:hover,  
+    .comm-page-self-register .slds-listbox--vertical .slds-listbox__option.slds-has-focus, 
+    .comm-page-custom-my-profile .slds-listbox_vertical .slds-listbox__option:focus,  
+    .comm-page-custom-my-profile .slds-listbox_vertical .slds-listbox__option:hover,  
+    .comm-page-custom-my-profile .slds-listbox_vertical .slds-listbox__option.slds-has-focus,  
+    .comm-page-custom-my-profile .slds-listbox--vertical .slds-listbox__option:focus,  
+    .comm-page-custom-my-profile .slds-listbox--vertical .slds-listbox__option:hover,  
+    .comm-page-custom-my-profile .slds-listbox--vertical .slds-listbox__option.slds-has-focus { 
+        background-color: rgb(84, 105, 141) !important; 
+        color: #FFFFFF !important; 
+        text-decoration: none; 
+     } 
+	 
+    .profile, .myAccount  { 
+        display:none !important; 
+     } 
+     
+    .forceCommunityThemeProfileMenu.emberInnerHeader .profile-menuTrigger .profile-name  { 
+        color:rgb(84, 105, 141) !important; 
+        text-shadow: 0 0 4px rgb(0 0 0 / 0%); 
+     } 
+     
+    .comm-page-custom-special-programs .comm-layout-column  { 
+        padding:0px !important; 
+     } 
+     
+    .comm-page-custom-special-programs .comm-layout-column h1.header  { 
+        font-size:70px; 
+     } 
+     
+    .comm-page-custom-special-programs .comm-layout-column p.description  { 
+        font-size:20px; 
+     }
