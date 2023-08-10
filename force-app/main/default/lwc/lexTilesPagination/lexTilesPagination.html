@@ -1,0 +1,21 @@
+<template>
+	<slot></slot>
+	<lightning-layout horizontal-align="center">
+		<lightning-layout-item>
+			<template
+				if:true={pages}
+				for:each={pages}
+				for:item="page"
+			>
+				<lightning-button
+					key={page}
+					label={page}
+					variant="base"
+					name={page}
+					class="slds-m-left_x-small page"
+					onclick={handlePageClick}
+				></lightning-button>
+			</template>
+		</lightning-layout-item>
+	</lightning-layout>
+</template>

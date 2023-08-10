@@ -1,0 +1,33 @@
+.desc-container {
+    height: 320px;
+    background-color: #ebebeb;
+    text-align: left;
+}
+
+.desc-container-mobile {
+    height: 340px;
+    background-color: #ebebeb;
+    text-align: left;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.crayon-color {
+    font-weight: bold;
+}
+
+hr {
+    margin: 1rem 0;
+}
+
+.footer2-container {
+    /* height: 180px; */
+    height: 90px;
+}
+
+.footer2-container-mobile {
+    /* height: 255px; */
+    height: 130px;
+}

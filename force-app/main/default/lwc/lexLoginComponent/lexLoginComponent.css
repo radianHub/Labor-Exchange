@@ -1,0 +1,74 @@
+.tile {
+    border-radius: none;
+    padding: 2rem;
+    text-align: center;
+    cursor:pointer;
+}
+
+.selected-tile {
+    border-radius: none;
+    padding: 2rem;
+    text-align: center;
+    cursor:pointer;
+}
+
+.fixed-height {
+    height: 158px;
+}
+
+.tile .text {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    text-align:center;
+}
+
+
+.selected-tile .text {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    text-align:center;
+}
+
+.container-width {
+    display:inline-block;
+    margin-top: 10%;
+    margin-bottom: 22%;
+}
+
+.container-width-half {
+    width: 50%;
+    display:inline-block;
+    margin-bottom: 1%;
+}
+
+.mobile-container-width {
+    margin-top:50px;
+}
+
+button:not(.input) {
+    background-color: #f2f5f3 !important;
+    font-size: 18px;
+    line-height: 2;
+    font-weight: 600;
+    padding: 3px 0;
+    height: 42px;
+}
+
+h1 span {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+p.subHeader {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 2;
+}
+.slds-input {
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+    height: 40px;
+}

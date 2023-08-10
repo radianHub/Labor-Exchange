@@ -1,0 +1,77 @@
+<!-- sldsValidatorIgnore -->
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true"
+		class="slds-p-around_small">
+		<lightning-layout-item
+			size="12"
+			large-device-size="12"
+			small-device-size="12">
+			<div style="text-align: center">
+				<h3 style="font-weight: 900; font-size: 26px"><span style={headerCSS}>{title}</span></h3>
+				<br />
+				<div style="font-size: 0.85rem">{subTitle}</div>
+			</div>
+		</lightning-layout-item>
+		<lightning-layout-item
+			size="12"
+			large-device-size="12"
+			small-device-size="10"
+			class="slds-m-top_none">
+			<lightning-layout
+				horizontal-align="center"
+				multiple-rows="true"
+				class="slds-m-top_none">
+				<template
+					if:true={details}
+					for:each={details}
+					for:item="item">
+					<lightning-layout-item
+						key={item.label}
+						if:true={item.value}
+						size="12"
+						large-device-size="12"
+						small-device-size="10">
+						<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+						<span style="font-size: 1rem; font-weight: bold; word-wrap: break-word">
+							<c-lex-formatted-field field={item}></c-lex-formatted-field>
+						</span>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</lightning-layout-item>
+		<lightning-layout-item
+			size="12"
+			large-device-size="12"
+			small-device-size="10"
+			style="text-align: center">
+			<br />
+			<div class="btn-container">
+				<lightning-button
+					if:true={isRegisteredView}
+					variant="slds-button_neutral"
+					label={eventConfig.closeButtonLabel}
+					title={eventConfig.closeButtonLabel}
+					icon-name="utility:close"
+					class="view-register"
+					onclick={handleClose}>
+				</lightning-button>
+				<lightning-button
+					if:false={isRegisteredView}
+					variant="brand"
+					label={eventConfig.registerEventButtonLabel}
+					title={eventConfig.registerEventButtonLabel}
+					icon-name="utility:new"
+					class="view-register"
+					onclick={handleRegister}>
+				</lightning-button>
+			</div>
+		</lightning-layout-item>
+	</lightning-layout>
+</template>
