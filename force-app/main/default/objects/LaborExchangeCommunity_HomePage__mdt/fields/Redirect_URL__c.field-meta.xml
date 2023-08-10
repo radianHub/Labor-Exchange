@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Redirect_URL__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Controls the URL the Participant is redirected to when the Tile is clicked.  This will redirect the Participant to another Tab in the Community or an external website.</inlineHelpText>
+    <label>Redirect URL</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Searchable_Contact_Stages__c</fullName>
+    <defaultValue>&quot;Assessment, Enrollment, Services, Exit, Followup, Closed&quot;</defaultValue>
+    <description>Determines, in part, which Contacts to include in Candidate Search. Stages included here from the Launchpad__Stage__c field on the Contact will be available to search in the Labor Exchange Community.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please provide a comma-separated list. Contacts with a stage picklist value listed here are queried in the Candidate Search for the LEX Community. They must also be of the correct record type (see the Contact Record Type Dev Names custom setting field).</inlineHelpText>
+    <label>Searchable Contact Stages</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>
