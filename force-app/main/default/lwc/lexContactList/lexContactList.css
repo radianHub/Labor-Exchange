@@ -1,0 +1,48 @@
+.editCol {
+    display: inherit;
+}
+
+.editColHide {
+    display: none;
+}
+
+h1 span {
+    font-size: 29px;
+    font-weight: 900;
+}
+
+p.subHeader {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: lighter;
+}
+
+.tableBottomMargin {
+    margin-bottom: 4rem;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.tableData {
+    font-size: 0.85rem;
+    line-height: 2;
+    font-weight: lighter;
+}
+
+.editButton {
+    padding-top: .5em;
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+}
+
+.mobileCard {
+    margin: 1rem;
+}
+
+.floatRight {
+    float: right;
+}

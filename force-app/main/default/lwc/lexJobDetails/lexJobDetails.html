@@ -1,0 +1,124 @@
+<template>
+	<div class="slds-is-relative">
+		<lightning-spinner
+			if:true={isLoading}
+			alternative-text="Loading"
+			size="large"
+			class="slds-is-absolute">
+		</lightning-spinner>
+		<lightning-modal-body>
+			<lightning-layout
+				horizontal-align="center"
+				multiple-rows="true">
+				<lightning-layout-item
+					padding="around-small"
+					size="12"
+					large-device-size="12"
+					small-device-size="12">
+					<div style="text-align: center">
+						<h1 style="font-weight: 900; font-size: 26px"><span style={headerCSS}>{title}</span></h1>
+						<h3 style="font-weight: 900; font-size: 20px">{subTitle}</h3>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item
+					size="12"
+					large-device-size="12"
+					small-device-size="10"
+					class="slds-m-top_none">
+					<lightning-layout
+						horizontal-align="center"
+						multiple-rows="true"
+						class="slds-m-top_none">
+						<template
+							if:true={details}
+							for:each={details}
+							for:item="item">
+							<lightning-layout-item
+								key={item.label}
+								if:true={item.value}
+								size="12"
+								large-device-size="12"
+								small-device-size="10">
+								<lightning-layout multiple-rows="true">
+									<lightning-layout-item
+										size="12"
+										large-device-size="3">
+										<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+									</lightning-layout-item>
+									<lightning-layout-item
+										size="12"
+										large-device-size="9">
+										<span style="font-size: 1rem; font-weight: bold">
+											<c-lex-formatted-field field={item}></c-lex-formatted-field>
+										</span>
+									</lightning-layout-item>
+								</lightning-layout>
+
+								<!-- <span style="font-size: 1rem">{item.label}:&nbsp;</span>
+								<span style="font-size: 1rem; font-weight: bold">
+									<c-lex-formatted-field field={item}></c-lex-formatted-field>
+								</span> -->
+							</lightning-layout-item>
+						</template>
+					</lightning-layout>
+				</lightning-layout-item>
+				<lightning-layout-item
+					if:true={jobSkills}
+					size="12"
+					large-device-size="12"
+					small-device-size="12">
+					<br if:true={jobSkills} />
+					<h3
+						if:true={jobSkills}
+						style="font-weight: 900; font-size: 1rem">
+						<span style={headerCSS}>Job Skills</span>
+					</h3>
+					<lightning-layout multiple-rows="true">
+						<template
+							if:true={jobSkills}
+							for:each={jobSkills}
+							for:item="skill">
+							<lightning-layout-item
+								key={skill.value}
+								class="slds-var-p-horizontal_medium slds-var-p-vertical_x-small"
+								size={selectedSkillsSize}>
+								<span
+									class="slds-pill slds-p-horizontal--small slds-p-vertical--xx-small"
+									style={skillPillCSS}>
+									<span title={skill.label}>
+										<span>{skill.label} </span>
+									</span>
+								</span>
+							</lightning-layout-item>
+						</template>
+					</lightning-layout>
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-modal-body>
+		<lightning-modal-footer>
+			<div class="btn-container">
+				<lightning-button
+					variant="slds-button_neutral"
+					icon-name="utility:close"
+					label={labels.backBtnLabel}
+					title={labels.backBtnLabel}
+					onclick={clickBackBtn}>
+				</lightning-button>
+				<lightning-button
+					variant="brand"
+					icon-name="utility:edit"
+					label={labels.editJobDetailBtnLabel}
+					title={labels.editJobDetailBtnLabel}
+					onclick={clickEditBtn}>
+				</lightning-button>
+				<!-- <lightning-button
+					variant="brand"
+					icon-name="utility:archive"
+					label={labels.archiveBtnLabel}
+					title={labels.archiveBtnLabel}
+					onclick={clickArchiveBtn}>
+				</lightning-button> -->
+			</div>
+		</lightning-modal-footer>
+	</div>
+</template>

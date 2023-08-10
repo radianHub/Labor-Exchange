@@ -1,0 +1,31 @@
+.btn-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .mobile-button button {
+        width: 100%;
+    }
+}
+
+
+.dmlButton-container {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+lightning-icon { 
+    display: none !important; 
+}
+
+template.customError + lightning-icon {
+    display: unset;
+}

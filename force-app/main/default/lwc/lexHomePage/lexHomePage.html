@@ -1,0 +1,78 @@
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
+			<span style={headerCSS}>
+				<h1 style="font-weight: 900; font-size: 30px">{config.header}</h1>
+				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">{config.description}</p>
+			</span>
+		</lightning-layout-item>
+	</lightning-layout>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
+			<lightning-layout
+				if:true={homeTiles}
+				multiple-rows="true">
+				<template
+					for:each={homeTiles}
+					for:item="tile">
+					<lightning-layout-item
+						key={tile.Id}
+						padding="around-medium"
+						size="12"
+						large-device-size="4"
+						small-device-size="12">
+						<c-lex-home-page-tile tile={tile}></c-lex-home-page-tile>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+			<br />
+		</lightning-layout-item>
+	</lightning-layout>
+	<div
+		if:true={errorMessage}
+		class="slds-notify_container">
+		<div
+			class="slds-notify slds-notify--toast slds-theme--error"
+			role="alert">
+			<div class="slds-notify__content slds-grid">
+				<lightning-icon
+					icon-name="utility:error"
+					alternative-text={label.errorTitle}
+					title={label.errorTitle}
+					class="slds-m-right--small"
+					variant="inverse"
+					size="small"></lightning-icon>
+				<div class="slds-col slds-align-middle">
+					<h2 class="slds-text-heading_small">{errorMessage}</h2>
+				</div>
+			</div>
+			<div class="slds-notify__close">
+				<lightning-button-icon
+					icon-name="utility:close"
+					alternative-text={label.closeButton}
+					title={label.closeButton}
+					size="large"
+					variant="bare-inverse"
+					onclick={handleErrorClose}></lightning-button-icon>
+				<span class="slds-assistive-text">{label.closeButton}</span>
+			</div>
+		</div>
+	</div>
+</template>

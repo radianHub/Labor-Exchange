@@ -1,0 +1,69 @@
+label>i {
+    display:inline-block;
+    font-size: 0.75em;
+}
+
+h1 span {
+    font-size: 29px;
+    font-weight: 900;
+}
+.header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p.subHeader {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: lighter;
+}
+
+select.multiselect {
+    height: 42px;
+}
+
+.evenBG {
+    background-color: #F5F5F5;
+}
+
+.footerCSS {
+    bottom: 0;
+    width: 100%;
+    padding: 6px 0.75rem;
+    font-size: 14.5px;
+}
+
+.mobileFooterCSS {
+    bottom: 0;
+    width: 100%;
+    padding: 6px 0.75rem;
+    font-size: 14.5px;
+}
+
+.mobileNotification {
+    position:absolute !important;
+}
+lightning-icon {
+    display: none;
+}
+div.customError + lightning-icon {
+    display: unset;
+}
+
+.flex-container {
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    position: fixed;
+    width: 100%;
+    background-color:#FFFFFF;
+    /*top: 0 !important;*/
+    width: 100% !important;
+    position: fixed !important;
+    margin: 0;
+    max-width: 100%;
+}
+@media screen and (max-width: 600px) {
+    .waiver {
+        height: 52px;
+    }
+  }

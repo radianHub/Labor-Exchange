@@ -1,0 +1,85 @@
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<div class="job-container">
+		<div
+			class={jobContainerCSS}
+			style={headerCSS}>
+			<p class="slds-text-heading_medium text-bold slds-var-p-horizontal_medium">{title}</p>
+			<p class="slds-text-heading_small slds-var-m-top_xx-small crayon-color slds-var-p-horizontal_medium">{subTitle}</p>
+			<hr />
+			<lightning-layout
+				class="slds-var-p-horizontal_medium"
+				vertical-align="center"
+				multiple-rows="true"
+				style="text-align: left">
+				<template
+					if:true={details}
+					for:each={details}
+					for:item="item">
+					<lightning-layout-item
+						if:true={item.value}
+						size="12"
+						key={item.label}>
+						<div if:true={item.value}>
+							<lightning-layout multiple-rows="true">
+								<lightning-layout-item
+									size="12"
+									large-device-size="6">
+									<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+								</lightning-layout-item>
+								<lightning-layout-item
+									size="12"
+									large-device-size="6">
+									<span style="font-size: 1rem; font-weight: bold">
+										<c-lex-formatted-field field={item}></c-lex-formatted-field>
+									</span>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+						<div if:false={item.value}>&nbsp;</div>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</div>
+		<div style={footerStyle}>
+			<lightning-layout
+				class="slds-var-p-around_medium"
+				vertical-align="center"
+				multiple-rows="true"
+				style="text-align: left">
+				<lightning-layout-item
+					padding="around-medium"
+					size="12"
+					large-device-size="6"
+					small-device-size="12">
+					<lightning-button
+						variant="brand"
+						label={labels.viewDetailsBtnLabel}
+						title={labels.viewDetailsBtnLabel}
+						icon-name="utility:preview"
+						class="job-button"
+						onclick={clickViewDetailsBtn}>
+					</lightning-button>
+				</lightning-layout-item>
+				<lightning-layout-item
+					padding="around-medium"
+					size="12"
+					large-device-size="6"
+					small-device-size="12">
+					<lightning-button
+						variant="brand"
+						label={labels.editJobBtnLabel}
+						title={labels.editJobBtnLabel}
+						icon-name="utility:edit"
+						class="job-button"
+						onclick={clickEditJobBtn}>
+					</lightning-button>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+	</div>
+</template>

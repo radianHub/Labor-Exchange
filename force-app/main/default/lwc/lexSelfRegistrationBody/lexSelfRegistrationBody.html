@@ -1,0 +1,726 @@
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<div
+		if:false={isLoading}
+		style={contentStyle}
+		class="flex-container">
+		<!--style={contentStyle}-->
+		<lightning-layout horizontal-align="center">
+			<lightning-layout-item
+				size="12"
+				large-device-size="10"
+				small-device-size="12">
+				<lightning-layout
+					horizontal-align="spread"
+					multiple-rows="true">
+					<lightning-layout-item
+						padding={headerPadding}
+						size="12"
+						large-device-size="10"
+						small-device-size="12">
+						<div style="float: left">
+							<h1
+								class="header"
+								style={headerCSS}>
+								<span> {header} </span>
+							</h1>
+							<p
+								class="subHeader"
+								style={subheaderCSS}>
+								{description}
+							</p>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item
+						padding={headerPadding}
+						size="12"
+						large-device-size="2"
+						small-device-size="12">
+						<span
+							if:true={isDesktop}
+							style="float: right; margin-right: 27%; font-size: 1rem"
+							>{stepText}</span
+						>
+						<span if:false={isDesktop}>{stepText}</span>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-layout-item>
+		</lightning-layout>
+		<template
+			if:true={sections}
+			for:each={sections}
+			for:item="section">
+			<lightning-layout
+				if:true={showDupeCheck}
+				horizontal-align="center"
+				key={section.header}>
+				<lightning-layout-item
+					if:true={section.showDupeCheck}
+					size="12"
+					large-device-size="10"
+					small-device-size="12">
+					<div>
+						<div>
+							<lightning-layout multiple-rows="true">
+								<template
+									if:true={section.fields}
+									for:each={section.fields}
+									for:item="field">
+									<lightning-layout-item
+										padding="around-medium"
+										size="12"
+										small-device-size="12"
+										medium-device-size={field.screenSize}
+										large-device-size={field.screenSize}
+										key={field.fieldName}>
+										<div
+											style="display: flex"
+											class="slds-grid slds-grid_vertical-align-center">
+											<div style="width: 100%">
+												<label
+													class="slds-form-element__label"
+													style="font-size: 1rem">
+													{field.fieldLabel}<template if:true={field.isRequired}>*</template>
+												</label>
+												<lightning-helptext
+													if:true={field.helpText}
+													content={field.helpText}
+													data-is-account-section={section.isAccountSection}></lightning-helptext>
+												<lightning-input
+													if:true={field.isNumber}
+													type="number"
+													step="0.01"
+													formatter={field.type}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isCheckbox}
+													type="checkbox"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isText}
+													type="text"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isEmail}
+													type={field.type}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isPhone}
+													type="tel"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isUrl}
+													type="text"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-textarea
+													if:true={field.isTextarea}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-textarea>
+												<lightning-combobox
+													if:true={field.isPicklist}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													placeholder="None"
+													options={field.values}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-combobox>
+												<lightning-input
+													if:true={field.isDate}
+													type={field.type}
+													date-style="short"
+													variant="label-hidden"
+													min={field.min}
+													max={field.max}
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-range-overflow={field.maxMsg}
+													message-when-range-underflow={field.minMsg}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<template if:true={isDesktop}>
+													<lightning-dual-listbox
+														if:true={field.isMultiPicklist}
+														name={field.fieldName}
+														label={field.fieldLabel}
+														source-label={label.multiSelectAvailable}
+														selected-label={label.multiSelectSelected}
+														options={field.values}
+														variant="label-hidden"
+														required={field.isRequired}
+														disabled={field.isReadOnly}
+														size="4"
+														disable-reordering
+														onchange={handleMultiSelectChange}
+														data-is-account-section={section.isAccountSection}>
+													</lightning-dual-listbox>
+												</template>
+												<template if:false={isDesktop}>
+													<select
+														if:true={field.isMultiPicklist}
+														class="slds-select multiselect"
+														multiple=""
+														size="4"
+														name={field.fieldName}
+														data-name={field.fieldName}
+														required={field.isRequired}
+														disabled={field.isReadOnly}
+														data-is-account-section={section.isAccountSection}>
+														<option value="">None</option>
+														<template
+															for:each={field.values}
+															for:item="pickVal">
+															<option
+																key={pickVal.value}
+																value={pickVal.value}>
+																{pickVal.label}
+															</option>
+														</template>
+													</select>
+												</template>
+												<div
+													if:true={field.isMultiPicklist}
+													role="alert"
+													class="requiredError">
+													{label.requiredFieldMsg}
+												</div>
+											</div>
+											<lightning-icon
+												class="slds-float_right slds-p-around_small error"
+												icon-name="utility:warning"
+												size="small"
+												variant="error"
+												alternative-text={label.errorTitle}
+												title={label.errorTitle}></lightning-icon>
+											<div
+												if:true={isDesktop}
+												class="slds-float_right slds-p-around_small success"
+												style="content: ''; width: 48px; height: 48px"></div>
+										</div>
+									</lightning-layout-item>
+								</template>
+								<lightning-layout-item
+									padding="around-medium"
+									size="12"
+									large-device-size="12"
+									small-device-size="12">
+									<div style="float: right; margin-right: 4%">
+										<lightning-button
+											label={label.nextStepBtn}
+											variant="brand"
+											onclick={handleDupeCheck}></lightning-button>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+			<lightning-layout
+				if:false={showDupeCheck}
+				horizontal-align="center"
+				key={section.header}
+				class={section.bgCSS}>
+				<lightning-layout-item
+					if:false={section.showDupeCheck}
+					size="12"
+					large-device-size="10"
+					small-device-size="12">
+					<div
+						if:false={showDupeCheck}
+						key={section.header}>
+						<template if:false={section.showStep}> <br /><br /> </template>
+						<div if:false={section.showDupeCheck}>
+							<lightning-layout
+								if:true={section.header}
+								horizontal-align="spread"
+								multiple-rows="true">
+								<lightning-layout-item
+									padding={headerPadding}
+									size="12"
+									large-device-size="10"
+									small-device-size="12">
+									<div style="float: left">
+										<h1>
+											<span> {section.header} </span>
+										</h1>
+										<p
+											if:true={section.subHeader}
+											class="subHeader">
+											{section.subHeader}
+										</p>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+							<lightning-layout multiple-rows="true">
+								<template
+									if:true={section.fields}
+									for:each={section.fields}
+									for:item="field">
+									<lightning-layout-item
+										padding="around-medium"
+										size="12"
+										small-device-size="12"
+										medium-device-size={field.screenSize}
+										large-device-size={field.screenSize}
+										key={field.fieldName}>
+										<div
+											style="display: flex"
+											class="slds-grid slds-grid_vertical-align-center">
+											<div style="width: 100%">
+												<label
+													class="slds-form-element__label"
+													style="font-size: 1rem">
+													{field.fieldLabel}<template if:true={field.isRequired}>*</template>
+												</label>
+												<lightning-helptext
+													if:true={field.helpText}
+													content={field.helpText}
+													data-is-account-section={section.isAccountSection}></lightning-helptext>
+												<lightning-input
+													if:true={field.isNumber}
+													type="number"
+													step="0.01"
+													min={field.min}
+													max={field.max}
+													formatter={field.type}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isCheckbox}
+													type="checkbox"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isText}
+													type="text"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isEmail}
+													type={field.type}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isPhone}
+													type="tel"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-input
+													if:true={field.isUrl}
+													type="text"
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<lightning-textarea
+													if:true={field.isTextarea}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-textarea>
+												<lightning-combobox
+													if:true={field.isPicklist}
+													variant="label-hidden"
+													label={field.fieldLabel}
+													placeholder="None"
+													options={field.values}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-combobox>
+												<lightning-input
+													if:true={field.isDate}
+													type={field.type}
+													date-style="short"
+													variant="label-hidden"
+													min={field.min}
+													max={field.max}
+													label={field.fieldLabel}
+													name={field.fieldName}
+													data-name={field.fieldName}
+													required={field.isRequired}
+													disabled={field.isReadOnly}
+													message-when-range-overflow={field.maxMsg}
+													message-when-range-underflow={field.minMsg}
+													pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+													message-when-value-missing={label.requiredFieldMsg}
+													data-is-account-section={section.isAccountSection}></lightning-input>
+												<template if:true={isDesktop}>
+													<lightning-dual-listbox
+														if:true={field.isMultiPicklist}
+														name={field.fieldName}
+														label={field.fieldLabel}
+														source-label={label.multiSelectAvailable}
+														selected-label={label.multiSelectSelected}
+														options={field.values}
+														variant="label-hidden"
+														required={field.isRequired}
+														disabled={field.isReadOnly}
+														size="4"
+														disable-reordering
+														onchange={handleMultiSelectChange}
+														data-is-account-section={section.isAccountSection}>
+													</lightning-dual-listbox>
+												</template>
+												<template if:false={isDesktop}>
+													<select
+														if:true={field.isMultiPicklist}
+														class="slds-select multiselect"
+														multiple=""
+														size="4"
+														name={field.fieldName}
+														data-name={field.fieldName}
+														required={field.isRequired}
+														disabled={field.isReadOnly}>
+														<option value="">None</option>
+														<template
+															for:each={field.values}
+															for:item="pickVal">
+															<option
+																key={pickVal.value}
+																value={pickVal.value}>
+																{pickVal.label}
+															</option>
+														</template>
+													</select>
+												</template>
+												<div
+													if:true={field.isMultiPicklist}
+													role="alert"
+													class="requiredError">
+													{label.requiredFieldMsg}
+												</div>
+											</div>
+											<lightning-icon
+												class="slds-float_right slds-p-around_small error"
+												icon-name="utility:warning"
+												size="small"
+												variant="error"
+												alternative-text={label.errorTitle}
+												title={label.errorTitle}></lightning-icon>
+											<div
+												if:true={isDesktop}
+												class="slds-float_right slds-p-around_small success"
+												style="content: ''; width: 48px; height: 48px"></div>
+										</div>
+									</lightning-layout-item>
+								</template>
+							</lightning-layout>
+						</div>
+						<br /><br />
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</template>
+		<lightning-layout
+			if:false={showDupeCheck}
+			horizontal-align="center"
+			multiple-rows="true"
+			class={passwordSectionCSS}>
+			<lightning-layout-item
+				padding={headerPadding}
+				size="12"
+				large-device-size="10"
+				small-device-size="12">
+				<br /><br />
+				<div style="float: left">
+					<h1>
+						<span> {label.passwordSectionTitle} </span>
+					</h1>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item
+				size="12"
+				large-device-size="10"
+				small-device-size="12">
+				<lightning-layout
+					horizontal-align="center"
+					multiple-rows="true">
+					<lightning-layout-item
+						padding="around-medium"
+						size="12"
+						small-device-size="6"
+						medium-device-size="6"
+						large-device-size="6">
+						<div
+							style="display: flex"
+							class="slds-grid slds-grid_vertical-align-center">
+							<div style="width: 100%">
+								<label
+									class="slds-form-element__label"
+									style="font-size: 1rem">
+									{label.passwordLabel}*
+								</label>
+								<lightning-input
+									type="password"
+									pattern={config.pattern}
+									message-when-pattern-mismatch={config.patternMessage}
+									variant="label-hidden"
+									label={label.passwordLabel}
+									name="Password"
+									data-name="Password"
+									required="true"></lightning-input>
+							</div>
+							<lightning-icon
+								class="slds-float_right slds-p-around_small error"
+								icon-name="utility:warning"
+								size="small"
+								variant="error"
+								alternative-text={label.errorTitle}
+								title={label.errorTitle}></lightning-icon>
+							<div
+								if:true={isDesktop}
+								class="slds-float_right slds-p-around_small success"
+								style="content: ''; width: 48px; height: 48px"></div>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item
+						padding="around-medium"
+						size="12"
+						small-device-size="6"
+						medium-device-size="6"
+						large-device-size="6">
+						<div
+							style="display: flex"
+							class="slds-grid slds-grid_vertical-align-center">
+							<div style="width: 100%">
+								<label
+									class="slds-form-element__label"
+									style="font-size: 1rem">
+									{label.confirmPasswordLabel}*
+								</label>
+								<lightning-input
+									type="password"
+									pattern={config.pattern}
+									message-when-pattern-mismatch={config.patternMessage}
+									variant="label-hidden"
+									label={label.confirmPasswordLabel}
+									name="ConfirmPassword"
+									data-name="ConfirmPassword"
+									required="true"></lightning-input>
+							</div>
+							<lightning-icon
+								class="slds-float_right slds-p-around_small error"
+								icon-name="utility:warning"
+								size="small"
+								variant="error"
+								alternative-text={label.errorTitle}
+								title={label.errorTitle}></lightning-icon>
+							<div
+								if:true={isDesktop}
+								class="slds-float_right slds-p-around_small success"
+								style="content: ''; width: 48px; height: 48px"></div>
+						</div>
+					</lightning-layout-item>
+				</lightning-layout>
+				<br /><br />
+			</lightning-layout-item>
+		</lightning-layout>
+		<lightning-layout
+			if:false={showDupeCheck}
+			horizontal-align="center"
+			multiple-rows="true"
+			class={authSectionCSS}>
+			<lightning-layout-item
+				padding={headerPadding}
+				size="12"
+				large-device-size="10"
+				small-device-size="12">
+				<br />
+				<br />
+				<div
+					if:true={showauth}
+					style="text-align: left">
+					<lightning-button
+						variant="brand"
+						class="wavier"
+						onclick={handleAuthorizationClick}
+						label={label.authorizationChbkLabel}>
+					</lightning-button>
+				</div>
+				<br />
+			</lightning-layout-item>
+			<lightning-layout-item
+				padding="around-medium"
+				size="12"
+				large-device-size="10"
+				small-device-size="12">
+				<div style="float: left">
+					<lightning-button
+						label={label.registerBtn}
+						variant="brand"
+						disabled={registerDisabled}
+						onclick={handleSubmit}></lightning-button>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<div class={footerCSS}>
+			<center>
+				<lightning-formatted-rich-text value={label.footer}> </lightning-formatted-rich-text>
+			</center>
+		</div>
+	</div>
+
+	<div
+		if:true={errorMessage}
+		class={notificationCSS}
+		id="errorId">
+		<div
+			class="slds-notify slds-notify--toast slds-theme--error"
+			role="alert">
+			<div class="slds-notify__content slds-grid">
+				<lightning-icon
+					icon-name="utility:error"
+					alternative-text={label.errorTitle}
+					title={label.errorTitle}
+					class="slds-m-right--small"
+					variant="inverse"
+					size="small"></lightning-icon>
+				<div class="slds-col slds-align-middle">
+					<h2
+						class="slds-text-heading_small"
+						style="font-weight: bold">
+						{errorMessage}
+					</h2>
+				</div>
+			</div>
+			<div class="slds-notify__close">
+				<lightning-button-icon
+					icon-name="utility:close"
+					alternative-text={label.closeButton}
+					title={label.closeButton}
+					size="large"
+					variant="bare-inverse"
+					onclick={handleErrorClose}></lightning-button-icon>
+				<span class="slds-assistive-text">{label.closeButton}</span>
+			</div>
+		</div>
+	</div>
+	<!--div if:true={successMessage} class={notificationCSS} id="successId">
+        <div class="slds-notify slds-notify--toast slds-theme--success" role="alert">
+            <div class="slds-notify__content slds-grid">
+                <lightning-icon
+                    icon-name="utility:success"
+                    alternative-text={label.successTitle}
+                    title={label.successTitle}
+                    class="slds-m-right--small"
+                    variant="inverse"
+                    size="small"
+                ></lightning-icon>
+                <div class="slds-col slds-align-middle">
+                    <h2 class="slds-text-heading_small">{successMessage}</h2>
+                </div>
+            </div> 
+            <div class="slds-notify__close">
+                <lightning-button-icon 
+                    icon-name="utility:close"  
+                    alternative-text={label.closeButton}
+                    title={label.closeButton}
+                    size="large"
+                    variant="bare-inverse"
+                    onclick={handleSuccessClose}
+                ></lightning-button-icon>
+                <span class="slds-assistive-text">{label.closeButton}</span>
+            </div>
+        </div>
+    </div-->
+</template>

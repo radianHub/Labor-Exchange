@@ -1,0 +1,25 @@
+<template>
+	<div class="image-container">
+		<!-- if:true={tile.Redirect_URL__c}
+			href={tile.Redirect_URL__c} -->
+		<a
+			if:true={tile.LaunchpadCo__Redirect_URL__c}
+			href={tile.LaunchpadCo__Redirect_URL__c}
+			style="color: #ffffff"
+			target={target}>
+			<div
+				class="bg-image"
+				style={imageStyle}></div>
+			<div class="inner-div">
+				<div class="slds-text-heading_large text-bold">{tile.LaunchpadCo__Header__c}</div>
+				<!-- <div class="slds-text-heading_large text-bold">{tile.Header__c}</div> -->
+				<div
+					class="slds-text-heading_small slds-m-top_medium"
+					style="font-size: 0.85rem">
+					<!-- {tile.Details__c} -->
+					{tile.LaunchpadCo__Details__c}
+				</div>
+			</div>
+		</a>
+	</div>
+</template>
