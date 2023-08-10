@@ -1,0 +1,50 @@
+.THIS .skill button {
+    padding-left: 1rem;
+    padding-right: 1rem; 
+}
+
+.THIS .skill button.slds-button_brand {
+    color:#FFFFFF !important;
+}
+
+.THIS .save button.slds-button_brand {
+    min-height:42px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox_faux:after, 
+.THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox--faux:after, 
+.THIS .slds-checkbox [type=checkbox]:checked~.slds-checkbox_faux:after, 
+.THIS .slds-checkbox [type=checkbox]:checked~.slds-checkbox--faux:after, 
+.THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox_faux:after, 
+.THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox--faux:after {
+    display: block;
+    content: '';
+    height: .25rem;
+    width: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+.THIS h3.slds-accordion__summary-heading button.section-control {
+    display:inline-block !important;
+    font-weight:bold;
+}
+
+.THIS button.section-control lightning-primitive-icon {
+    float: right !important;
+}
+
+.THIS .slds-checkbox_add-button [type=checkbox]:checked~.slds-checkbox_faux, 
+.THIS .slds-checkbox_add-button [type=checkbox]:checked~.slds-checkbox--faux, 
+.THIS .slds-checkbox_add-button [type=checkbox]:checked+.slds-checkbox_faux, 
+.THIS .slds-checkbox_add-button [type=checkbox]:checked+.slds-checkbox--faux, 
+.THIS .slds-checkbox--add-button [type=checkbox]:checked~.slds-checkbox_faux, 
+.THIS .slds-checkbox--add-button [type=checkbox]:checked~.slds-checkbox--faux, 
+.THIS .slds-checkbox--add-button [type=checkbox]:checked+.slds-checkbox_faux, 
+.THIS .slds-checkbox--add-button [type=checkbox]:checked+.slds-checkbox--faux {
+    border-color: transparent;
+}

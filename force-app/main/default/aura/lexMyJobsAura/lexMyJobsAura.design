@@ -1,0 +1,139 @@
+<design:component>
+	<!-- * MY JOBS CONFIG -->
+	<design:attribute
+		name="header"
+		label="Header"
+		default="My Jobs" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="Create new job listing, search for existing listings, view job details, and edit job statuses and information." />
+	<design:attribute
+		name="showNewJobBtn"
+		label="Show/Hide New Job Button"
+		default="true" />
+	<design:attribute
+		name="newJobBtnLabel"
+		label="New Job Button Label"
+		default="Create new job listing" />
+
+	<!-- * SEARCH JOBS CONFIG -->
+	<design:attribute
+		name="filterHeader"
+		label="Search Filter Header"
+		default="Search for jobs" />
+	<design:attribute
+		name="filterDescription"
+		label="Search Filter Description"
+		default="You can filter existing jobs by open/closed status or view all existing jobs. Also filter by job expiration, either expiring soon (within 7 days) or already expired. Use the keyword search to search by job name and details." />
+	<design:attribute
+		name="filterField"
+		label="Search: Filter Field"
+		default="LaunchpadCo__Status__c,LaunchpadCo__Expiration_Date__c" />
+	<design:attribute
+		name="filterInputLabel"
+		label="Filter Input Placeholder"
+		default="Select a filter option" />
+	<design:attribute
+		name="searchInputLabel"
+		label="Search Input Placeholder"
+		default="Search job by keyword" />
+	<design:attribute
+		name="searchBtnLabel"
+		label="Search Button Label"
+		default="Search" />
+	<design:attribute
+		name="clearFiltersBtnLabel"
+		label="Clear Filter Button Label"
+		default="Clear Filters" />
+
+	<!-- * FOUND JOBS CONFIG -->
+	<design:attribute
+		name="jobsHeader"
+		label="Jobs Header"
+		default="Jobs" />
+	<design:attribute
+		name="jobsSubHeader"
+		label="Jobs Sub-Header"
+		default="View job listings" />
+	<design:attribute
+		name="jobTileHeaderColor"
+		label="Job Tile Header Color"
+		type="Color"
+		default="rgb(235, 235, 235)" />
+	<design:attribute
+		name="jobTileFooterColor"
+		label="Job Tile Footer Color"
+		type="Color"
+		default="rgb(88, 119, 169)" />
+	<design:attribute
+		name="viewDetailsBtnLabel"
+		label="View Details Button Label"
+		default="View Details" />
+	<design:attribute
+		name="editJobBtnLabel"
+		label="Edit Job Button Label"
+		default="Edit Job" />
+	<design:attribute
+		name="noResultMessage"
+		label="No Jobs Message"
+		default="We are sorry but your Search Filter(s) did not return any results.  Please click Clear Filters and try again." />
+
+	<!-- * VIEW DETAILS CONFIG -->
+	<design:attribute
+		name="detailsHeader"
+		label="Details Popup: Header"
+		default="Job Details" />
+	<design:attribute
+		name="skillPillColor"
+		label="Details Popup: Skill Pill Color"
+		type="Color"
+		default="rgb(8, 92, 160)" />
+	<design:attribute
+		name="editJobDetailBtnLabel"
+		label="Details Popup: Edit Button Label"
+		default="Edit" />
+	<design:attribute
+		name="backBtnLabel"
+		label="Details Popup: Cancel Button Label"
+		default="Cancel" />
+	<design:attribute
+		name="archiveBtnLabel"
+		label="Details Popup: Archive Job Button Label"
+		default="Archive Job" />
+
+	<!-- * CREATE/EDIT JOB CONFIG -->
+	<design:attribute
+		name="editJobHeader"
+		label="Edit Job Popup: Header"
+		default="Update Job Listing" />
+	<design:attribute
+		name="createJobHeader"
+		label="Create Job Popup: Header"
+		default="Create New Job Listing" />
+	<design:attribute
+		name="editJobObjName"
+		label="Create/Edit Job Popup: Object API Name"
+		default="Launchpad__Job__c" />
+	<design:attribute
+		name="saveBtnLabel"
+		label="Create/Edit Job Popup: Save Button Label"
+		default="Save" />
+	<design:attribute
+		name="cancelBtnLabel"
+		label="Create/Edit Job Popup: Cancel Button Label"
+		default="Cancel" />
+	<design:attribute
+		name="createSaveMsg"
+		label="Create Job Popup: Save Success Message"
+		default="Job successfully created!" />
+	<design:attribute
+		name="editSaveMsg"
+		label="Edit Job Popup: Save Success Message"
+		default="Job successfully updated!" />
+</design:component>

@@ -1,0 +1,72 @@
+<design:component>
+	<design:attribute
+		name="header"
+		label="Header"
+		default="Welcome to the Launchpad Labor Exchange Community!" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="Please click a Tile below or Tab above to get started with your experience" />
+	<design:attribute
+		name="homeTile"
+		label="Show Tiles"
+		default="true" />
+	<design:attribute
+		name="showFeaturedEvents"
+		label="Show Featured Events"
+		default="true" />
+	<design:attribute
+		name="featuredEventsHeader"
+		label="Check out these Featured Events" />
+	<design:attribute
+		name="featuredEventsDescription"
+		label="Featured Events Description"
+		default="Watch On Demand Videos or save your seat and Register now!" />
+	<design:attribute
+		name="availableinCommunityEventPage"
+		label="Available Events in Community Home Page"
+		default="Launchpad__Available_in_Community__c" />
+	<design:attribute
+		name="communityPriorityEvent"
+		label="Community Priority Event"
+		default="Launchpad__Community_Priority_Event__c" />
+	<design:attribute
+		name="eventTileHeaderColor"
+		label="Event Tile Header Color"
+		type="Color"
+		default="rgb(235, 235, 235)" />
+	<design:attribute
+		name="eventTileFooterColor"
+		label="Event Tile Footer Color"
+		type="Color"
+		default="rgb(180, 188, 201)" />
+	<design:attribute
+		name="watchVideoEventButtonLabel"
+		label="Watch Video Event Button Label"
+		default="Watch Video" />
+	<design:attribute
+		name="registerEventButtonLabel"
+		label="Register Event Button Label"
+		default="Register for Event" />
+	<design:attribute
+		name="registerEventRedirectUrl"
+		label="Redirect Url (Register Event)"
+		default="/s/my-registered-events" />
+	<design:attribute
+		name="registerEventSuccessMessage"
+		label="Register Event Success Message"
+		default="You have been Successfully Registered for the Event!ed" />
+	<design:attribute
+		name="alreadyRegisteredEventButtonLabel"
+		label="Already Registered Event Button Label"
+		default="Already Registered" />
+	<design:attribute
+		name="downloadDocuments"
+		label="Download Documents Link Label"
+		default="Download Documents" />
+</design:component>
