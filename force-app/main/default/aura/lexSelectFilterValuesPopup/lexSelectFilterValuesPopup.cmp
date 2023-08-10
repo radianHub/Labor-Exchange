@@ -1,0 +1,9 @@
+<aura:component >
+	<aura:attribute name="filter" type="Object"/>
+    <aura:attribute name="buttonLabel" type="Object"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/> 
+    
+    <aura:registerEvent name="lexApplySelectedValues" type="c:lexApplySelectedValues"/>
+    
+	<c:lexSelectFilterValues filter="{!v.filter}" buttonLabel="{!v.buttonLabel}" onapplyfilter="{!c.handleApplyFilter}" onclose="{!c.handleClose}"></c:lexSelectFilterValues>
+</aura:component>

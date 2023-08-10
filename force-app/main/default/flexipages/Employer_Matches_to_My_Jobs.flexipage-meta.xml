@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>alreadyContactedMatchButtonLabel</name>
+                    <value>Already Contacted</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidateCloseButtonLabel</name>
+                    <value>Cancel</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidateMessageLabel</name>
+                    <value>Please enter a message below</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidateModalHeader</name>
+                    <value>Send Email</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidateSendButtonLabel</name>
+                    <value>Send</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactMatchButtonLabel</name>
+                    <value>Contact Match</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Review matches to my jobs to find viable applicants</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Matches to My Jobs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>jobFilterLabel</name>
+                    <value>Filter by Position</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>jobFilterPlaceholder</name>
+                    <value>Select a Job</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>matchTileFooterColor</name>
+                    <value>rgb(88, 119, 169)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>matchTileHeaderColor</name>
+                    <value>rgb(235, 235, 235)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>matchesHeader</name>
+                    <value>Matches</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>matchesSubheader</name>
+                    <value>View job matches</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noContactErrorMessage</name>
+                    <value>No user contact record found</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noMatchesMessage</name>
+                    <value>We are sorry but your job listing did not return any matches.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noUserErrorMessage</name>
+                    <value>No user record found</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showContactCandidateFooter</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>lexMatchesToMyJobsAura</componentName>
+                <identifier>lexMatchesToMyJobsAura</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Matches to My Jobs</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Matches to My Jobs</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

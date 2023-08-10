@@ -1,0 +1,49 @@
+h1.header span,
+.slds-form-element__label {
+}
+
+label>i {
+    display:inline-block;
+    font-size: 0.75em;
+    color:#747474;
+}
+
+h1 span {
+    font-size: 29px;
+    font-weight: 900;
+}
+
+p.subHeader {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: lighter;
+}
+
+select.multiselect {
+    height: 42px;
+}
+
+.evenBG {
+    background-color: #F5F5F5;
+}
+
+.mobileNotification {
+    position:absolute !important;
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux {
+    /*border-color: rgb(5,69,71);
+    background-color: rgb(5,69,71);*/
+}
+
+.floatRight {
+    float:right;
+}
+
+lightning-icon {
+    display: none;
+}
+
+div.customError + lightning-icon {
+    display: unset;
+}

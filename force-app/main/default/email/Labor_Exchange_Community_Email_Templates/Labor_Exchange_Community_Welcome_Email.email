@@ -1,0 +1,45 @@
+<table style="font-family: Times; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;" width="500">
+<tbody>
+<tr>
+<td style="background-color: #ffffff; vertical-align: top; text-align: left;"><img width="250" height="75" src="https://worksource.my.salesforce.com/file-asset-public/LaunchpadLogo?oid=00D3d0000008cbG" alt="" /></td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; height: 5px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; color: #000000; font-size: 14pt; font-family: arial;">
+<table width="550">
+<tbody>
+<tr>
+<td style="background-color: #ffffff; color: #000000; font-size: 14pt; font-family: arial;">
+<p style="margin: 0in 0in 0.0001pt; line-height: normal; font-size: 14pt; font-family: arial; color: #000000; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span style="font-family: Arial, sans-serif; color: #222222;">Thank you for creating an account with our Launchpad Community! </span></p>
+
+
+<p style="margin: 0in 0in 0.0001pt; line-height: normal; font-size: 14pt; font-family: arial; color: #000000; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+
+<span style="font-family: Arial, sans-serif; color: #222222;"><br />
+With this account, you will be able to with your hiring needs and more. Log back in here: <a href="{!Community_Url}"> Launchpad Community</a>
+
+<btr><br><br>
+
+
+If you need any help with your account, call us at (777)777-7777 Monday-Friday between 8AM and 5PM.
+<br><br><br>
+
+We look forward to working with you!
+
+</span><br /> 
+
+
+<p style="background-color: #ffffff;">
+</p>
+
+<p style="font-size: 10pt; font-style: italic; font-family: Arial; sans-serif; color: #222222;">*Please do not reply to this email*</p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>

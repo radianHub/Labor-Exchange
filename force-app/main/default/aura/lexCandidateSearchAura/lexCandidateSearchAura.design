@@ -1,0 +1,153 @@
+<design:component>
+	<design:attribute
+		name="header"
+		label="Header"
+		default="Candidate Search" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="Find Candidates who are ready to work!" />
+	<design:attribute
+		name="availableinCommunityCandidateSearchPage"
+		label="Available in Community Candidate Search Page" />
+	<design:attribute
+		name="availableinCommunityMatches"
+		label="Available in Community Candidate Matches" />
+	<design:attribute
+		name="communityPriorityCandidate"
+		label="Community Priority Candidate" />
+	<design:attribute
+		name="showRedirectCandidateButton"
+		label="Show Redirect Button"
+		default="true" />
+	<design:attribute
+		name="redirectCandidateButtonLabel"
+		label="Redirect to Candidate Search Button Label"
+		default="View My Candidates" />
+	<design:attribute
+		name="redirectCandidateButtonRedirectUrl"
+		label="Redirect Url (Redirect to Candidate Search)" />
+
+	<design:attribute
+		name="filterHeader"
+		label="Search Filter Header"
+		default="Search for Candidates" />
+	<design:attribute
+		name="searchFilterFields"
+		label="Search: Filter Fields"
+		default="Title,Launchpad__Certifications__c,Launchpad__Desired_Position__c" />
+	<design:attribute
+		name="searchInputLabel"
+		label="Search Input Label"
+		default="Search by Titles, Skills or Keyword" />
+	<design:attribute
+		name="enableSearch"
+		label="Enable Search?"
+		default="true" />
+	<design:attribute
+		name="minimumSearchCharacters"
+		label="Search Minimum Characters"
+		default="2" />
+	<design:attribute
+		name="minimumSearchCharactersErrorHeader"
+		label="Search Minimum Characters: Error Header"
+		default="Search Term Error" />
+	<design:attribute
+		name="minimumSearchCharactersErrorMessage"
+		label="Search Minimum Characters: Error Message"
+		default="The search term entered is too short. Please use more characters in the search bar." />
+	<design:attribute
+		name="searchBtnLabel"
+		label="Search Button Label"
+		default="Search Candidates" />
+	<design:attribute
+		name="clearFilterLabel"
+		label="Search Clear Filter Button Label"
+		default="Reset Search" />
+	<design:attribute
+		name="candidateMatchesHeader"
+		label="Candidate Matches Header"
+		default="These are Candidates that match your jobs!" />
+	<design:attribute
+		name="candidateMatchesSubHeader"
+		label="Candidate Matches Sub Header"
+		default="Candidates match based on the Job Skills selected. Not finding the right match? Go to 'My Jobs' to update Skills." />
+	<design:attribute
+		name="candidatesHeader"
+		label="Candidates Header"
+		default="Candidates" />
+	<design:attribute
+		name="candidatesSubHeader"
+		label="Candidates Sub Header"
+		default="Check out the Candidates and contact them now!" />
+	<design:attribute
+		name="otherCandidatesHeader"
+		label="Other Candidates Header"
+		default="Other Candidates" />
+	<design:attribute
+		name="otherCandidatesSubHeader"
+		label="Other Candidates Sub Header"
+		default="Find a Candidate who is ready to work!" />
+	<design:attribute
+		name="candidateTileHeaderColor"
+		label="Candidate Tile Header Color"
+		type="Color"
+		default="rgb(235, 235, 235)" />
+	<design:attribute
+		name="candidateTileFooterColor"
+		label="Candidate Tile Footer Color"
+		type="Color"
+		default="rgb(180, 188, 201)" />
+	<design:attribute
+		name="viewDetailsButtonLabel"
+		label="View Details Button Label"
+		default="View Details" />
+	<design:attribute
+		name="showApplyCandidateButton"
+		label="Show Contact Candidate Button"
+		default="true" />
+	<design:attribute
+		name="applyCandidateButtonLabel"
+		label="Contact Candidate Button Label"
+		default="Contact Job Seeker" />
+	<design:attribute
+		name="appliedCandidateButtonLabel"
+		label="Contacted Candidate Button Label"
+		default="Already Contacted" />
+	<design:attribute
+		name="contactCandidateHeader"
+		label="Contact Candidate Header"
+		default="Want to Contact the Job Seeker?" />
+	<design:attribute
+		name="contactCandidateSubtext"
+		label="Contact Candidate Subtext"
+		default="You can send an email to the job seeker from here." />
+	<design:attribute
+		name="contactCandidatePlaceholderText"
+		label="Contact Candidate Placeholder Text"
+		default="Type here..." />
+	<design:attribute
+		name="skillPillColor"
+		label="Skill Pill Color"
+		type="Color"
+		default="rgb(255, 255, 255)" />
+	<design:attribute
+		name="successMessageHeader"
+		label="Contact Candidate: Success Message Header" />
+	<design:attribute
+		name="successMessage"
+		label="Contact Candidate: Success Message Description" />
+	<design:attribute
+		name="myCandidatesMatchScoreLabel"
+		label="My Candidates Match Score Label"
+		default="Candidate Match Score" />
+	<design:attribute
+		name="noResultsMessage"
+		label="No Candidates Message"
+		default="We are sorry but your Search did not return any results.  Please click 'Clear Filters' and try again." />
+</design:component>
