@@ -110,12 +110,6 @@ public class RequiredFieldsCache {
 			ContractContactRole.ContractId => getGenericParentProvider(Contract.sObjectType),
 			ContractContactRole.ContactId => getGenericParentProvider(Contact.sObjectType)
 		},
-		ContractLineItem.sObjectType => new Map<SObjectField, Object>{
-			ContractLineItem.ServiceContractId => getGenericParentProvider(ServiceContract.sObjectType),
-			ContractLineItem.PricebookEntryId => getGenericParentProvider(PricebookEntry.sObjectType),
-			ContractLineItem.Quantity => 1,
-			ContractLineItem.UnitPrice => 1
-		},
 		Document.sObjectType => new Map<SObjectField, Object>{
 			Document.FolderId => getGenericParentProvider(User.sObjectType),
 			Document.Name => 'Some Document'
@@ -127,15 +121,6 @@ public class RequiredFieldsCache {
 			EmailTemplate.TemplateType => 'Text',
 			EmailTemplate.Name => 'Some Template'
 		},
-		Entitlement.sObjectType => new Map<SObjectField, Object>{
-			Entitlement.AccountId => getGenericParentProvider(Account.sObjectType),
-			Entitlement.Name => 'Some Entitlement'
-		},
-		EntitlementContact.sObjectType => new Map<SObjectField, Object>{
-			EntitlementContact.EntitlementId => getGenericParentProvider(Entitlement.sObjectType),
-			EntitlementContact.ContactId => getGenericParentProvider(Contact.sObjectType)
-		},
-		EntitlementTemplate.sObjectType => new Map<SObjectField, Object>{ EntitlementTemplate.Name => SObjectFactory.provideUniqueString('Template') },
 		EntitySubscription.sObjectType => new Map<SObjectField, Object>{
 			EntitySubscription.ParentId => getGenericParentProvider(Account.sObjectType),
 			EntitySubscription.SubscriberId => getGenericParentProvider(User.sObjectType)
@@ -180,7 +165,6 @@ public class RequiredFieldsCache {
 			LeadShare.LeadId => getGenericParentProvider(Lead.sObjectType),
 			LeadShare.LeadAccessLevel => 'Edit'
 		},
-		MilestoneType.sObjectType => new Map<SObjectField, Object>{ MilestoneType.Name => SObjectFactory.provideUniqueString('MilestoneType') },
 		Note.sObjectType => new Map<SObjectField, Object>{ Note.ParentId => getGenericParentProvider(Account.sObjectType), Note.Title => 'Some Note' },
 		SObjectType.ObjectPermissions.getSObjectType() => new Map<SObjectField, Object>{
 			ObjectPermissions.ParentId => getGenericParentProvider(PermissionSet.sObjectType),
@@ -231,10 +215,6 @@ public class RequiredFieldsCache {
 			PricebookEntry.UnitPrice => 1
 		},
 		Product2.sObjectType => new Map<SObjectField, Object>{ Product2.Name => 'Some Product' },
-		ProductEntitlementTemplate.sObjectType => new Map<SObjectField, Object>{
-			ProductEntitlementTemplate.EntitlementTemplateId => getGenericParentProvider(EntitlementTemplate.sObjectType),
-			ProductEntitlementTemplate.Product2Id => getGenericParentProvider(Product2.sObjectType)
-		},
 		PushTopic.sObjectType => new Map<SObjectField, Object>{
 			PushTopic.Name => SObjectFactory.provideUniqueString('PushTopic'),
 			PushTopic.Query => 'SELECT Id FROM Account WHERE Name = null',
@@ -249,15 +229,6 @@ public class RequiredFieldsCache {
 			QuickTextShare.ParentId => getGenericParentProvider(QuickText.sObjectType),
 			QuickTextShare.UserOrGroupId => getGenericParentProvider(User.sObjectType),
 			QuickTextShare.AccessLevel => 'Edit'
-		},
-		ServiceContract.sObjectType => new Map<SObjectField, Object>{
-			ServiceContract.Pricebook2Id => Test.getStandardPricebookId(),
-			ServiceContract.Name => 'Some Contract'
-		},
-		ServiceContractShare.sObjectType => new Map<SObjectField, Object>{
-			ServiceContractShare.ParentId => getGenericParentProvider(ServiceContract.sObjectType),
-			ServiceContractShare.UserOrGroupId => getGenericParentProvider(User.sObjectType),
-			ServiceContractShare.AccessLevel => 'Edit'
 		},
 		Solution.sObjectType => new Map<SObjectField, Object>{ Solution.SolutionName => 'Some Solution' },
 		SetupEntityAccess.sObjectType => new Map<SObjectField, Object>{
