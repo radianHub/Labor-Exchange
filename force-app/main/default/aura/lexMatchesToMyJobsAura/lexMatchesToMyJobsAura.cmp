@@ -1,0 +1,102 @@
+<aura:component
+	implements="forceCommunity:availableForAllPageTypes"
+	access="global">
+	<aura:html tag="style">
+		.save-button button, .save-button button:hover, .save-button button:active { height: 42px; line-height: normal; width: 100%; } .uiButton--brand { }
+		.save-button button[disabled] { background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; line-height: normal; font-weight: normal
+		!important; }
+	</aura:html>
+
+	<!-- * MATCHES TO MY JOBS CONFIG -->
+	<aura:attribute
+		name="header"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="headerColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="description"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="noUserErrorMessage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="noContactErrorMessage"
+		type="string"
+		access="global" />
+
+	<!-- * FOUND MATCHES CONFIG -->
+	<aura:attribute
+		name="matchesHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="matchesSubheader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="matchTileHeaderColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="matchTileFooterColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="jobFilterLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="jobFilterPlaceholder"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="contactMatchButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="alreadyContactedMatchButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="noMatchesMessage"
+		type="string"
+		access="global" />
+
+	<!-- * CONTACT CANDIDATE -->
+	<aura:attribute
+		name="contactCandidateModalHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="contactCandidateMessageLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="showContactCandidateFooter"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="contactCandidateSendButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="contactCandidateCloseButtonLabel"
+		type="string"
+		access="global" />
+
+	<aura:handler
+		name="init"
+		value="{!this}"
+		action="{!c.doInit}" />
+
+	<aura:attribute
+		name="config"
+		type="Object" />
+
+	<c:lexMatchesToMyJobs config="{!v.config}"></c:lexMatchesToMyJobs>
+</aura:component>
