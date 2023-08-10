@@ -1,0 +1,104 @@
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<div class="candidate-container">
+		<div
+			class={candidateContainerCSS}
+			style={headerCSS}>
+			<!--p class="slds-text-heading_medium text-bold slds-p-horizontal_medium">{title}</p>
+            <p class="slds-text-heading_small slds-m-top_xx-small crayon-color slds-p-horizontal_medium">{subTitle}</p-->
+			<hr />
+			<lightning-layout
+				class="slds-p-horizontal_medium"
+				vertical-align="center"
+				multiple-rows="true"
+				style="text-align: left">
+				<template
+					if:true={details}
+					for:each={details}
+					for:item="item">
+					<lightning-layout-item
+						if:true={item.value}
+						size="12"
+						key={item.label}>
+						<div if:true={item.value}>
+							<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+							<span style="font-size: 1rem; font-weight: bold">
+								<c-lex-formatted-field field={item}></c-lex-formatted-field>
+							</span>
+						</div>
+						<div if:false={item.value}>&nbsp;</div>
+					</lightning-layout-item>
+				</template>
+				<lightning-layout-item
+					if:true={skillsString}
+					size="12">
+					<span style="font-size: 1rem">Skills:&nbsp;</span>
+					<span style="font-size: 1rem; font-weight: bold">
+						<lightning-formatted-text value={skillsString}> </lightning-formatted-text>
+					</span>
+				</lightning-layout-item>
+				<lightning-layout-item
+					size="12"
+					if:true={record.matchPercent}>
+					<div>
+						<span style="font-size: 1rem">{label.matchScoreLabel}:&nbsp;</span>
+						<span style="font-size: 1rem; font-weight: bold"> {record.matchPercent}% </span>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+		<div
+			if:true={showFooter}
+			class={footerCSS}
+			style={footerStyle}>
+			<lightning-layout
+				class="slds-p-around_medium"
+				vertical-align="center"
+				multiple-rows="true"
+				style="text-align: left">
+				<!--lightning-layout-item padding="around-medium" size="12" large-device-size="6" small-device-size="12">
+                    <lightning-button variant="brand" label={label.viewDetailsBtnLabel}
+                        title={label.viewDetailsBtnLabel} icon-name="utility:preview" class="candidate-button"
+                        onclick={handleViewDetails}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-medium" size="12" large-device-size="6" small-device-size="12">
+                    <template if:false={showRemoveCandidateBtn}>
+                        <lightning-button if:false={record.saved} variant="brand" label={label.saveBtnLabel}
+                            title={label.saveBtnLabel} icon-name="utility:save" class="candidate-button"
+                            onclick={handleSaveCandidate}></lightning-button>
+                        <lightning-button if:true={record.saved} variant="brand" label={label.savedBtnLabel}
+                            title={label.savedBtnLabel} icon-name="utility:save" class="candidate-button"
+                            disabled></lightning-button>
+                    </template>
+                    <lightning-button if:true={showRemoveCandidateBtn} variant="brand" label={label.removeSavedBtnLabel}
+                        title={label.removeSavedBtnLabel} icon-name="utility:delete" class="candidate-button"
+                        onclick={handleRemoveSavedCandidate}></lightning-button>
+                </lightning-layout-item-->
+				<lightning-layout-item
+					padding="around-medium"
+					size="12">
+					<lightning-button
+						if:false={isContacted}
+						variant="brand"
+						label={label.imInterestedBtnLabel}
+						title={label.imInterestedBtnLabel}
+						icon-name="utility:comments"
+						class="save-button"
+						onclick={handleEmailCandidate}></lightning-button>
+					<lightning-button
+						if:true={isContacted}
+						variant="brand"
+						label={label.alreadyAppliedBtnLabel}
+						title={label.alreadyAppliedBtnLabel}
+						disabled
+						class="save-button"></lightning-button>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+	</div>
+</template>

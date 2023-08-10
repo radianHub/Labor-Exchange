@@ -1,0 +1,78 @@
+<template>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			padding="around-small"
+			size="12"
+			large-device-size="12"
+			small-device-size="12">
+			<div style="text-align: center; font-weight: 900; font-size: 26px">
+				<h1 style={headerCSS}>{config.contactUsHeader}</h1>
+			</div>
+		</lightning-layout-item>
+		<lightning-layout-item
+			size="12"
+			large-device-size="12"
+			small-device-size="10">
+			<lightning-layout
+				horizontal-align="center"
+				multiple-rows="true"
+				class="slds-m-around_medium">
+				<lightning-layout-item
+					size="12"
+					large-device-size="12"
+					small-device-size="10">
+					{config.contactUsDescription}
+				</lightning-layout-item>
+				<lightning-layout-item
+					size="12"
+					large-device-size="12"
+					small-device-size="10">
+					<lightning-textarea
+						placeholder={config.contactUsPlaceholderText}
+						onchange={handleCommentChange}
+						max-length="32000">
+					</lightning-textarea>
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-layout-item>
+		<lightning-layout-item
+			size="12"
+			large-device-size="12"
+			small-device-size="10"
+			style="text-align: center">
+			<br />
+			<div class="btn-container">
+				<lightning-button
+					variant="slds-button_neutral"
+					label={config.contactUsCancelButtonLabel}
+					title={config.contactUsCancelButtonLabel}
+					icon-name="utility:close"
+					class="request-button"
+					onclick={handleCancel}></lightning-button>
+				<lightning-button
+					if:false={disableUpdate}
+					variant="brand"
+					label={config.contactUsSubmitButtonLabel}
+					title={config.contactUsSubmitButtonLabel}
+					icon-name="utility:replace"
+					class="request-button"
+					onclick={handleSendRequest}></lightning-button>
+				<lightning-button
+					if:true={disableUpdate}
+					variant="brand"
+					label={config.contactUsSubmitButtonLabel}
+					title={config.contactUsSubmitButtonLabel}
+					icon-name="utility:replace"
+					class="disable-button"
+					disabled></lightning-button>
+			</div>
+		</lightning-layout-item>
+	</lightning-layout>
+</template>

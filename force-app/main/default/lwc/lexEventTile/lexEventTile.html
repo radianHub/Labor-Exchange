@@ -1,0 +1,123 @@
+<template>
+    <lightning-spinner
+        if:true={isLoading} 
+        alternative-text="Loading" 
+        size="large"
+        class="slds-is-absolute"
+    ></lightning-spinner>
+    <div class="event-container" style={headerCSS} if:true={showTile}>
+        <div class="evt-container">
+            <div class="desc slds-p-vertical_large slds-p-horizontal_large">
+                <div class="slds-text-heading_medium text-bold">{title}</div>
+                <div class="slds-text-heading_small slds-m-top_medium text-desc" title={subTitle}>{subTitle}</div>
+                <lightning-layout class="slds-p-around_medium" vertical-align="center" multiple-rows="true" style="text-align:left;">
+                    <template if:true={details} for:each={details} for:item="item">
+                        <lightning-layout-item size="12" key={item.label} if:true={item.value}>
+                            <span style="font-size:1rem;">{item.label}:&nbsp;</span>
+                            <span  style="font-size:1rem;font-weight:bold;">
+                                <c-lex-formatted-field field={item}></c-lex-formatted-field>
+                            </span>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </div>
+            
+        </div>
+        <template if:false={isRegisteredView}>
+            <template if:false={event.isRegistered}>
+                <lightning-button if:false={event.isOnDemand} 
+                    variant="brand" 
+                    label={eventConfig.registerEventButtonLabel}
+                    title={eventConfig.registerEventButtonLabel}
+                    icon-name="utility:new" 
+                    class="view-button"
+                    onclick={handleRegister}
+                    style={buttonCSS}
+                ></lightning-button>
+                <lightning-button if:true={event.isOnDemand} 
+                    variant="brand" 
+                    label={eventConfig.watchVideoEventButtonLabel}
+                    title={eventConfig.watchVideoEventButtonLabel}
+                    icon-name="utility:right" 
+                    class="view-button"
+                    onclick={handleWatchVideo}
+                    style={buttonCSS}
+                ></lightning-button>
+            </template>
+            <template if:true={event.isRegistered}>
+                <lightning-button if:false={event.isOnDemand} 
+                    variant="brand" 
+                    label={eventConfig.alreadyRegisteredEventButtonLabel}
+                    title={eventConfig.alreadyRegisteredEventButtonLabel}
+                    icon-name="utility:success" 
+                    class="view-button" disabled>
+                </lightning-button>
+                <lightning-button if:true={event.isOnDemand} 
+                    variant="brand" 
+                    label={eventConfig.watchVideoEventButtonLabel}
+                    title={eventConfig.watchVideoEventButtonLabel}
+                    icon-name="utility:right" 
+                    class="view-button"
+                    onclick={handleWatchVideo}
+                ></lightning-button>
+            </template>
+        </template>
+        <template if:true={isRegisteredView}>
+            <lightning-button
+                if:false={event.isOnDemand}
+                variant="brand" 
+                label={eventConfig.viewDetailEventButtonLabel}
+                title={eventConfig.viewDetailEventButtonLabel} 
+                icon-name="utility:preview" 
+                class="registered-button"
+                onclick={handleViewDetail}
+                style={buttonCSS}
+            ></lightning-button>
+            <template if:false={event.isOnDemand}>
+                &nbsp;&nbsp;&nbsp;
+            </template>
+            <lightning-button if:false={event.isOnDemand} 
+                variant="brand" 
+                label={eventConfig.cancelRegistrationButtonLabel} 
+                title={eventConfig.cancelRegistrationButtonLabel} 
+                icon-name="utility:ban" 
+                class="registered-button"
+                onclick={handleCancelRegister}
+                style={buttonCSS}
+            ></lightning-button>
+            <lightning-button if:true={event.isOnDemand} 
+                variant="brand" 
+                label={eventConfig.watchVideoEventButtonLabel}
+                title={eventConfig.watchVideoEventButtonLabel} 
+                icon-name="utility:right" 
+                class="view-button"
+                onclick={handleWatchVideo}
+                style={buttonCSS}
+            ></lightning-button>
+        </template>
+        <div class="footer-container slds-p-horizontal_large" style={footerCSS}>
+            <br/>
+            <lightning-layout class="slds-p-around_medium" vertical-align="center" multiple-rows="true" style="text-align:left;">
+                <template if:true={footerDetails} for:each={footerDetails} for:item="item">
+                    <lightning-layout-item if:true={item.value} size="12" key={item.label}>
+                        <div>
+                            <span style="font-size:12px;">{item.label}:&nbsp;</span>
+                            <span style="font-size:12px;font-weight:bold;">
+                                <c-lex-formatted-field field={item}></c-lex-formatted-field>
+                            </span>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+            <lightning-layout class="slds-p-medium_large" vertical-align="center" horizontal-align="center" 
+                style="position: absolute;bottom: 5px;left: 20px;right: 20px;">
+                <lightning-layout-item size="12" class="slds-align_absolute-center">
+                    <lightning-button if:true={documents} variant="base" label={eventConfig.downloadDocuments}
+                        title={eventConfig.downloadDocuments} icon-name="utility:download" class="slds-m-left_x-small download"
+                        onclick={handleDownloadDocuments}></lightning-button>
+                    <div if:false={documents}>&nbsp;</div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </div>
+</template>

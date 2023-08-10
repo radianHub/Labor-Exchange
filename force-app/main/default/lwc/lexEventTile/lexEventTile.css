@@ -1,0 +1,29 @@
+.event-container {
+    position: relative;
+    text-align: center;
+}
+
+.evt-container {
+    height: 265px;
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: 900;
+    height: 50px;
+    overflow: hidden;
+}
+
+.text-desc {
+    font-weight: 300;
+    font-size: 0.9rem;
+    height: 74px;
+    overflow:hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
+.footer-container {
+    height: 200px;
+}

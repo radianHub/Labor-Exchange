@@ -1,0 +1,37 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	<aura:attribute name="applicationListHeader" type="string" access="global" />
+	<aura:attribute name="headerColor" type="string" access="global" />
+	<aura:attribute name="description" type="string" access="global" />
+
+	<aura:attribute name="showRedirectButton" type="boolean" access="global" />
+	<aura:attribute name="redirectButtonLabel" type="string" access="global" />
+	<aura:attribute name="redirectButtonRedirectUrl" type="string" access="global" />
+
+	<aura:attribute name="showContactUsButton" type="boolean" access="global" />
+	<aura:attribute name="contactUsButtonLabel" type="string" access="global" />
+	<aura:attribute name="contactUsHeader" type="string" access="global" />
+	<aura:attribute name="contactUsDescription" type="string" access="global" />
+	<aura:attribute name="contactUsPlaceholderText" type="string" access="global" />
+	<aura:attribute name="contactUsSubmitButtonLabel" type="string" access="global" />
+	<aura:attribute name="contactUsCancelButtonLabel" type="string" access="global" />
+	<aura:attribute name="contactUsSuccessMessage" type="string" access="global" />
+	<aura:attribute name="noJobApplicationMessage" type="string" access="global" />
+
+	<aura:attribute name="applicationType" type="string" />
+	<aura:attribute name="applicationData" type="Object" />
+	<aura:attribute name="myApplicationFields" type="Object" />
+
+	<aura:registerEvent name="refreshApex" type="c:refreshApexAuraEvent" />
+
+	<aura:attribute name="config" type="Object" />
+	<lightning:overlayLibrary aura:id="overlayLib" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<c:lexCandidateApplications
+		config="{!v.config}"
+		applicationData="{!v.applicationData}"
+		onupdaterequest="{!c.handleUpdateRequest}"
+		onrefreshapex="{!c.handleRefreshApex}"
+		applicationType="{!v.applicationType}"
+		myApplicationFields="{!v.myApplicationFields}"></c:lexCandidateApplications>
+</aura:component>

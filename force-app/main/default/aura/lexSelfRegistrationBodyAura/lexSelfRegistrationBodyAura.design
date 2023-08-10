@@ -1,0 +1,139 @@
+<design:component>
+	<design:attribute
+		name="Page1Header"
+		label="Page 1 Header"
+		default="Let's Get Started" />
+	<design:attribute
+		name="Page1Description"
+		label="Page 1 Description"
+		default="Please provide your Contact information so we can check and see if you already have an Account" />
+	<design:attribute
+		name="Headercolor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="Descriptioncolor"
+		label="Description Color"
+		type="Color"
+		default="rgba(0, 0, 0, 0.8)" />
+	<design:attribute
+		name="existingContactMessage"
+		label="Error: Existing Contact Message"
+		default="It looks like your email is already in our system, please
+	click 'Login to my Account' and then click 'Forgot Your Password' to reset your password. If that doesn't work, call us at (888)888-8888 M-F between 8AM
+	and 5PM." />
+	<design:attribute
+		name="existingActiveUserMessage"
+		label="Error: Existing Active User Message"
+		default="It looks like your email is already in our system,
+	please click 'Login to my Account' and then click 'Forgot Your Password' to reset your password. If that doesn't work, call us at (888)888-8888 M-F
+	between 8AM and 5PM." />
+	<design:attribute
+		name="existingAccountMessage"
+		label="Error: Existing Account Message"
+		default="It looks like your account is already in our system, please
+	click 'Login to my Account' and then click 'Forgot Your Password' to reset your password. If that doesn't work, call us at (888)888-8888 M-F between 8AM
+	and 5PM." />
+	<design:attribute
+		name="nextStepBtn"
+		label="Next Button Label"
+		default="Click to Continue" />
+	<design:attribute
+		name="redirectURlLogin"
+		label="Redirect Url (Login)"
+		default="/Employer/s/login" />
+	<design:attribute
+		name="Page2Header"
+		label="Page 2 Header"
+		default="Account Sign Up" />
+	<design:attribute
+		name="Page2Description"
+		label="Page 2 Description"
+		default="Let's get you signed up! It will only take you a few minutes to finish the
+	form. Hover over the 'i' icon for more information about each question." />
+	<design:attribute
+		name="passwordSectionTitle"
+		label="Password Header"
+		default="Set Up Your Password" />
+	<design:attribute
+		name="passwordLabel"
+		label="Password Label"
+		default="Please Set Your Password" />
+	<design:attribute
+		name="confirmPasswordLabel"
+		label="Confirm Password Label"
+		default="Please Confirm Your Password" />
+	<design:attribute
+		name="pattern"
+		label="Password Pattern Regex"
+		default=".{9,}" />
+	<design:attribute
+		name="patternMessage"
+		label="Error: Password Pattern Mismatch"
+		default="Your Password must be  at least 9 characters" />
+	<design:attribute
+		name="passwordMismatchError"
+		label="Error: Password Mismatch"
+		default="Password and Confirm Password do not match.  Please re-enter." />
+	<design:attribute
+		name="authorizationChbkLabelshow"
+		label="Show Attestation"
+		default="true" />
+	<design:attribute
+		name="authorizationChbkLabel"
+		label="Attestation Button Label"
+		default="Please click here to accept the Authorization and Waiver" />
+	<design:attribute
+		name="attestationheader"
+		label="Attestation Popup: Header"
+		default="AUTHORIZATION, WAIVER AND RELEASE FOR USE OF PERSONAL INFORMATION" />
+	<design:attribute
+		name="authorizationcheckboxlabel"
+		label="Attestation Popup: Checkbox Label"
+		default="I have read and voluntarily sign this Authorization, Waiver, and Release." />
+	<design:attribute
+		name="authorizationiagreebuttonlabel"
+		label="Attestation Popup: Agreement Button Label"
+		default="I Agree" />
+	<design:attribute
+		name="requiredFieldMessage"
+		label="Error: Required Field Message Component Level"
+		default="Please fill out all required fields" />
+	<design:attribute
+		name="requiredFieldMsg"
+		label="Error: Required Field Message Field Level"
+		default="Please update this Field" />
+	<design:attribute
+		name="registerBtn"
+		label="Register Button Label"
+		default="Register" />
+	<design:attribute
+		name="contactrecordtypeassignment"
+		label="Contact Record Type Assignment"
+		default="Employer" />
+	<design:attribute
+		name="accountrecordtypeassignment"
+		label="Account Record Type Assignment"
+		default="Employer" />
+	<design:attribute
+		name="userprofileassignment"
+		label="User Profile Assignment Id"
+		default="" />
+	<design:attribute
+		name="step1of2"
+		label="Page/Step 1 Guidance Label"
+		default="Step 1 of 2" />
+	<design:attribute
+		name="step2of2"
+		label="Page/Step 2 Guidance Label"
+		default="Step 2 of 2" />
+	<design:attribute
+		name="minimumMaximumAgeerrorMessage"
+		label="Minimum/Maximum Age Requirement Error Message"
+		default="Birthdate must be between {0} and  {1}." />
+	<design:attribute
+		name="footer"
+		label="Footer"
+		default="If you are having trouble logging in or need help, call us at (888)888-8888." />
+</design:component>

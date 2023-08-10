@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Man talking to a class used on Learn about training tile on Job seeker portal home page.</description>
+    <internalUseOnly>false</internalUseOnly>
+    <name>Home Page Pic3</name>
+    <public>true</public>
+</Document>
