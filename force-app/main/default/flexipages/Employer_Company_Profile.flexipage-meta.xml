@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cancelButtonLabel</name>
+                    <value>Cancel</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactListHeader</name>
+                    <value>Company Contacts</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactListSubheader</name>
+                    <value>Use this section to see, edit, or update your company contacts</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactSuccessMessage</name>
+                    <value>Success!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>deleteContactButtonLabel</name>
+                    <value>Archive</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Use this page to update your company profile.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editButtonLabel</name>
+                    <value>Edit</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>editContactButtonLabel</name>
+                    <value>Edit</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Company Profile</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>newContactButtonLabel</name>
+                    <value>Add New Contact</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>newContactPopupCancelButtonLabel</name>
+                    <value>Cancel</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>newContactPopupHeader</name>
+                    <value>Contact Information</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>newContactPopupSaveButtonLabel</name>
+                    <value>Save</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>newContactPopupSubHeader</name>
+                    <value>Use this page to edit the contact information</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noContactMessage</name>
+                    <value>No contacts available</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectMyProfileURL</name>
+                    <value>/s/company-profile</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>requiredFieldMessage</name>
+                    <value>Please fill out the required fields.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>saveButtonLabel</name>
+                    <value>Save</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showContact</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>subheaderColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>successMessage</name>
+                    <value>Success!</value>
+                </componentInstanceProperties>
+                <componentName>lexCompanyProfileAura</componentName>
+                <identifier>lexCompanyProfileAura</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Company Profile</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Company Profile</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

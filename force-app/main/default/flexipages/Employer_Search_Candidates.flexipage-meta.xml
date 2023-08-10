@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>appliedCandidateButtonLabel</name>
+                    <value>Already Contacted</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>applyCandidateButtonLabel</name>
+                    <value>Contact Job Seeker</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>availableinCommunityCandidateSearchPage</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>availableinCommunityMatches</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>candidateMatchesHeader</name>
+                    <value>These are Candidates that match your jobs!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>candidateMatchesSubHeader</name>
+                    <value>Candidates match based on the Job Skills selected. Not finding the right match? Go to “My Jobs” to update Skills.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>candidateTileFooterColor</name>
+                    <value>rgb(180, 188, 201)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>candidateTileHeaderColor</name>
+                    <value>rgb(235, 235, 235)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>candidatesHeader</name>
+                    <value>Candidates</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>candidatesSubHeader</name>
+                    <value>Check out the Candidates and contact them now!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>clearFilterLabel</name>
+                    <value>Reset Search</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>communityPriorityCandidate</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidateHeader</name>
+                    <value>Want to Contact the Job Seeker?</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidatePlaceholderText</name>
+                    <value>Type here...</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>contactCandidateSubtext</name>
+                    <value>You can send an email to the job seeker from here.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                    <value>Find Candidates who are ready to work!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableSearch</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterHeader</name>
+                    <value>Search for Candidates</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>header</name>
+                    <value>Candidate Search</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerColor</name>
+                    <value>rgb(84, 105, 141)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>minimumSearchCharacters</name>
+                    <value>2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>minimumSearchCharactersErrorHeader</name>
+                    <value>Search Term Error</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>minimumSearchCharactersErrorMessage</name>
+                    <value>The search term entered is too short. Please use more characters in the search bar.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>myCandidatesMatchScoreLabel</name>
+                    <value>Candidate Match Score</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>noResultsMessage</name>
+                    <value>We are sorry but your Search did not return any results.  Please click “Clear Filters” and try again.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>otherCandidatesHeader</name>
+                    <value>Other Candidates</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>otherCandidatesSubHeader</name>
+                    <value>Find a Candidate who is ready to work!</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectCandidateButtonLabel</name>
+                    <value>View My Candidates</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>redirectCandidateButtonRedirectUrl</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchBtnLabel</name>
+                    <value>Search Candidates</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchFilterFields</name>
+                    <value>Title,Name,Launchpad__Certifications__c,Launchpad__Industries__c,Launchpad__Desired_Position__c,Email,Launchpad__CIF_Cultural_Barriers__c,Launchpad__Wage_Desired__c,Launchpad__Industries__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchInputLabel</name>
+                    <value>Search by Titles, Skills or Keyword</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showApplyCandidateButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRedirectCandidateButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>skillPillColor</name>
+                    <value>rgb(255, 255, 255)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>successMessage</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>successMessageHeader</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>viewDetailsButtonLabel</name>
+                    <value>View Details</value>
+                </componentInstanceProperties>
+                <componentName>lexCandidateSearchAura</componentName>
+                <identifier>lexCandidateSearchAura</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>customHeadTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Search Candidates</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Search Candidates</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>
