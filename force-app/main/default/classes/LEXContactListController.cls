@@ -184,7 +184,13 @@ public with sharing class LEXContactListController {
 
 			Integer i = 0;
 			for (PageProp p : data.pageProp) {
-				for (Schema.FieldSetMember fm : dor.FieldSets.getMap().get(p.fieldSetName).getFields()) {
+				Schema.FieldSet objectFieldSet = LEXCommunityHelper.getFieldSet('Contact', p.fieldSetName);
+
+				if (objectFieldSet == null) {
+					continue;
+				}
+
+				for (Schema.FieldSetMember fm : objectFieldSet.getFields()) {
 					LaborExchangeCommunity_FieldProperties__mdt fp = fieldsMap.containsKey(p.id + '-' + fm.getFieldPath())
 						? fieldsMap.get(p.id + '-' + fm.getFieldPath())
 						: null;

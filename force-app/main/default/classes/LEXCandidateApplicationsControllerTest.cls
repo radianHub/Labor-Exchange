@@ -122,75 +122,92 @@ private without sharing class LEXCandidateApplicationsControllerTest {
 		insert cdl;
 	}
 
-	// @IsTest
-	// private static void getSetupDataTest() {
-	// 	System.runAs(getAdminUser()) {
-	// 		makeData();
-	// 		User tempU;
-	// 		LEXCandidateApplicationsController.ApplicationFieldSet data;
+	@IsTest
+	private static void getSetupDataTest() {
+		System.runAs(getAdminUser()) {
+			makeData();
+			User tempU;
+			LEXCandidateApplicationsController.ApplicationFieldSet data;
 
-	// 		Id uL = [SELECT Id FROM UserLicense WHERE Name LIKE '%Customer Community%' LIMIT 1].Id;
+			Id uL = [SELECT Id FROM UserLicense WHERE Name LIKE '%Customer Community%' LIMIT 1].Id;
 
-	// 		tempU = (User) new SObjectBuilder(User.sObjectType).build().getRecord();
+			tempU = (User) new SObjectBuilder(User.sObjectType).build().getRecord();
 
-	// 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
+			User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
-	// 		UserRole ownerRole = new UserRole(Name = 'Owner Role');
-	// 		insert ownerRole;
+			UserRole ownerRole = new UserRole(Name = 'Owner Role');
+			insert ownerRole;
 
-	// 		adminUser.UserRoleId = ownerRole.Id;
-	// 		update adminUser;
+			adminUser.UserRoleId = ownerRole.Id;
+			update adminUser;
 
-	// 		System.runAs(adminUser) {
-	// 			tempU = createUser(
-	// 				[SELECT Id FROM Profile WHERE UserLicenseId = :uL AND Name != 'Labor Exchange Community User' LIMIT 1].Id,
-	// 				'ComUser',
-	// 				'Test'
-	// 			);
-	// 		}
+			System.runAs(adminUser) {
+				tempU = createUser(
+					[SELECT Id FROM Profile WHERE UserLicenseId = :uL AND Name != 'Labor Exchange Community User' LIMIT 1].Id,
+					'ComUser',
+					'Test'
+				);
+			}
 
-	// 		PermissionSetAssignment psa = new PermissionSetAssignment(
-	// 			PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Labor_Exchange_User_Permissions']
-	// 			.Id,
-	// 			AssigneeId = tempU.Id
-	// 		);
-	// 		insert psa;
-	// 		System.runAs(tempU) {
-	// 			data = LEXCandidateApplicationsController.getSetupData();
-	// 		}
+			PermissionSetAssignment psa = new PermissionSetAssignment(
+				PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Labor_Exchange_User_Permissions']
+				.Id,
+				AssigneeId = tempU.Id
+			);
+			insert psa;
+			System.runAs(tempU) {
+				data = LEXCandidateApplicationsController.getSetupData();
+			}
 
-	// 		//tempU = createUser([SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1].Id, 'LimAccess', 'Test');
-	// 		String firstName = 'ComUser2';
-	// 		String lastName = 'Test2';
+			//tempU = createUser([SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1].Id, 'LimAccess', 'Test');
+			String firstName = 'ComUser2';
+			String lastName = 'Test2';
 
-	// 		tempU = new User(
-	// 			FirstName = firstName,
-	// 			LastName = lastName,
-	// 			Email = firstName + '@' + lastName + '.com',
-	// 			Username = firstName + '@' + lastName + '.com',
-	// 			Alias = firstName.left(1) + lastName.left(4),
-	// 			CommunityNickname = firstName + lastName,
-	// 			IsActive = true,
-	// 			TimeZoneSidKey = 'America/Los_Angeles',
-	// 			LocaleSidKey = 'en_US',
-	// 			LanguageLocaleKey = 'en_US',
-	// 			EmailEncodingKey = 'UTF-8',
-	// 			ProfileId = [SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1]
-	// 			.Id
-	// 		);
-	// 		insert tempU;
+			tempU = new User(
+				FirstName = firstName,
+				LastName = lastName,
+				Email = firstName + '@' + lastName + '.com',
+				Username = firstName + '@' + lastName + '.com',
+				Alias = firstName.left(1) + lastName.left(4),
+				CommunityNickname = firstName + lastName,
+				IsActive = true,
+				TimeZoneSidKey = 'America/Los_Angeles',
+				LocaleSidKey = 'en_US',
+				LanguageLocaleKey = 'en_US',
+				EmailEncodingKey = 'UTF-8',
+				ProfileId = [SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1]
+				.Id
+			);
+			insert tempU;
 
-	// 		System.runAs(tempU) {
-	// 			Boolean exc = false;
-	// 			try {
-	// 				data = LEXCandidateApplicationsController.getSetupData();
-	// 			} catch (Exception ex) {
-	// 				exc = ex.getMessage() != null;
-	// 			}
-	// 			// System.assert(exc, 'User has access to records.');
-	// 		}
-	// 	}
-	// }
+			System.runAs(tempU) {
+				Boolean exc = false;
+				try {
+					data = LEXCandidateApplicationsController.getSetupData();
+				} catch (Exception ex) {
+					exc = ex.getMessage() != null;
+				}
+				// System.assert(exc, 'User has access to records.');
+			}
+		}
+	}
+
+	@IsTest
+	private static void emailCandidate() {
+		System.runAs(getAdminUser()) {
+			makeData();
+
+			Contact contact = [SELECT Id FROM Contact WHERE LastName = 'Contact'];
+			String emailBody = 'Test email';
+
+			Test.startTest();
+			LEXCandidateApplicationsController.emailCandidate(contact.Id, emailBody);
+			Test.stopTest();
+
+			List<EmailMessage> emails = [SELECT Id FROM EmailMessage];
+			Assert.areEqual(1, emails.size(), 'No email was sent');
+		}
+	}
 
 	// @IsTest
 	// private static void createRequestTaskTest() {
@@ -231,68 +248,72 @@ private without sharing class LEXCandidateApplicationsControllerTest {
 	// 	}
 	// }
 
-	// @IsTest
-	// private static void getJobDataTest() {
-	// 	User tempU;
-	// 	LEXCandidateApplicationsController.JobData data;
+	@IsTest
+	private static void getJobDataTest() {
+		System.runAs(getAdminUser()) {
+			makeData();
 
-	// 	Id uL = [SELECT Id FROM UserLicense WHERE Name LIKE '%Customer Community%' LIMIT 1].Id;
+			User tempU;
+			LEXCandidateApplicationsController.JobData data;
 
-	// 	User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
+			Id uL = [SELECT Id FROM UserLicense WHERE Name LIKE '%Customer Community%' LIMIT 1].Id;
 
-	// 	UserRole ownerRole = new UserRole(Name = 'Owner Role');
-	// 	insert ownerRole;
+			User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
-	// 	adminUser.UserRoleId = ownerRole.Id;
-	// 	update adminUser;
+			UserRole ownerRole = new UserRole(Name = 'Owner Role');
+			insert ownerRole;
 
-	// 	System.runAs(adminUser) {
-	// 		tempU = createUser([SELECT Id FROM Profile WHERE UserLicenseId = :uL AND Name != 'Labor Exchange Community User' LIMIT 1].Id, 'ComUser', 'Test');
-	// 	}
-	// 	//tempU.ContactId = [SELECT Id FROM Contact WHERE LastName = 'Contact'].Id;
-	// 	//insert tempU;
-	// 	PermissionSetAssignment psa = new PermissionSetAssignment(
-	// 		PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Labor_Exchange_User_Permissions']
-	// 		.Id,
-	// 		AssigneeId = tempU.Id
-	// 	);
-	// 	insert psa;
+			adminUser.UserRoleId = ownerRole.Id;
+			update adminUser;
 
-	// 	Launchpad__Applicant_Tracking__c app = [SELECT Id FROM Launchpad__Applicant_Tracking__c LIMIT 1];
-	// 	System.runAs(tempU) {
-	// 		data = LEXCandidateApplicationsController.getJobData(app.Id);
-	// 		System.assert(data != null, 'No data returned.');
-	// 	}
+			// System.runAs(adminUser) {
+			tempU = createUser([SELECT Id FROM Profile WHERE UserLicenseId = :uL AND Name != 'Labor Exchange Community User' LIMIT 1].Id, 'ComUser', 'Test');
+			// }
+			//tempU.ContactId = [SELECT Id FROM Contact WHERE LastName = 'Contact'].Id;
+			//insert tempU;
+			PermissionSetAssignment psa = new PermissionSetAssignment(
+				PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Labor_Exchange_User_Permissions']
+				.Id,
+				AssigneeId = tempU.Id
+			);
+			insert psa;
 
-	// 	String firstName = 'ComUser2';
-	// 	String lastName = 'Test2';
+			Launchpad__Applicant_Tracking__c app = [SELECT Id FROM Launchpad__Applicant_Tracking__c LIMIT 1];
+			System.runAs(tempU) {
+				data = LEXCandidateApplicationsController.getJobData(app.Id);
+				System.assert(data != null, 'No data returned.');
+			}
 
-	// 	tempU = new User(
-	// 		FirstName = firstName,
-	// 		LastName = lastName,
-	// 		Email = firstName + '@' + lastName + '.com',
-	// 		Username = firstName + '@' + lastName + '.com',
-	// 		Alias = firstName.left(1) + lastName.left(4),
-	// 		CommunityNickname = firstName + lastName,
-	// 		IsActive = true,
-	// 		TimeZoneSidKey = 'America/Los_Angeles',
-	// 		LocaleSidKey = 'en_US',
-	// 		LanguageLocaleKey = 'en_US',
-	// 		EmailEncodingKey = 'UTF-8',
-	// 		ProfileId = [SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1]
-	// 		.Id
-	// 	);
-	// 	insert tempU;
-	// 	System.runAs(tempU) {
-	// 		Boolean exc = false;
-	// 		try {
-	// 			data = LEXCandidateApplicationsController.getJobData(app.Id);
-	// 		} catch (Exception ex) {
-	// 			exc = ex.getMessage() != null;
-	// 		}
-	// 		System.assert(exc, 'User has access to records.');
-	// 	}
-	// }
+			String firstName = 'ComUser2';
+			String lastName = 'Test2';
+
+			tempU = new User(
+				FirstName = firstName,
+				LastName = lastName,
+				Email = firstName + '@' + lastName + '.com',
+				Username = firstName + '@' + lastName + '.com',
+				Alias = firstName.left(1) + lastName.left(4),
+				CommunityNickname = firstName + lastName,
+				IsActive = true,
+				TimeZoneSidKey = 'America/Los_Angeles',
+				LocaleSidKey = 'en_US',
+				LanguageLocaleKey = 'en_US',
+				EmailEncodingKey = 'UTF-8',
+				ProfileId = [SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1]
+				.Id
+			);
+			insert tempU;
+			System.runAs(tempU) {
+				Boolean exc = false;
+				try {
+					data = LEXCandidateApplicationsController.getJobData(app.Id);
+				} catch (Exception ex) {
+					exc = ex.getMessage() != null;
+				}
+				System.assert(exc, 'User has access to records.');
+			}
+		}
+	}
 
 	@IsTest
 	private static void getPicklistValuesTest() {

@@ -1,7 +1,7 @@
 @isTest
 private class SFDCDescribeInfoCacheTest {
 	@isTest
-	private static void fieldMapFor_NewCache() {
+	private static void fieldMapForNewCache() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -16,7 +16,7 @@ private class SFDCDescribeInfoCacheTest {
 	}
 
 	@isTest
-	private static void fieldMapFor_ExistingCache() {
+	private static void fieldMapForExistingCache() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -32,7 +32,7 @@ private class SFDCDescribeInfoCacheTest {
 	}
 
 	@isTest
-	private static void getViewableFieldsNames_FieldMap() {
+	private static void getViewableFieldsNamesFieldMap() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -47,8 +47,8 @@ private class SFDCDescribeInfoCacheTest {
 		}
 	}
 
-    @isTest
-    private static void getViewableFieldsNames_ObjectType() {
+	@isTest
+	private static void getViewableFieldsNamesObjectType() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -61,5 +61,5 @@ private class SFDCDescribeInfoCacheTest {
 
 			Assert.isTrue(viewableFields.size() > 0, 'No fields were returned');
 		}
-    }
+	}
 }
