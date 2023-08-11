@@ -137,7 +137,7 @@ public with sharing class LEXMatchesToMyJobsController {
 		Labor_Exchange_Community_Setup__c lexcs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
 		LaborExchangeCommunity_PageProperties__mdt pageProperty = LaborExchangeCommunity_PageProperties__mdt.getInstance('Matches_to_My_Jobs');
-		String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaborExchange_Match_Details';
+		String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaunchpadCo__LaborExchange_Match_Details';
 
 		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
 			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
@@ -176,10 +176,6 @@ public with sharing class LEXMatchesToMyJobsController {
 
 	public without sharing class MatchesSearch {
 		public List<Launchpad__Match__c> getMatches(List<LEXCommunityHelper.FieldWrapper> fields, String accountId, String jobFilter) {
-			if (!SObjectHelper.canQueryObj('launchpad__Match__c')) {
-				throw SObjectHelperException.queryPermissionException('launchpad__Match__c');
-			}
-
 			String initialQuery = 'SELECT Id';
 
 			Set<String> uniqueFields = new Set<String>();
@@ -190,7 +186,8 @@ public with sharing class LEXMatchesToMyJobsController {
 			if (uniqueFieldsSize > 0) {
 				initialQuery += ', {0} ';
 			}
-			initialQuery += ' FROM {1} WHERE {2} WITH SECURITY_ENFORCED';
+			// ! WITH SECURITY ENFORCED IS NOT USED BECAUSE USER PERMISSION SET CANNOT GIVE READ ACCESS TO THE OBJECT, LAUNCHPAD__MATCH__C, DUE TO PACKAGING AN OBJECT WITH A M-D RELATIONSHIP
+			initialQuery += ' FROM {1} WHERE {2}';
 
 			String whereStages = '';
 			Labor_Exchange_Community_Setup__c lexCommunitySetup = Labor_Exchange_Community_Setup__c.getInstance();

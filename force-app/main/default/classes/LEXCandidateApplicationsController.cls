@@ -149,62 +149,6 @@ public with sharing class LEXCandidateApplicationsController {
 				throw new AuraHandledException(e.getMessage());
 			}
 		}
-		// public Boolean createUpdateRequestTask(String applicationId, String comments) {
-		// 	List<Launchpad__Applicant_Tracking__c> applications = [
-		// 		SELECT Id, Launchpad__Participant__c, Launchpad__Participant__r.ownerId
-		// 		FROM Launchpad__Applicant_Tracking__c
-		// 		WHERE Id = :applicationId
-		// 		WITH SECURITY_ENFORCED
-		// 		LIMIT 1
-		// 	];
-
-		// 	List<LaborExchangeCommunity_Task_Config__mdt> taskConfig = [
-		// 		SELECT
-		// 			Id,
-		// 			Field_Value_DateTime__c,
-		// 			Field_Value_Check_Box__c,
-		// 			Field_Value_Date__c,
-		// 			Data_Type__c,
-		// 			Field_API_Name__c,
-		// 			Field_Value__c,
-		// 			Field_Value_Text_Area__c,
-		// 			Field_Value_Text_Area_Long__c
-		// 		FROM LaborExchangeCommunity_Task_Config__mdt
-		// 		WHERE Active__c = 'Yes'
-		// 		WITH SECURITY_ENFORCED
-		// 	];
-
-		// 	if (!applications.isEmpty()) {
-		// 		Task newTask = new Task(
-		// 			WhoId = applications[0].Launchpad__Participant__c,
-		// 			WhatId = applications[0].Id,
-		// 			OwnerId = applications[0].Launchpad__Participant__r.ownerId,
-		// 			Description = comments
-		// 		);
-
-		// 		for (LaborExchangeCommunity_Task_Config__mdt tac : taskConfig) {
-		// 			if (tac.Data_Type__c == 'Text') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value__c);
-		// 			} else if (tac.Data_Type__c == 'Picklist') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value__c);
-		// 			} else if (tac.Data_Type__c == 'Text Area') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value_Text_Area__c);
-		// 			} else if (tac.Data_Type__c == 'Text Area Long') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value_Text_Area__c);
-		// 			} else if (tac.Data_Type__c == 'Date') {
-		// 				Integer addDate = Integer.valueOf(tac.Field_Value_Date__c);
-		// 				newTask.put(tac.Field_API_Name__c, System.Today().addDays(addDate));
-		// 			} else if (tac.Data_Type__c == 'DateTime') {
-		// 				Integer addHours = Integer.valueOf(tac.Field_Value_DateTime__c);
-		// 				newTask.put(tac.Field_API_Name__c, System.now().addhours(addHours));
-		// 			} else if (tac.Data_Type__c == 'Checkbox') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value_Check_Box__c);
-		// 			}
-		// 		}
-		// 		insert newTask;
-		// 	}
-		// 	return true;
-		// }
 
 		public JobApplicationsData getMyApplications(List<String> uniqueFields) {
 			JobApplicationsData jobApplicationData = new JobApplicationsData();
@@ -215,7 +159,8 @@ public with sharing class LEXCandidateApplicationsController {
 			List<User> lstUser = [SELECT Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() WITH SECURITY_ENFORCED];
 			String accountId = lstUser[0].Contact.AccountId;
 
-			String query = 'SELECT Id, Launchpad__Participant__c, {0} FROM Launchpad__Applicant_Tracking__c WHERE Launchpad__Job_Order__r.Launchpad__Available_in_Community__c = TRUE AND {1} WITH SECURITY_ENFORCED ORDER BY {2} ';
+			// ! WITH SECURITY ENFORCED IS NOT USED BECAUSE USER PERMISSION SET CANNOT GIVE READ ACCESS TO THE OBJECT, LAUNCHPAD__APPLICANT_TRACKING__C, DUE TO PACKAGING AN OBJECT WITH A M-D RELATIONSHIP
+			String query = 'SELECT Id, Launchpad__Participant__c, {0} FROM Launchpad__Applicant_Tracking__c WHERE Launchpad__Job_Order__r.Launchpad__Available_in_Community__c = TRUE AND {1} ORDER BY {2} ';
 			query = String.format(
 				query,
 				new List<String>{ String.join(uniqueFields, ', '), 'Launchpad__Job_Order__r.Launchpad__Account__c = :accountId', ' CreatedDate DESC' }
