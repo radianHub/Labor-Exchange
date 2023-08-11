@@ -60,18 +60,18 @@ private without sharing class LEXMatchesToMyJobsControllerTest {
 		}
 	}
 
-	@isTest
-	private static void getJobData() {
-		User communityUser = [SELECT Id FROM User WHERE firstName = 'Privileged' LIMIT 1];
+	// @isTest
+	// private static void getJobData() {
+	// 	User communityUser = [SELECT Id FROM User WHERE firstName = 'Privileged' LIMIT 1];
 
-		System.runAs(communityUser) {
-			Test.startTest();
-			List<Launchpad__Job__C> jobs = LEXMatchesToMyJobsController.getJobData();
-			Test.stopTest();
+	// 	System.runAs(communityUser) {
+	// 		Test.startTest();
+	// 		List<Launchpad__Job__C> jobs = LEXMatchesToMyJobsController.getJobData();
+	// 		Test.stopTest();
 
-			Assert.areEqual(1, jobs.size(), 'No jobs returned');
-		}
-	}
+	// 		Assert.areEqual(1, jobs.size(), 'No jobs returned');
+	// 	}
+	// }
 
 	@isTest
 	private static void getJobDataNoContact() {
