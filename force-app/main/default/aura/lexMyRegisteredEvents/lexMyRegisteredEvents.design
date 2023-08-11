@@ -1,0 +1,78 @@
+<design:component>
+	<design:attribute
+		name="header"
+		label="Header"
+		default="Your Registered Events" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		default="rgb(84, 105, 141)" />
+	<design:attribute
+		name="description"
+		label="Description"
+		default="The Events below are ones you have Registered for. Any On Demand Video you have watched will also be stored here." />
+
+	<design:attribute
+		name="availableinCommunityEventPage"
+		label="Available in Community My Registered WS"
+		default="Launchpad__Enrolled_via_Community__c" />
+	<design:attribute
+		name="communityPriorityEvent"
+		label="Community Priority Event"
+		default="Launchpad__Community_Priority_Event__c" />
+
+	<design:attribute
+		name="showRedirectEventButton"
+		label="Show Redirect to Events Button"
+		default="true" />
+	<design:attribute
+		name="redirectEventButtonLabel"
+		label="Redirect to Events Button Label"
+		default="Search Events" />
+	<design:attribute
+		name="redirectEventButtonRedirectUrl"
+		label="Redirect Url (Redirect to Events)"
+		default="/Employer/s/events" />
+
+	<design:attribute
+		name="eventTileHeaderColor"
+		label="Event Tile Header Color"
+		default="rgb(235, 235, 235)" />
+	<design:attribute
+		name="eventTileFooterColor"
+		label="Event Tile Footer Color"
+		default="rgb(180, 188, 201)" />
+	<design:attribute
+		name="watchVideoEventButtonLabel"
+		label="Watch Video Event Button Label"
+		default="Watch Video" />
+	<design:attribute
+		name="cancelRegistrationButtonLabel"
+		label="Cancel Registration Button Label"
+		default="Cancel" />
+	<design:attribute
+		name="cancelRegistrationRedirectUrl"
+		label="Redirect Url (Cancel Registration)"
+		default="/Employer/s/my-registered-events" />
+	<design:attribute
+		name="cancellationMessage"
+		label="Cancel Registration Success Message"
+		default="Your Registration has been Cancelled" />
+	<design:attribute
+		name="viewDetailEventButtonLabel"
+		label="View Details Button Label"
+		default="View Details" />
+
+	<design:attribute
+		name="closeButtonLabel"
+		label="View Details Close Button Label"
+		default="Close" />
+	<design:attribute
+		name="noeventsmessage"
+		label="No Events Message"
+		default="You have not Registered for any Events. Please click the 'Search for Events' Button." />
+	<design:attribute
+		name="downloadDocuments"
+		label="Download Documents Link Label"
+		default="Download Documents" />
+</design:component>

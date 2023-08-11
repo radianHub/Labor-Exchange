@@ -1,0 +1,53 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="LEXSelfRegistrationBodyController" access="global">
+    <aura:html tag="style">
+        .slds-modal__container {
+            margin: 0 auto;
+            width: 80% !important;
+            max-width: 100% !important;
+            min-width: 20rem;
+        }
+    </aura:html>
+
+    <aura:attribute name="attList" type="List"  access="global"/>
+    <aura:attribute name="agreed" type="Boolean" access="global"/>
+    <aura:attribute name="Page1Header" type="string" access="global"/>
+    <aura:attribute name="contactrecordtypeassignment" type="string" access="global"/>
+    <aura:attribute name="accountrecordtypeassignment" type="string" access="global"/>
+    <aura:attribute name="contactaccountassignment" type="string" access="global"/>
+    <aura:attribute name="userprofileassignment" type="string" access="global"/>
+    <aura:attribute name="Page1Description" type="string" access="global"/>
+    <aura:attribute name="Page2Header" type="string" access="global"/>
+    <aura:attribute name="Page2Description" type="string" access="global"/>
+    <aura:attribute name="Headercolor" type="string" access="global"/>
+    <aura:attribute name="Descriptioncolor" type="string" access="global"/>
+    
+    <aura:attribute name="existingContactMessage" type="string" access="global"/>
+    <aura:attribute name="existingActiveUserMessage" type="string" access="global"/>
+    <aura:attribute name="existingAccountMessage" type="string" access="global"/>
+    <aura:attribute name="requiredFieldMessage" type="string" access="global"/>
+    <aura:attribute name="passwordMismatchError" type="string" access="global"/>
+    <aura:attribute name="requiredFieldMsg" type="string" access="global"/>
+    <aura:attribute name="nextStepBtn" type="string" access="global"/>
+    <aura:attribute name="registerBtn" type="string" access="global"/>
+    <aura:attribute name="passwordSectionTitle" type="string" access="global"/>
+    <aura:attribute name="passwordLabel" type="string" access="global"/>
+    <aura:attribute name="confirmPasswordLabel" type="string" access="global"/>
+    <aura:attribute name="pattern" type="string" access="global"/>
+    <aura:attribute name="patternMessage" type="string" access="global"/>
+    <aura:attribute name="redirectURlLogin" type="string" access="global"/>
+    <aura:attribute name="footer" type="string" access="global"/>
+    <aura:attribute name="authorizationChbkLabel" type="string" access="global"/>
+    <aura:attribute name="attestationheader" type="string" access="global"/>
+    <aura:attribute name="authorizationChbkLabelshow" type="boolean" access="global"/>
+    <aura:attribute name="authorizationcheckboxlabel" type="string" access="global"/>
+    <aura:attribute name="authorizationiagreebuttonlabel" type="string" access="global"/>
+    <aura:attribute name="minimumMaximumAgeerrorMessage" type="string" access="global"/>
+    <aura:attribute name="step1of2" type="string" access="global"/>
+    <aura:attribute name="step2of2" type="string" access="global"/> 
+        
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="config" type="Object"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:lexSelfRegistrationAttestationEvent" action="{!c.handleAgreementCheck}"/>
+    <c:lexSelfRegistrationBody config="{!v.config}" onagreement="{!c.handleAgreement}" agreed="{!v.agreed}"></c:lexSelfRegistrationBody>
+</aura:component>

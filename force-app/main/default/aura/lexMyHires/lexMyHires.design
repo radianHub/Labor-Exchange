@@ -1,0 +1,85 @@
+<design:component>
+	<design:attribute
+		name="header"
+		label="Header" />
+	<design:attribute
+		name="headerColor"
+		label="Header Color"
+		type="Color"
+		default="rgb(84, 105, 141)" />
+
+	<design:attribute
+		name="showTile1"
+		label="Show Tile 1"
+		default="true" />
+	<design:attribute
+		name="tile1Name"
+		label="Tile 1 Name" />
+	<design:attribute
+		name="showTile2"
+		label="Show Tile 2"
+		default="true" />
+	<design:attribute
+		name="tile2Name"
+		label="Tile 2 Name" />
+	<design:attribute
+		name="showTile3"
+		label="Show Tile 3"
+		default="true" />
+	<design:attribute
+		name="tile3Name"
+		label="Tile 3 Name" />
+	<design:attribute
+		name="showTile4"
+		label="Show Tile 4"
+		default="true" />
+	<design:attribute
+		name="tile4Name"
+		label="Tile 4 Name" />
+
+	<design:attribute
+		name="applicationListHeader"
+		label="Application List Header" />
+	<design:attribute
+		name="description"
+		label="Application List Description" />
+
+	<design:attribute
+		name="showRedirectButton"
+		label="Show Redirect Button" />
+	<design:attribute
+		name="redirectButtonLabel"
+		label="Redirect Button Label" />
+	<design:attribute
+		name="redirectButtonRedirectUrl"
+		label="Redirect Url" />
+
+	<design:attribute
+		name="showContactUsButton"
+		label="Show Contact Us Button" />
+	<design:attribute
+		name="contactUsButtonLabel"
+		label="Contact Us: Button Label" />
+	<design:attribute
+		name="contactUsHeader"
+		label="Contact Us: Header" />
+	<design:attribute
+		name="contactUsDescription"
+		label="Contact Us: Description" />
+	<design:attribute
+		name="contactUsPlaceholderText"
+		label="Contact Us: Placeholder Text" />
+	<design:attribute
+		name="contactUsSubmitButtonLabel"
+		label="Contact Us: Submit Button Label" />
+	<design:attribute
+		name="contactUsCancelButtonLabel"
+		label="Contact Us: Cancel Button Label" />
+	<design:attribute
+		name="contactUsSuccessMessage"
+		label="Contact Us: Success Message" />
+	<design:attribute
+		name="noJobApplicationMessage"
+		label="No Job Applications Message"
+		default="No Hire Data" />
+</design:component>

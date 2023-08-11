@@ -1,0 +1,91 @@
+<aura:component
+	access="global"
+	implements="forceCommunity:availableForAllPageTypes">
+	<aura:attribute
+		name="header"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="headerColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="description"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="availableinCommunityEventPage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="communityPriorityEvent"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="showRedirectEventButton"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="redirectEventButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="redirectEventButtonRedirectUrl"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="eventTileHeaderColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="eventTileFooterColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="watchVideoEventButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="cancelRegistrationButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="cancelRegistrationRedirectUrl"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="cancellationMessage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="viewDetailEventButtonLabel"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="closeButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="noeventsmessage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="downloadDocuments"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="config"
+		type="Object" />
+
+	<aura:handler
+		name="init"
+		value="{!this}"
+		action="{!c.doInit}" />
+
+	<c:lexEventsAura
+		pageName="myRegisteredWorkshops"
+		eventConfig="{!v.config}"></c:lexEventsAura>
+</aura:component>

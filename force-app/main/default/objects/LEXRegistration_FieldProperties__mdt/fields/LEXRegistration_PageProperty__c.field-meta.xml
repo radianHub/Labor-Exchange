@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LEXRegistration_PageProperty__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Controls which section of the Registration Page the Field Property should be applied to.</inlineHelpText>
+    <label>LEXRegistration PageProperty</label>
+    <referenceTo>LEXRegistration_PageProperties__mdt</referenceTo>
+    <relationshipLabel>LEXRegistration_FieldProperties</relationshipLabel>
+    <relationshipName>LEXRegistration_FieldProperties</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

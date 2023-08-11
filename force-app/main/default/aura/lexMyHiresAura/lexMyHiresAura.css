@@ -1,0 +1,37 @@
+.THIS .mobileApplications  {
+    position: absolute;
+    top: 100%;
+}
+
+.THIS .contact-button button,
+.THIS .contact-button button:hover,
+.THIS .contact-button button:active
+{
+    color: #FFFFFF;
+    height: 42px;
+    width:100%;
+    line-height:normal;
+    min-width: 150px;
+}
+
+.THIS .request-button button,
+.THIS .request-button button:hover,
+.THIS .request-button button:active
+{
+    color: #FFFFFF;
+    line-height:normal;
+    height: 42px;
+}
+
+.THIS .disable-button button[disabled]
+{
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    color: #FFFFFF;
+    line-height:normal;
+    height: 42px;
+}
+
+.THIS lightning-textarea .slds-form-element__label {
+    font-size:1rem;
+}

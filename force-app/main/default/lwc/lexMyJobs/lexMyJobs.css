@@ -1,0 +1,10 @@
+h1 span {
+    font-size: 29px;
+    font-weight: 900;
+}
+
+p.subHeader {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: lighter;
+}

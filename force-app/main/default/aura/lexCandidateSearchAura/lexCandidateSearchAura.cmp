@@ -1,0 +1,239 @@
+<aura:component
+	implements="forceCommunity:availableForAllPageTypes"
+	access="global">
+	<aura:html tag="style">
+		.filterValues .slds-modal__container { margin: 0 auto; width: 30% !important; max-width: 100% !important; min-width: 20rem; } .viewDetail
+		.slds-modal__container { margin: 0 auto; width: 50% !important; max-width: 100% !important; min-width: 20rem; } .applyCandidate .slds-modal__container {
+		margin: 0 auto; width: 50% !important; max-width: 100% !important; min-width: 20rem; } .slds-is-absolute { position: fixed !important; }
+		.candidate-button button, .candidate-button button:hover, .candidate-button button:active { height:42px; line-height: normal; width: 100%; } .view-apply
+		button, .view-apply button:hover, .view-apply button:active { height: 42px; line-height: normal; } .save-button button, .save-button button:hover,
+		.save-button button:active { height: 42px; line-height: normal; width: 100%; font-weight: bold; } .uiButton--brand { } .save-button button[disabled] {
+		background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; line-height: normal; font-weight: normal !important; } .candidate-button
+		button[disabled], .view-apply button[disabled] { background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; line-height: normal;
+		font-weight: normal !important; } c-lex-tiles-pagination .download button { height: 42px; color: #FFFFFF !important; font-size: 1rem; text-decoration:
+		underline; } c-lex-tiles-pagination .page button, c-lex-tiles-pagination .page button:hover, c-lex-tiles-pagination .page button:active { height: 42px;
+		font-size: 1rem; text-decoration: underline; } c-lex-tiles-pagination .page .slds-button[disabled] { color: rgb(217, 219, 221)!important; }
+		c-lex-candidates-filter lightning-input input, c-lex-candidates-filter lightning-combobox input{ height:42px; } c-lex-candidates-filter .search-button
+		button, c-lex-candidates-filter .search-button button:hover, c-lex-candidates-filter .search-button button:active, .filterValues .search-button button,
+		.filterValues .search-button button:hover, .filterValues .search-button button:active{ line-height: normal; height: 42px; width:100%; } .filter-button
+		button, .filter-button button:hover, .filter-button button:active { width:70%; height:42px; line-height: normal; padding: 0px; } .mobile .filter-button
+		button, .mobile .filter-button button:hover, .mobile .filter-button button:active, c-lex-candidates-filter .mobile .search-button button,
+		c-lex-candidates-filter .mobile .search-button button:hover, c-lex-candidates-filter .mobile .search-button button:active,{ line-height: normal; width:
+		100% } .no-filter-button button, .no-filter-button button:hover, .no-filter-button button:active { width:100% !important; line-height: normal;
+		height:42px; } lightning-combobox .slds-listbox { font-size:1rem; }
+	</aura:html>
+	<aura:attribute
+		name="appliedFilters"
+		type="Object" />
+	<aura:attribute
+		name="pageName"
+		type="String"
+		default="myCandidates" />
+
+	<aura:attribute
+		name="header"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="headerColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="description"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="showRedirectCandidateButton"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="redirectCandidateButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="redirectCandidateButtonDescription"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="redirectCandidateButtonRedirectUrl"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="filterHeader"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="availableinCommunityCandidateSearchPage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="availableinCommunityMatches"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="communityPriorityCandidate"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="searchFilterFields"
+		type="string"
+		access="global" />
+	<!--aura:attribute name="wageInputLabel" type="string" access="global" /-->
+	<aura:attribute
+		name="searchInputLabel"
+		type="string"
+		access="global" />
+	<!--aura:attribute name="cityZipCodeInputLabel" type="string" access="global" />
+    <aura:attribute name="applyFilter" type="string" access="global" />
+    <aura:attribute name="filterApplied" type="string" access="global" />
+    <aura:attribute name="filterSectionHelpText" type="string" access="global" /-->
+	<aura:attribute
+		name="searchBtnLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="clearFilterLabel"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="candidateMatchesHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="candidateMatchesSubHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="candidatesHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="candidatesSubHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="otherCandidatesHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="otherCandidatesSubHeader"
+		type="string"
+		access="global" />
+
+	<aura:attribute
+		name="candidateTileHeaderColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="candidateTileFooterColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="viewDetailsButtonLabel"
+		type="string"
+		access="global" />
+	<!--aura:attribute name="saveCandidateButtonLabel" type="string" access="global" />
+    <aura:attribute name="savedCandidateButtonLabel" type="string" access="global" />
+    <aura:attribute name="savedCandidateReturnUrl" type="string" access="global" /-->
+
+	<aura:attribute
+		name="showApplyCandidateButton"
+		type="boolean"
+		access="global" />
+	<aura:attribute
+		name="applyCandidateButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="appliedCandidateButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="contactCandidateHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="contactCandidateSubtext"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="contactCandidatePlaceholderText"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="submitCandidateButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="submitCandidateAppReturnUrl"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="skillPillColor"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="backToCandidateSearchButtonLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="successMessageHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="successMessage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="noResultsMessage"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="candidateConfig"
+		type="Object" />
+	<aura:attribute
+		name="myCandidatesMatchScoreLabel"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="enableSearch"
+		type="Boolean"
+		access="global" />
+	<aura:attribute
+		name="minimumSearchCharacters"
+		type="Integer"
+		access="global" />
+	<aura:attribute
+		name="minimumSearchCharactersErrorHeader"
+		type="string"
+		access="global" />
+	<aura:attribute
+		name="minimumSearchCharactersErrorMessage"
+		type="string"
+		access="global" />
+
+	<lightning:overlayLibrary aura:id="overlayLib" />
+	<aura:handler
+		event="c:lexApplySelectedValues"
+		action="{!c.handleApplyFilterValues}" />
+	<!-- <aura:handler event="c:lexApplyCandidateEvent" action="{!c.handleApplyNow}" /> -->
+	<aura:handler
+		name="init"
+		value="{!this}"
+		action="{!c.doInit}" />
+
+	<c:lexCandidateSearch
+		viewType="{!v.pageName}"
+		appliedFilters="{!v.appliedFilters}"
+		candidateConfig="{!v.candidateConfig}"
+		onview="{!c.handleViewDetails}"
+		onapply="{!c.handleApplyNow}"
+		onchangefilters="{!c.showFilterOptions}"
+		onclearfilters="{!c.handleClearFilters}">
+	</c:lexCandidateSearch>
+</aura:component>
