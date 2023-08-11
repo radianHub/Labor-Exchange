@@ -23,13 +23,13 @@ public virtual class SObjectHelperException extends Exception {
 	}
 
 	//Declare all the user friendly error msgs heree...
-	public static final String QUERY_PERMISSION_EXCEPTION_MSG = system.label.SObjectHelper_Error_NoQueryPermission;
-	public static final String INSERT_PERMISSION_EXCEPTION_MSG = system.label.SObjectHelper_Error_NoInsertPermission;
-	public static final String UPDATE_PERMISSION_EXCEPTION_MSG = system.label.SObjectHelper_Error_NoUpdatePermission;
-	public static final String DELETE_PERMISSION_EXCEPTION_MSG = system.label.SObjectHelper_Error_NoDeletePermission;
-	public static final String UPSERT_PERMISSION_EXCEPTION_MSG = system.label.SObjectHelper_Error_NoUpsertPermission;
-	public static final String ADMIN_MSG = system.label.SObjectHelper_Admin_Msg;
-	public static final String NULLPARAMETERERROR = system.label.SObjectHelper_Error_Null;
+	public static final String QUERY_PERMISSION_EXCEPTION_MSG = System.label.SObjectHelper_Error_NoQueryPermission;
+	public static final String INSERT_PERMISSION_EXCEPTION_MSG = System.label.SObjectHelper_Error_NoInsertPermission;
+	public static final String UPDATE_PERMISSION_EXCEPTION_MSG = System.label.SObjectHelper_Error_NoUpdatePermission;
+	public static final String DELETE_PERMISSION_EXCEPTION_MSG = System.label.SObjectHelper_Error_NoDeletePermission;
+	public static final String UPSERT_PERMISSION_EXCEPTION_MSG = System.label.SObjectHelper_Error_NoUpsertPermission;
+	public static final String ADMIN_MSG = System.label.SObjectHelper_Admin_Msg;
+	public static final String NULLPARAMETERERROR = System.label.SObjectHelper_Error_Null;
 	public static final String OBJECT_STR = 'Object';
 	/**
 	 * @description Construct the exception msg
