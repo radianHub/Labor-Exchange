@@ -14,7 +14,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void getAttestationList_NoAttestationAccess() {
+	private static void getAttestationListNoAttestationAccess() {
 		User user = (User) new SObjectBuilder(User.sObjectType).create().getRecord();
 
 		System.runAs(user) {
@@ -46,7 +46,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void getStaticResource_NoResults() {
+	private static void getStaticResourceNoResults() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -71,7 +71,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void getSections_NoPagePropertyAccess() {
+	private static void getSectionsNoPagePropertyAccess() {
 		User user = (User) new SObjectBuilder(User.sObjectType).create().getRecord();
 
 		System.runAs(user) {
@@ -91,7 +91,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void checkForDupeContactsUsers_NoDuplicates() {
+	private static void checkForDupeContactsUsersNoDuplicates() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -109,7 +109,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void checkForDupeContactsUsers_DuplicateActiveUser() {
+	private static void checkForDupeContactsUsersDuplicateActiveUser() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -128,7 +128,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void checkForDupeAccounts_NoDuplicates() {
+	private static void checkForDupeAccountsNoDuplicates() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {
@@ -146,7 +146,7 @@ private class LEXSelfRegistrationBodyControllerTest {
 	}
 
 	@isTest
-	private static void checkForDupeAccounts_DuplicateAccount() {
+	private static void checkForDupeAccountsDuplicateAccount() {
 		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
 		System.runAs(adminUser) {

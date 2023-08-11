@@ -19,7 +19,7 @@ public with sharing class LEXEventsControllerTest {
 	}
 
 	@isTest
-	static void testGetSetupData_returnHomeData() {
+	static void getSetupDataReturnHomeData() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
@@ -118,7 +118,7 @@ public with sharing class LEXEventsControllerTest {
 				NAMESPACE_PREFIX + 'Available_in_Community__c',
 				NAMESPACE_PREFIX + 'Event_Type__c,Type__c,Workshop_Topics__c,Available_in_Community__c'
 			);
-			system.assert(result != null);
+			system.assert(result != null, 'Result is null');
 		}
 
 		System.runAs(tempUser) {
@@ -138,13 +138,13 @@ public with sharing class LEXEventsControllerTest {
 				NAMESPACE_PREFIX + 'Available_in_Community__c',
 				NAMESPACE_PREFIX + 'Event_Type__c,Type__c,Workshop_Topics__c,Available_in_Community__c'
 			);
-			system.assert(result != null);
+			system.assert(result != null, 'Result is null');
 		}
 
 	}
 
 	@isTest
-	static void testGetSetupData_returnHomeDataNoAccess() {
+	static void getSetupDataReturnHomeDataNoAccess() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
@@ -256,7 +256,7 @@ public with sharing class LEXEventsControllerTest {
 	}
 
 	@isTest
-	static void testGetSetupData_returnSkillBuildingData() {
+	static void getSetupDataReturnSkillBuildingData() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
@@ -325,7 +325,7 @@ public with sharing class LEXEventsControllerTest {
 		e.Launchpad__Status__c = 'Active';
 		e.Name = 'Test';
 		e.RecordTypeId = Schema.SObjectType.Launchpad__Event__c.getRecordTypeInfosByDeveloperName().get('Workshop').getRecordTypeId();
-		e.Launchpad__Start_Date__c = system.today();
+		e.Launchpad__Start_Date__c = System.today();
 		e.Launchpad__Event_Type__c = 'On Demand Video';
 		e.Launchpad__Long_Description_for_Community__c = 'Test';
 		e.Launchpad__Capacity__c = 100;
@@ -342,7 +342,7 @@ public with sharing class LEXEventsControllerTest {
 		System.runAs(tempUser) {
 			LEXEventsController.searchEvents(
 				'test',
-				system.today(),
+				System.today(),
 				filterOptionsMap,
 				uniqueFields,
 				NAMESPACE_PREFIX + 'Available_in_Community__c',
@@ -355,12 +355,12 @@ public with sharing class LEXEventsControllerTest {
 				NAMESPACE_PREFIX + 'Available_in_Community__c',
 				NAMESPACE_PREFIX + 'Event_Type__c,Type__c,Workshop_Topics__c,Available_in_Community__c'
 			);
-			system.assert(result != null);
+			System.assert(result != null, 'Result is null');
 		}
 	}
 
 	@isTest
-	static void testGetDownloadLink_returnDownloadLink() {
+	static void getDownloadLinkReturnDownloadLink() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
@@ -379,7 +379,7 @@ public with sharing class LEXEventsControllerTest {
 		);
 		insert acc;
 
-		Id RecordTypeIdContact = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Job Seeker').getRecordTypeId();
+		Id recordTypeIdContact = Schema.SObjectType.Contact.getRecordTypeInfosByDeveloperName().get('Job_Seeker').getRecordTypeId();
 
 		Contact c = new Contact();
 		c.FirstName = 'testcc';
@@ -390,7 +390,7 @@ public with sharing class LEXEventsControllerTest {
 		c.OtherPostalCode = '552022';
 		c.OtherCity = 'testcc';
 		c.Launchpad__Stage__c = 'Enrollment';
-		c.RecordTypeId = RecordTypeIdContact;
+		c.RecordTypeId = recordTypeIdContact;
 		insert c;
 
 		Launchpad__Event__c e = new Launchpad__Event__c();
@@ -415,11 +415,15 @@ public with sharing class LEXEventsControllerTest {
 		cdl.ShareType = 'V';
 		insert cdl;
 
-		LEXEventsController.getDownloadLink(e.Id);
+		Test.startTest();
+		List<String> links = LEXEventsController.getDownloadLink(e.Id);
+		Test.stopTest();
+
+		System.assertEquals(1, links.size(), 'No link returned');
 	}
 
 	@isTest
-	static void testGetDownloadLink_returnDownloadLinkNoAccess() {
+	static void getDownloadLinkReturnDownloadLinkNoAccess() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
@@ -438,7 +442,7 @@ public with sharing class LEXEventsControllerTest {
 		);
 		insert acc;
 
-		Id RecordTypeIdContact = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Job Seeker').getRecordTypeId();
+		Id recordTypeIdContact = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Job Seeker').getRecordTypeId();
 
 		Contact c = new Contact();
 		c.FirstName = 'testcc';
@@ -449,7 +453,7 @@ public with sharing class LEXEventsControllerTest {
 		c.OtherPostalCode = '552022';
 		c.OtherCity = 'testcc';
 		c.Launchpad__Stage__c = 'Enrollment';
-		c.RecordTypeId = RecordTypeIdContact;
+		c.RecordTypeId = recordTypeIdContact;
 		insert c;
 
 		Launchpad__Event__c e = new Launchpad__Event__c();
@@ -473,6 +477,7 @@ public with sharing class LEXEventsControllerTest {
 		cdl.LinkedEntityId = newDocument.Id;
 		cdl.ShareType = 'V';
 		insert cdl;
+
 		try {
 			Profile readOnlyProfile = [SELECT Id FROM Profile WHERE Name LIKE '%Read Only%' LIMIT 1];
 			// Generate a unique username
@@ -501,7 +506,7 @@ public with sharing class LEXEventsControllerTest {
 	}
 
 	@isTest
-	static void testRegisterForEvent_returnEventRegistrationSuccessful() {
+	static void registerForEventReturnEventRegistrationSuccessful() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
@@ -566,21 +571,21 @@ public with sharing class LEXEventsControllerTest {
 		System.runAs(adminUser) {
 			Boolean success = LEXEventsController.registerForEvent(e.Id);
 
-			System.assert(success);
+			System.assert(success, 'Did not register for event');
 
 			success = LEXEventsController.cancelRegisterForEvent(e.Id);
 
-			System.assert(success);
+			System.assert(success, 'Did not cancel event registration');
 
 			success = LEXEventsController.registerForEvent(e.Id);
 			LEXEventsController.registerForEvent(e2.Id);
 
-			System.assert(success);
+			System.assert(success, 'Did not register for event');
 		}
 	}
 
 	@isTest
-	static void testRegisterForEvent_returnEventRegistrationSuccessfulNoAccess() {
+	static void registerForEventReturnEventRegistrationSuccessfulNoAccess() {
 		if (NAMESPACE_PREFIX == null) {
 			NAMESPACE_PREFIX = '';
 		}
