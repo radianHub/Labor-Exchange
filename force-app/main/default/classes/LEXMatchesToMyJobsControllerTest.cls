@@ -60,21 +60,21 @@ private without sharing class LEXMatchesToMyJobsControllerTest {
 		}
 	}
 
-	// @isTest
-	// private static void getJobData() {
-	// 	User communityUser = [SELECT Id FROM User WHERE firstName = 'Privileged' LIMIT 1];
+	@isTest
+	private static void getJobData() {
+		User communityUser = [SELECT Id FROM User WHERE firstName = 'Privileged' LIMIT 1];
 
-	// 	System.runAs(communityUser) {
-	// 		Test.startTest();
-	// 		List<Launchpad__Job__C> jobs = LEXMatchesToMyJobsController.getJobData();
-	// 		Test.stopTest();
+		System.runAs(communityUser) {
+			Test.startTest();
+			List<Launchpad__Job__C> jobs = LEXMatchesToMyJobsController.getJobData();
+			Test.stopTest();
 
-	// 		Assert.areEqual(1, jobs.size(), 'No jobs returned');
-	// 	}
-	// }
+			Assert.areEqual(1, jobs.size(), 'No jobs returned');
+		}
+	}
 
 	@isTest
-	private static void getJobData_NoContact() {
+	private static void getJobDataNoContact() {
 		User user = (User) new SObjectBuilder(User.sObjectType)
 			.put(User.CommunityNickname, 'standarduser' + DateTime.now().getTime())
 			.put(User.Username, 'standarduser' + DateTime.now().getTime() + '@' + Math.random() + '.com')
@@ -96,21 +96,25 @@ private without sharing class LEXMatchesToMyJobsControllerTest {
 		}
 	}
 
-	// @isTest
-	// private static void getJobMatches_All() {
-	// 	User communityUser = [SELECT Id FROM User WHERE firstName = 'Privileged' LIMIT 1];
+	@isTest
+	private static void getJobMatchesAll() {
+		User communityUser = [SELECT Id FROM User WHERE firstName = 'Privileged' LIMIT 1];
 
-	// 	System.runAs(communityUser) {
-	// 		String jobFilter = 'All';
+		System.runAs(communityUser) {
+			String jobFilter = 'All';
 
-	// 		Test.startTest();
-	// 		LEXMatchesToMyJobsController.MatchFieldSet matchFieldSet = LEXMatchesToMyJobsController.getJobMatches(jobFilter);
-	// 		Test.stopTest();
-	// 	}
-	// }
+			LEXMatchesToMyJobsController.MatchFieldSet matchFieldSet;
+
+			Test.startTest();
+			matchFieldSet = LEXMatchesToMyJobsController.getJobMatches(jobFilter);
+			Test.stopTest();
+
+			Assert.isNotNull(matchFieldSet, 'No matches');
+		}
+	}
 
 	@isTest
-	private static void getJobMatches_NoContact() {
+	private static void getJobMatchesNoContact() {
 		User user = (User) new SObjectBuilder(User.sObjectType)
 			.put(User.CommunityNickname, 'standarduser' + DateTime.now().getTime())
 			.put(User.Username, 'standarduser' + DateTime.now().getTime() + '@' + Math.random() + '.com')
@@ -136,5 +140,4 @@ private without sharing class LEXMatchesToMyJobsControllerTest {
 	private static User getAdminUser() {
 		return [SELECT Id FROM User WHERE Profile.Name = 'System Administrator' AND UserRoleId != NULL LIMIT 1];
 	}
-	
 }

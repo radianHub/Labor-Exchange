@@ -123,98 +123,80 @@ private without sharing class LEXMyJobsControllerTest {
 		}
 	}
 
-	// @IsTest
-	// private static void searchJobsTest() {
-	// 	User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
-	// 	UserRole ownerRole = new UserRole(Name = 'Owner Role');
-	// 	insert ownerRole;
+	@IsTest
+	private static void searchJobsTest() {
+		User adminUser = [SELECT Id, UserRoleId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
+		UserRole ownerRole = new UserRole(Name = 'Owner Role');
+		insert ownerRole;
 
-	// 	adminUser.UserRoleId = ownerRole.Id;
-	// 	update adminUser;
+		adminUser.UserRoleId = ownerRole.Id;
+		update adminUser;
 
-	// 	User tempU;
-	// 	System.runAs(adminUser) {
-	// 		//Id uL = [SELECT Id FROM UserLicense WHERE Name LIKE '%Customer Community%' LIMIT 1].Id;
-	// 		//tempU = createUser([SELECT Id FROM Profile WHERE UserLicenseId = :uL LIMIT 1].Id, 'LimAccess2', 'Test');
-	// 		tempU = createUser([SELECT Id FROM Profile WHERE Name = 'Customer Community User' LIMIT 1].Id, 'LimAccess2', 'Test');
+		User tempU;
+		System.runAs(adminUser) {
+			//Id uL = [SELECT Id FROM UserLicense WHERE Name LIKE '%Customer Community%' LIMIT 1].Id;
+			//tempU = createUser([SELECT Id FROM Profile WHERE UserLicenseId = :uL LIMIT 1].Id, 'LimAccess2', 'Test');
+			tempU = createUser([SELECT Id FROM Profile WHERE Name = 'Customer Community User' LIMIT 1].Id, 'LimAccess2', 'Test');
 
-	// 		tempU.ContactId = [SELECT Id FROM Contact WHERE FirstName = 'Test'].Id;
-	// 		insert tempU;
+			tempU.ContactId = [SELECT Id FROM Contact WHERE FirstName = 'Test'].Id;
+			insert tempU;
 
-	// 		Test.startTest();
-	// 		PermissionSetAssignment psa = new PermissionSetAssignment(
-	// 			PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Labor_Exchange_User_Permissions']
-	// 			.Id,
-	// 			AssigneeId = tempU.Id
-	// 		);
-	// 		insert psa;
-	// 		Test.stopTest();
-	// 	}
+			// Test.startTest();
+			// PermissionSetAssignment psa = new PermissionSetAssignment(
+			// 	PermissionSetId = [SELECT Id FROM PermissionSet WHERE Name = 'Labor_Exchange_User_Permissions']
+			// 	.Id,
+			// 	AssigneeId = tempU.Id
+			// );
+			// insert psa;
+			// Test.stopTest();
+		}
 
-	// 	LEXMyJobsController.JobFieldSet data = LEXMyJobsController.getJobData('Launchpad__Account_Address__c, Launchpad__Closing_Date__c');
+		LEXMyJobsController.JobFieldSet data = LEXMyJobsController.getJobData('Launchpad__Account_Address__c, Launchpad__Closing_Date__c');
 
-	// 	System.runAs(tempU) {
-	// 		List<Launchpad__Job__c> jobs = new List<Launchpad__Job__c>();
+		System.runAs(tempU) {
+			List<Launchpad__Job__c> jobs = new List<Launchpad__Job__c>();
 
-	// 		jobs = LEXMyJobsController.searchJobs(
-	// 			'Job',
-	// 			new Map<String, String>(),
-	// 			new List<String>{ 'Launchpad__Job__c.Name' },
-	// 			'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
-	// 			(String) [SELECT Id FROM Account LIMIT 1].Id
-	// 		);
-	// 		System.assert(jobs.size() > 0, 'No jobs returned.');
+			jobs = LEXMyJobsController.searchJobs(
+				'Job',
+				new Map<String, String>(),
+				new List<String>{ 'Launchpad__Job__c.Name' },
+				'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
+				(String) [SELECT Id FROM Account LIMIT 1].Id
+			);
+			System.assert(jobs.size() > 0, 'No jobs returned.');
 
-	// 		List<Id> fsr = new List<Id>();
-	// 		fsr.add([SELECT Id FROM Launchpad__Skill1__c LIMIT 1].Id);
-	// 		Test.setFixedSearchResults(fsr);
+			List<Id> fsr = new List<Id>();
+			fsr.add([SELECT Id FROM Launchpad__Skill1__c LIMIT 1].Id);
+			Test.setFixedSearchResults(fsr);
 
-	// 		jobs = LEXMyJobsController.searchJobs(
-	// 			'Test',
-	// 			new Map<String, String>(),
-	// 			new List<String>{ 'Launchpad__Job__c.Name' },
-	// 			'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
-	// 			(String) [SELECT Id FROM Account LIMIT 1].Id
-	// 		);
-	// 		System.assert(jobs.size() > 0, 'No jobs returned.');
+			jobs = LEXMyJobsController.searchJobs(
+				'Test',
+				new Map<String, String>(),
+				new List<String>{ 'Launchpad__Job__c.Name' },
+				'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
+				(String) [SELECT Id FROM Account LIMIT 1].Id
+			);
+			System.assert(jobs.size() > 0, 'No jobs returned.');
 
-	// 		jobs = LEXMyJobsController.searchJobs(
-	// 			'Test',
-	// 			new Map<String, String>{ 'Launchpad__Account_Address__c' => 'Open Jobs', 'Launchpad__Closing_Date__c' => 'Expiring Soon' },
-	// 			new List<String>{ 'Launchpad__Job__c.Name' },
-	// 			'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
-	// 			(String) [SELECT Id FROM Account LIMIT 1].Id
-	// 		);
-	// 		System.assert(jobs.size() == 0, 'Job returned.');
+			jobs = LEXMyJobsController.searchJobs(
+				'Test',
+				new Map<String, String>{ 'Launchpad__Account_Address__c' => 'Open Jobs', 'Launchpad__Closing_Date__c' => 'Expiring Soon' },
+				new List<String>{ 'Launchpad__Job__c.Name' },
+				'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
+				(String) [SELECT Id FROM Account LIMIT 1].Id
+			);
+			System.assert(jobs.size() == 0, 'Job returned.');
 
-	// 		jobs = LEXMyJobsController.searchJobs(
-	// 			'Test',
-	// 			new Map<String, String>{ 'Launchpad__Account_Address__c' => 'Closed Jobs', 'Launchpad__Closing_Date__c' => 'Expired' },
-	// 			new List<String>{ 'Launchpad__Job__c.Name' },
-	// 			'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
-	// 			(String) [SELECT Id FROM Account LIMIT 1].Id
-	// 		);
-	// 		System.assert(jobs.size() == 0, 'Job returned.');
-	// 	}
-
-	// 	tempU = createUser([SELECT Id FROM Profile WHERE Name = 'Minimum Access - Salesforce' LIMIT 1].Id, 'LimAccess', 'Test');
-	// 	insert tempU;
-	// 	System.runAs(tempU) {
-	// 		Boolean exc = false;
-	// 		try {
-	// 			List<Launchpad__Job__c> jobs = LEXMyJobsController.searchJobs(
-	// 				'Test',
-	// 				new Map<String, String>(),
-	// 				data.uniqueFields,
-	// 				'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
-	// 				(String) [SELECT Id FROM Account LIMIT 1].Id
-	// 			);
-	// 		} catch (Exception ex) {
-	// 			exc = ex.getMessage() != null;
-	// 		}
-	// 		System.assert(exc, 'User has access to records.');
-	// 	}
-	// }
+			jobs = LEXMyJobsController.searchJobs(
+				'Test',
+				new Map<String, String>{ 'Launchpad__Account_Address__c' => 'Closed Jobs', 'Launchpad__Closing_Date__c' => 'Expired' },
+				new List<String>{ 'Launchpad__Job__c.Name' },
+				'Launchpad__Account_Address__c, Launchpad__Closing_Date__c',
+				(String) [SELECT Id FROM Account LIMIT 1].Id
+			);
+			System.assert(jobs.size() == 0, 'Job returned.');
+		}
+	}
 
 	@IsTest
 	private static void getJobSkillsTest() {

@@ -191,14 +191,22 @@ private class TriggerHandlerTest {
 
 	@isTest
 	static void testVirtualMethods() {
-		TriggerHandler h = new TriggerHandler();
-		h.beforeInsert();
-		h.beforeUpdate();
-		h.beforeDelete();
-		h.afterInsert();
-		h.afterUpdate();
-		h.afterDelete();
-		h.afterUndelete();
+		Exception thrownException;
+
+		try {
+			TriggerHandler h = new TriggerHandler();
+			h.beforeInsert();
+			h.beforeUpdate();
+			h.beforeDelete();
+			h.afterInsert();
+			h.afterUpdate();
+			h.afterDelete();
+			h.afterUndelete();
+		} catch (Exception ex) {
+			thrownException = ex;
+		}
+
+		Assert.isNull(thrownException, 'An error was thrown');
 	}
 
 	/***************************************
