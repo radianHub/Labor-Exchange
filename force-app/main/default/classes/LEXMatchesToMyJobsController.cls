@@ -38,9 +38,9 @@ public with sharing class LEXMatchesToMyJobsController {
 
 			String accountId = userContact[0].AccountId;
 
-			if (!SObjectHelper.canQueryObj('launchpad__Job__c')) {
-				throw SObjectHelperException.queryPermissionException('launchpad__Job__c');
-			}
+			// if (!SObjectHelper.canQueryObj('launchpad__Job__c')) {
+			// 	throw SObjectHelperException.queryPermissionException('launchpad__Job__c');
+			// }
 
 			String query = 'SELECT Id, Name FROM Launchpad__Job__c WHERE Launchpad__Account__c = :accountId';
 
@@ -57,7 +57,8 @@ public with sharing class LEXMatchesToMyJobsController {
 				query += ' AND launchpad__Stage__c IN :openStages';
 			}
 
-			query += ' WITH SECURITY_ENFORCED ORDER BY Name';
+			// query += ' WITH SECURITY_ENFORCED ORDER BY Name';
+			query += ' ORDER BY Name';
 
 			return Database.query(query);
 		} catch (Exception e) {
