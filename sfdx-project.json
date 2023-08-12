@@ -2,11 +2,55 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "Labor Exchange",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": "",
+      "dependencies": [
+        {
+          "package": "04t4w0000011W9e"
+        }
+      ]
+    },
+    {
+      "path": "force-app",
+      "package": "Labor Exchange Unlocked",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": ""
     }
   ],
-  "name": "dx-empty",
-  "namespace": "",
+  "name": "LaunchpadLaborExchange",
+  "namespace": "LaunchpadCo",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "55.0"
+  "sourceApiVersion": "56.0",
+  "packageAliases": {
+    "Labor Exchange": "0Ho3b000000CaSeCAK",
+    "Labor Exchange Unlocked": "0Ho3b000000CaSjCAK",
+    "Labor Exchange Unlocked@0.1.0-3": "04t3b000000lj6CAAQ",
+    "Labor Exchange Unlocked@0.1.0-4": "04t3b000000lj6HAAQ",
+    "Labor Exchange Unlocked@0.1.0-5": "04t3b000000lj6MAAQ",
+    "Labor Exchange Unlocked@0.1.0-6": "04t3b000000lj6RAAQ",
+    "Labor Exchange@0.1.0-1": "04t3b000000lj6WAAQ",
+    "Labor Exchange@0.1.0-2": "04t3b000000lj6bAAA",
+    "Labor Exchange Unlocked@0.1.0-7": "04t3b000000lj6lAAA",
+    "Labor Exchange@0.1.0-3": "04t3b000000lj6qAAA",
+    "Labor Exchange@0.1.0-4": "04t3b000000lj6vAAA",
+    "Labor Exchange@0.1.0-5": "04t3b000000lj70AAA",
+    "Labor Exchange@0.1.0-6": "04t3b000000lj75AAA",
+    "Labor Exchange@0.1.0-7": "04t3b000000lj7KAAQ",
+    "Labor Exchange@0.1.0-1-temporary-integrate": "04t3b000000lj7PAAQ",
+    "Labor Exchange@0.1.0-8": "04t3b000000lj7UAAQ",
+    "Labor Exchange@0.1.0-9": "04t3b000000lj7ZAAQ",
+    "Labor Exchange@0.1.0-10": "04t3b000000lj7eAAA",
+    "Labor Exchange Unlocked@0.1.0-8": "04t3b000000lj7jAAA",
+    "Labor Exchange@0.1.0-11": "04t3b000000lj7oAAA",
+    "Labor Exchange@0.1.0-12": "04t3b000000lj7tAAA",
+    "Labor Exchange@0.1.0-13": "04t3b000000lj7yAAA",
+    "Labor Exchange@0.1.0-14": "04t3b000000lj88AAA",
+    "Labor Exchange Unlocked@0.1.0-9": "04t3b000000lj8DAAQ",
+    "Labor Exchange@0.1.0-16": "04t3b000000lj8NAAQ"
+  }
 }
