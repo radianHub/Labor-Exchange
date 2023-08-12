@@ -1,13 +1,41 @@
 {
-  "orgName": "my company",
+  "orgName": "Launchpad Labor Exchange Dev",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "features": [
+    "EnableSetPasswordInApi",
+    "ContactsToMultipleAccounts"
+  ],
   "settings": {
+    "accountSettings": {
+      "enableContactHistoryTracking": true,
+      "enableAccountHistoryTracking": true,
+      "enableRelateContactToMultipleAccounts": true,
+      "enableAccountTeams": true
+    },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
     "mobileSettings": {
       "enableS1EncryptedStoragePref2": false
-    }
+    },
+    "userManagementSettings": {
+      "enableNewProfileUI": true,
+      "enableEnhancedPermsetMgmt": true,
+      "enableEnhancedProfileMgmt": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled" : true,
+      "enableOotbProfExtUserOpsEnable" : true
+    },
+    "enhancedNotesSettings": {
+      "enableEnhancedNotes": true,
+      "enableTasksOnEnhancedNotes": true
+    },
+    "emailTemplateSettings": {
+      "enableTemplateEnhancedFolderPref": true
+    },
+    "emailAdministrationSettings": {
+      "enableEmailToSalesforce": true
+  }
   }
 }
