@@ -43,6 +43,18 @@ h3 {
     margin: 1rem;
 }
 
-.floatRight {
+/* .floatRight {
     float: right;
+} */
+
+/* .header-container {
+    float: left;
+} */
+
+.button-container {
+    display: flex;
+}
+
+.edit-button {
+    flex: 1;
 }

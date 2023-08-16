@@ -57,32 +57,32 @@ export default class lexLoginComponent extends LightningElement {
 	handleLoginScreen(event) {
 		let tile = event.currentTarget.id;
 		this.selectedTile = tile.substring(0, 5);
-		if (tile.substring(0, 5) == 'tile1') {
-			if (this.showTile1Login == true) {
+		if (tile.substring(0, 5) === 'tile1') {
+			if (this.showTile1Login === true) {
 				this.showLoginTile = true;
 			} else {
 				window.location.href = this.redirectURLtile1;
 			}
-		} else if (tile.substring(0, 5) == 'tile2') {
-			if (this.showTile2Login == true) {
+		} else if (tile.substring(0, 5) === 'tile2') {
+			if (this.showTile2Login === true) {
 				this.showLoginTile = true;
 			} else {
 				window.location.href = this.redirectURLtile2;
 			}
-		} else if (tile.substring(0, 5) == 'tile3') {
-			if (this.showTile3Login == true) {
+		} else if (tile.substring(0, 5) === 'tile3') {
+			if (this.showTile3Login === true) {
 				this.showLoginTile = true;
 			} else {
 				window.location.href = this.redirectURLtile3;
 			}
 		}
 	}
-	handleForgotPassword(event) {
+	handleForgotPassword() {
 		window.location.href = this.redirectURLForgotPassword;
 	}
 
-	keyCodeChecker(component, event, helper) {
-		if (component.which == 13) {
+	keyCodeChecker(component) {
+		if (component.which === 13) {
 			this.handleLogin();
 		}
 	}
@@ -117,15 +117,15 @@ export default class lexLoginComponent extends LightningElement {
 	}
 
 	get tile1CSS() {
-		return this.showLoginTile && this.selectedTile == 'tile1' ? this.selectedTileCSS : this.notSelectedTileCSS;
+		return this.showLoginTile && this.selectedTile === 'tile1' ? this.selectedTileCSS : this.notSelectedTileCSS;
 	}
 
 	get tile2CSS() {
-		return this.showLoginTile && this.selectedTile == 'tile2' ? this.selectedTileCSS : this.notSelectedTileCSS;
+		return this.showLoginTile && this.selectedTile === 'tile2' ? this.selectedTileCSS : this.notSelectedTileCSS;
 	}
 
 	get tile3CSS() {
-		return this.showLoginTile && this.selectedTile == 'tile3' ? this.selectedTileCSS : this.notSelectedTileCSS;
+		return this.showLoginTile && this.selectedTile === 'tile3' ? this.selectedTileCSS : this.notSelectedTileCSS;
 	}
 
 	get tiletextCSS() {
@@ -133,46 +133,43 @@ export default class lexLoginComponent extends LightningElement {
 	}
 
 	get tileborderCSS1() {
-		if (this.showLoginTile && this.selectedTile == 'tile1') {
+		if (this.showLoginTile && this.selectedTile === 'tile1') {
 			return this.selectedtileColor
 				? 'border: 1px solid ' + this.selectedtileColor + ';background-color:' + this.selectedtileColor
 				: 'border: 1px solid rgb(84, 105, 141);background-color:rgb(84, 105, 141);';
-		} else {
-			return this.tileColor
-				? 'border: 1px solid ' + this.defaultTilebackgroundColor + ';background-color:' + this.defaultTilebackgroundColor
-				: 'border: 1px solid rgb(84, 105, 141)';
 		}
+		return this.tileColor
+			? 'border: 1px solid ' + this.defaultTilebackgroundColor + ';background-color:' + this.defaultTilebackgroundColor
+			: 'border: 1px solid rgb(84, 105, 141)';
 	}
 	get tileborderCSS2() {
-		if (this.showLoginTile && this.selectedTile == 'tile2') {
+		if (this.showLoginTile && this.selectedTile === 'tile2') {
 			return this.selectedtileColor
 				? 'border: 1px solid ' + this.selectedtileColor + ';background-color:' + this.selectedtileColor
 				: 'border: 1px solid rgb(84, 105, 141);background-color:rgb(84, 105, 141);';
-		} else {
-			return this.tileColor
-				? 'border: 1px solid ' + this.defaultTilebackgroundColor + ';background-color:' + this.defaultTilebackgroundColor
-				: 'border: 1px solid rgb(84, 105, 141)';
 		}
+		return this.tileColor
+			? 'border: 1px solid ' + this.defaultTilebackgroundColor + ';background-color:' + this.defaultTilebackgroundColor
+			: 'border: 1px solid rgb(84, 105, 141)';
 	}
 	get tileborderCSS3() {
-		if (this.showLoginTile && this.selectedTile == 'tile3') {
+		if (this.showLoginTile && this.selectedTile === 'tile3') {
 			return this.selectedtileColor
 				? 'border: 1px solid ' + this.selectedtileColor + ';background-color:' + this.selectedtileColor
 				: 'border: 1px solid rgb(84, 105, 141);background-color:rgb(84, 105, 141);';
-		} else {
-			return this.tileColor
-				? 'border: 1px solid ' + this.defaultTilebackgroundColor + ';background-color:' + this.defaultTilebackgroundColor
-				: 'border: 1px solid rgb(84, 105, 141)';
 		}
+		return this.tileColor
+			? 'border: 1px solid ' + this.defaultTilebackgroundColor + ';background-color:' + this.defaultTilebackgroundColor
+			: 'border: 1px solid rgb(84, 105, 141)';
 	}
 
 	get largeDeviceSize() {
-		if (this.showTile1 == true && this.showTile2 == true && this.showTile3 == true) {
+		if (this.showTile1 === true && this.showTile2 === true && this.showTile3 === true) {
 			this.largesize = 4;
 		} else if (
-			(this.showTile1 == true && this.showTile2 == true) ||
-			(this.showTile1 == true && this.showTile3 == true) ||
-			(this.showTile2 == true && this.showTile3 == true)
+			(this.showTile1 === true && this.showTile2 === true) ||
+			(this.showTile1 === true && this.showTile3 === true) ||
+			(this.showTile2 === true && this.showTile3 === true)
 		) {
 			this.largesize = 6;
 		} else {
@@ -183,17 +180,17 @@ export default class lexLoginComponent extends LightningElement {
 
 	get notSelectedTileCSS() {
 		if (FORM_FACTOR === 'Large') return 'tile fixed-height slds-grid slds-grid_vertical-align-center slds-grid_align-space';
-		else return 'tile slds-grid slds-grid_vertical-align-center slds-grid_align-space';
+		return 'tile slds-grid slds-grid_vertical-align-center slds-grid_align-space';
 	}
 
 	get selectedTileCSS() {
 		if (FORM_FACTOR === 'Large') return 'selected-tile fixed-height slds-grid slds-grid_vertical-align-center slds-grid_align-space';
-		else return 'selected-tile slds-grid slds-grid_vertical-align-center slds-grid_align-space';
+		return 'selected-tile slds-grid slds-grid_vertical-align-center slds-grid_align-space';
 	}
 
 	get containerCSS() {
 		if (FORM_FACTOR === 'Large') return this.showLoginTile ? 'container-width-half' : 'container-width';
-		else return 'mobile-container-width';
+		return 'mobile-container-width';
 	}
 
 	get label() {

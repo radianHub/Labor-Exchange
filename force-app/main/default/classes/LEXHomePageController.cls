@@ -1,10 +1,6 @@
 public with sharing class LEXHomePageController {
 	@AuraEnabled(cacheable=true)
 	public static List<LaborExchangeCommunity_HomePage__mdt> getHomePageTileInfo() {
-		/*CRUD/FLS Security check */
-		if (!SobjectHelper.canQueryObj('LaborExchangeCommunity_HomePage__mdt')) {
-			throw new SObjectHelperException.queryPermissionException('LaborExchangeCommunity_HomePage__mdt');
-		}
 		return [
 			SELECT
 				Id,

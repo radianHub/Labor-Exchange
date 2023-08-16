@@ -1,12 +1,4 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" controller="LEXSelfRegistrationBodyController" access="global">
-    <aura:html tag="style">
-        .slds-modal__container {
-            margin: 0 auto;
-            width: 80% !important;
-            max-width: 100% !important;
-            min-width: 20rem;
-        }
-    </aura:html>
 
     <aura:attribute name="attList" type="List"  access="global"/>
     <aura:attribute name="agreed" type="Boolean" access="global"/>

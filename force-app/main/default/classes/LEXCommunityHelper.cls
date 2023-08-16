@@ -18,9 +18,6 @@ public inherited sharing class LEXCommunityHelper {
 	 * @RETURN List<LaborExchangeCommunity_PageProperties__mdt>                    *
 	 *******************************************************************************/
 	public static List<LaborExchangeCommunity_PageProperties__mdt> getLEXPageProperties(String page) {
-		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__mdt');
-		}
 		List<LaborExchangeCommunity_PageProperties__mdt> pp = [
 			SELECT Id, Field_Set__c, Section_Header__c, Sub_Header__c, Section_Order__c
 			FROM LaborExchangeCommunity_PageProperties__mdt
@@ -37,9 +34,6 @@ public inherited sharing class LEXCommunityHelper {
 	 * @RETURN List<LaborExchangeCommunity_FieldProperties__mdt>                    *
 	 ********************************************************************************/
 	public static List<LaborExchangeCommunity_FieldProperties__mdt> getLEXFieldProperties(Set<Id> pagePropertyIds) {
-		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
-		}
 		List<LaborExchangeCommunity_FieldProperties__mdt> fp = [
 			SELECT
 				LaborExchangeCommunity_PageProperties__c,
@@ -78,21 +72,11 @@ public inherited sharing class LEXCommunityHelper {
 		Schema.DescribeSObjectResult describeSObjectResultObj = SObjectHelper.getDescribeSObjectResult(objectName);
 		//sObjectTypeObj.getDescribe();
 
-		Schema.FieldSet fieldSet = describeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
-		// Schema.FieldSet fieldSet = describeSObjectResultObj.FieldSets.getMap().get('LaunchpadCo__Field_Set_1__c');
-
-		// LaunchpadCo__Field_Set_1__c
-		// Field_Set_1__c
+    Schema.FieldSet fieldSet = describeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
+		
 		if (fieldSet == null && fieldSetName.countMatches('__') == 1) {
-			// if () {
 			Integer index = fieldSetName.indexOf('__') + 2;
 			fieldSetName = fieldSetName.right(fieldSetName.length() - index);
-			// } else {
-			// field = name;
-			// }
-
-			// fieldSetName = 'Field_Set_1__c';
-			// describeSObjectResultObj.FieldSets.getMap().get('Field_Set_1__c');
 
 			fieldSet = describeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
 		}
@@ -100,8 +84,7 @@ public inherited sharing class LEXCommunityHelper {
 		if (fieldSet == null) {
 			System.debug('field set not found. Make sure the namespace and field set api name are correct');
 		}
-		return fieldSet;
-	}
+		return fieldSet;	}
 
 	public static List<Option> fetchPicklistValues(Schema.DescribeFieldResult fieldResult) {
 		List<Option> values = new List<Option>();

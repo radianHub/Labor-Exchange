@@ -1,45 +1,57 @@
 <template>
-	<lightning-spinner if:true={isLoading} alternative-text="Loading" size="large" class="slds-is-absolute"></lightning-spinner>
-	<lightning-layout horizontal-align="center" multiple-rows="true">
-		<lightning-layout-item padding="around-medium" size="12" large-device-size="11" small-device-size="9">
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
 			<span style={headerCSS}>
-				<h1 style="font-weight: 900; font-size: 30px">{config.applicationListHeader}</h1>
-				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">
-					{config.description}
-				</p>
+				<h1 class="header-title">{config.applicationListHeader}</h1>
+				<p class="header-description">{config.description}</p>
 			</span>
 		</lightning-layout-item>
 	</lightning-layout>
-	<lightning-layout horizontal-align="center" multiple-rows="true">
-		<lightning-layout-item if:true={isDesktop} padding="around-medium" size="12" large-device-size="11" small-device-size="9">
+	<lightning-layout
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			if:true={isDesktop}
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
 			<table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
 				<thead lwc:if={hiresFound}>
 					<tr class="slds-line-height_reset">
-						<template if:true={hireFields} for:each={hireFields} for:item="field">
+						<template
+							if:true={hireFields}
+							for:each={hireFields}
+							for:item="field">
 							<th
-								class=""
+								class="hire-field"
 								scope="col"
-								key={field.fieldLabel}
-								style="background-color: #e5e5e5; font-size: 1rem; padding: 1rem">
-								<div class="slds-truncate" title={field.fieldLabel}>{field.fieldLabel}</div>
+								key={field.fieldLabel}>
+								<div
+									class="slds-truncate"
+									title={field.fieldLabel}>
+									{field.fieldLabel}
+								</div>
 							</th>
 						</template>
 						<th
 							if:true={showButtonColumn}
-							class=""
-							scope="col"
-							style="background-color: #e5e5e5; padding-top: 1rem; padding-bottom: 1rem">
+							class="button-column"
+							scope="col">
 							<a
 								if:true={config.showRedirectButton}
-								style="
-									width: 100%;
-									min-width: 150px;
-									line-height: normal;
-									color: rgb(255, 255, 255);
-									height: 42px;
-									font-weight: normal;
-								"
-								class="slds-button slds-button_brand"
+								class="slds-button slds-button_brand redirect-button"
 								href={config.redirectButtonRedirectUrl}>
 								{config.redirectButtonLabel}
 							</a>
@@ -47,11 +59,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<template if:true={hiresData} for:each={hiresData} for:item="hire">
+					<template
+						if:true={hiresData}
+						for:each={hiresData}
+						for:item="hire">
 						<tr key={hire.Id}>
-							<template if:true={hire.details} for:each={hire.details} for:item="item">
-								<td data-label={item.label} key={item.label}>
-									<div class="slds-truncate" title={item.value} style="font-size: 1rem; color: #747474">
+							<template
+								if:true={hire.details}
+								for:each={hire.details}
+								for:item="item">
+								<td
+									data-label={item.label}
+									key={item.label}>
+									<div
+										class="slds-truncate details-field"
+										title={item.value}>
 										<c-lex-formatted-field field={item}></c-lex-formatted-field>
 									</div>
 								</td>
@@ -61,35 +83,36 @@
 				</tbody>
 			</table>
 		</lightning-layout-item>
-		<lightning-layout-item if:false={isDesktop} size="12" large-device-size="11" small-device-size="9">
+		<lightning-layout-item
+			if:false={isDesktop}
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
 			<table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
 				<thead lwc:if={hiresFound}>
 					<tr class="slds-line-height_reset">
-						<template if:true={hireFields} for:each={hireFields} for:item="field">
+						<template
+							if:true={hireFields}
+							for:each={hireFields}
+							for:item="field">
 							<th
-								class=""
+								class="field-label"
 								scope="col"
-								key={field.fieldLabel}
-								style="background-color: #e5e5e5; font-size: 1rem; padding: 1rem">
-								<div class="slds-truncate" title={field.fieldLabel}>{field.fieldLabel}</div>
+								key={field.fieldLabel}>
+								<div
+									class="slds-truncate"
+									title={field.fieldLabel}>
+									{field.fieldLabel}
+								</div>
 							</th>
 						</template>
 						<th
 							if:true={showButtonColumn}
-							class=""
-							scope="col"
-							style="background-color: #e5e5e5; padding-top: 1rem; padding-bottom: 1rem">
+							class="button-column"
+							scope="col">
 							<a
 								if:true={config.showRedirectButton}
-								style="
-									width: 100%;
-									min-width: 150px;
-									line-height: normal;
-									color: rgb(255, 255, 255);
-									height: 42px;
-									font-weight: normal;
-								"
-								class="slds-button slds-button_brand"
+								class="slds-button slds-button_brand redirect-button"
 								href={config.redirectButtonRedirectUrl}>
 								{config.redirectButtonLabel}
 							</a>
@@ -97,11 +120,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<template if:true={hiresData} for:each={hiresData} for:item="hire">
+					<template
+						if:true={hiresData}
+						for:each={hiresData}
+						for:item="hire">
 						<tr key={hire.Id}>
-							<template if:true={hire.details} for:each={hire.details} for:item="item">
-								<td data-label={item.label} key={item.label}>
-									<div class="slds-truncate" title={item.value} style="font-size: 1rem; color: #747474">
+							<template
+								if:true={hire.details}
+								for:each={hire.details}
+								for:item="item">
+								<td
+									data-label={item.label}
+									key={item.label}>
+									<div
+										class="slds-truncate details-field"
+										title={item.value}>
 										<c-lex-formatted-field field={item}></c-lex-formatted-field>
 									</div>
 								</td>
@@ -111,11 +144,14 @@
 				</tbody>
 			</table>
 		</lightning-layout-item>
-		<lightning-layout-item if:false={hiresFound} padding="around-medium" size="12" large-device-size="11" small-device-size="9">
+		<lightning-layout-item
+			if:false={hiresFound}
+			padding="around-medium"
+			size="12"
+			large-device-size="11"
+			small-device-size="9">
 			<br />
-			<span style="font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold"
-				>{config.noJobApplicationMessage}</span
-			>
+			<span class="no-applications">{config.noJobApplicationMessage}</span>
 			<br />
 			<br />
 			<br />

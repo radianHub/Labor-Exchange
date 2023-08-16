@@ -15,7 +15,6 @@ public with sharing class SObjectHelper {
 		for (Integer index = 0, size = results.size(); index < size; index++) {
 			if (results[index].isSuccess()) {
 			} else {
-				// system.debug('An error occurred while upserting records: ' + results[index].getErrors());
 				throw new SobjectHelperException.DMLException('An error occurred while upserting records: ' + results[index].getErrors());
 			}
 		}
@@ -24,9 +23,8 @@ public with sharing class SObjectHelper {
 	public static void checkErrors(Database.SaveResult[] results) {
 		for (Integer index = 0, size = results.size(); index < size; index++) {
 			if (results[index].isSuccess()) {
-				// System.debug(results[index].getId() + ' was created');
+				System.debug(results[index].getId() + ' was created');
 			} else {
-				// system.debug('An error occurred while inserting records: ' + results[index].getErrors());
 				throw new SobjectHelperException.DMLException('An error occurred while inserting records: ' + results[index].getErrors());
 			}
 		}
@@ -144,8 +142,6 @@ public with sharing class SObjectHelper {
 			decision = Security.stripInaccessible(AccessType.READABLE, records);
 		}
 
-		// system.debug('Removed fields: ' + decision.getRemovedFields());
-		// system.debug('Records: ' + decision.getRecords());
 		return decision.getRecords();
 	}
 

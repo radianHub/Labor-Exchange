@@ -1,5 +1,5 @@
 export const UPDATE_REQUEST = 'updaterequest';
-export const REFRESH_APEX = 'refreshapex'
+export const REFRESH_APEX = 'refreshapex';
 
 export class UpdateRequestEvent extends CustomEvent {
 	constructor(detail) {
@@ -18,7 +18,7 @@ export class RefreshApexEvent extends CustomEvent {
 			detail,
 			cancelable: true,
 			bubbles: true,
-			composed: true
-		})
+			composed: true,
+		});
 	}
 }

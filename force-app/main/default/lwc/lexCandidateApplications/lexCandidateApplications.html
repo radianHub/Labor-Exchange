@@ -12,9 +12,11 @@
 			size="12"
 			large-device-size="11"
 			small-device-size="9">
+			<!-- This dynamically pulls in client-controlled values through a component property -->
+			<!-- We cannot modify to be contained in the corresponding CSS class -->
 			<span style={headerCSS}>
-				<h1 style="font-weight: 900; font-size: 30px text-align: center">{config.applicationListHeader}</h1>
-				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">{config.description}</p>
+				<h1 class="app-list-header">{config.applicationListHeader}</h1>
+				<p class="app-list-description">{config.description}</p>
 			</span>
 		</lightning-layout-item>
 	</lightning-layout>
@@ -35,10 +37,9 @@
 							for:each={myApplicationFields}
 							for:item="field">
 							<th
-								class=""
+								class="table-header"
 								scope="col"
-								key={field.fieldLabel}
-								style="background-color: #e5e5e5; font-size: 1rem; padding: 1rem">
+								key={field.fieldLabel}>
 								<div
 									class="slds-truncate"
 									title={field.fieldLabel}>
@@ -48,13 +49,11 @@
 						</template>
 						<th
 							if:true={showButtonColumn}
-							class=""
-							scope="col"
-							style="background-color: #e5e5e5; padding-top: 1rem; padding-bottom: 1rem">
+							class="table-header"
+							scope="col">
 							<a
 								if:true={config.showRedirectButton}
-								style="width: 100%; min-width: 150px; line-height: normal; color: rgb(255, 255, 255); height: 42px; font-weight: normal"
-								class="slds-button slds-button_brand"
+								class="slds-button slds-button_brand, redirect-label"
 								href={config.redirectButtonRedirectUrl}>
 								{config.redirectButtonLabel}
 							</a>
@@ -76,16 +75,14 @@
 									key={item.label}>
 									<div
 										if:true={item.isStandardField}
-										class="slds-truncate"
-										title={item.value}
-										style="font-size: 1rem; color: #747474">
+										class="slds-truncate, field"
+										title={item.value}>
 										<c-lex-formatted-field field={item}></c-lex-formatted-field>
 									</div>
 									<div
 										if:true={item.isJobName}
-										class="slds-truncate"
-										title={item.value}
-										style="font-size: 1rem; color: #747474">
+										class="slds-truncate, field"
+										title={item.value}>
 										<lightning-button
 											variant="base"
 											label={item.value}
@@ -96,9 +93,8 @@
 									</div>
 									<div
 										if:true={item.isAppNumber}
-										class="slds-truncate"
-										title={item.value}
-										style="font-size: 1rem; color: #747474">
+										class="slds-truncate, field"
+										title={item.value}>
 										<lightning-button
 											variant="base"
 											label={item.value}
@@ -155,9 +151,7 @@
 			size="12"
 			large-device-size="11"
 			small-device-size="9">
-			<span style="font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold"
-				>{config.noJobApplicationMessage}</span
-			>
+			<span class="no-apps.message">{config.noJobApplicationMessage}</span>
 		</lightning-layout-item>
 	</lightning-layout>
 </template>

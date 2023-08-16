@@ -240,10 +240,7 @@ public with sharing class LEXMyJobsController {
 			Set<Id> jobMatchedBySkillIds = new Set<Id>();
 
 			if (keyword != '') {
-				String searchQuery =
-					'FIND \'*' +
-					String.escapeSingleQuotes(keyword) +
-					'*\' IN ALL FIELDS RETURNING Launchpad__Skill1__c(Id, Name, Launchpad__ZID__c)';
+				String searchQuery = 'FIND \'*' + keyword + '*\' IN ALL FIELDS RETURNING Launchpad__Skill1__c(Id, Name, Launchpad__ZID__c)';
 				List<List<SObject>> sr = Search.query(searchQuery);
 
 				if (sr != null && !sr.isEmpty()) {

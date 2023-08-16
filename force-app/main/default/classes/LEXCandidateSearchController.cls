@@ -526,7 +526,7 @@ public with sharing class LEXCandidateSearchController {
 			if (keyword != '') {
 				// query skills
 				Set<Id> skillIds = new Set<Id>();
-				String keywordQuery = '\'%' + String.escapeSingleQuotes(keyword) + '%\'';
+				String keywordQuery = '\'%' + keyword + '%\'';
 
 				String skillQuery = 'SELECT Id, Name FROM Launchpad__Skill1__c WHERE Name LIKE ' + keywordQuery;
 				//Launchpad__Skill1__c testQuery = [SELECT Id, Name FROM Launchpad__Skill1__c WHERE Name LIKE :keywordQuery];

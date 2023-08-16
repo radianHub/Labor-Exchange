@@ -1,3 +1,90 @@
+.THIS .mymodal .slds-modal__container {
+    margin: 0 auto;
+    width: 80% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .confirmation .slds-modal__container {
+    margin: 0 auto;
+    width: 40% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .maps .slds-modal__container {
+    margin: 0 auto;
+    width: 80% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .maps button.slds-button_brand,
+.THIS .maps button.slds-button_brand:hover,
+.THIS .maps button.slds-button_brand:active,
+.THIS .confirmation button.slds-button_brand,
+.THIS .confirmation button.slds-button_brand:hover,
+.THIS .confirmation button.slds-button_brand:active {
+    color: #FFFFFF !important;
+    height: 42px;
+    width: 15%;
+}
+
+.THIS .maps button.slds-button[disabled] {
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    color: #FFFFFF !important;
+    height: 42px;
+    width: 15%;
+}
+
+.THIS .viewCourse .slds-modal__container {
+    margin: 0 auto;
+    width: 90% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .eventRegistration .slds-modal__container {
+    margin: 0 auto;
+    width: 50% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+/* .THIS .slds-modal__container .modal-body {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.THIS .maps button.slds-button_brand,
+.THIS .maps button.slds-button_brand:hover,
+.THIS .maps button.slds-button_brand:active,
+.THIS .confirmation button.slds-button_brand,
+.THIS .confirmation button.slds-button_brand:hover,
+.THIS .confirmation button.slds-button_brand:active {
+    color: #FFFFFF !important;
+    height: 42px;
+    width: 30%;
+}
+
+.THIS .maps button.slds-button[disabled] {
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    color: #FFFFFF !important;
+    height: 42px;
+    width:
+        30%;
+}
+
+.THIS .maps button.backToHome {
+    width: 50% !important;
+}
+
+.THIS lightning-button button {
+    width: 100%
+} */
+
 .THIS .skill button {
     padding-left: 1rem;
     padding-right: 1rem; 
@@ -35,7 +122,7 @@
 }
 
 .THIS button.section-control lightning-primitive-icon {
-    float: right !important;
+    /* float: right !important; */
 }
 
 .THIS .slds-checkbox_add-button [type=checkbox]:checked~.slds-checkbox_faux, 

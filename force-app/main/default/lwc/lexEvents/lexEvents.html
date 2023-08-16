@@ -14,8 +14,8 @@
 			large-device-size="11"
 			small-device-size="9">
 			<span style={headerCSS}>
-				<h1 style="font-weight: 900; font-size: 30px">{eventConfig.header}</h1>
-				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">{eventConfig.description}</p>
+				<h1 class="header">{eventConfig.header}</h1>
+				<p class="header-description">{eventConfig.description}</p>
 			</span>
 		</lightning-layout-item>
 		<lightning-layout-item
@@ -25,14 +25,13 @@
 			large-device-size="11"
 			small-device-size="9">
 			<template if:true={eventConfig.redirectEventButtonDescription}>
-				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">
+				<p class="event-btn-redirect-description">
 					<i>{eventConfig.redirectEventButtonDescription}</i>
 				</p>
 			</template>
 			<a
 				href={eventConfig.redirectEventButtonRedirectUrl}
-				class="slds-button slds-button_brand"
-				style="color: rgb(255, 255, 255); height: 42px">
+				class="slds-button slds-button_brand, event-btn-redirect-label">
 				{eventConfig.redirectEventButtonLabel}
 			</a>
 		</lightning-layout-item>
@@ -79,7 +78,7 @@
 							size="12"
 							large-device-size="4"
 							small-device-size="12">
-							<div >
+							<div>
 								<c-lex-event-tile
 									if:false={event.isOnDemand}
 									onregister={handleRegister}
@@ -97,7 +96,6 @@
 									no-of-fields-above-button={event.noOfFields}>
 								</c-lex-event-tile>
 							</div>
-							
 						</lightning-layout-item>
 					</template>
 				</lightning-layout>
@@ -111,7 +109,7 @@
 			large-device-size="11"
 			small-device-size="9">
 			<br />
-			<span style="font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold">{eventConfig.noResultMessage}</span>
+			<span class="no-result-message">{eventConfig.noResultMessage}</span>
 			<br />
 			<br />
 			<br />

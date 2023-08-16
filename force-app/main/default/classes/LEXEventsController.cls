@@ -14,21 +14,13 @@ public with sharing class LEXEventsController {
 
 			Labor_Exchange_Community_Setup__c lexCommunitySetup = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
-				throw new SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__mdt');
-			}
-
 			List<LaborExchangeCommunity_PageProperties__mdt> pageList = [
 				SELECT Id, MasterLabel, Field_Set__c, Event_Fields_Above_Button__c, Page__c, Event_Type__c, Record_Type__c
 				FROM LaborExchangeCommunity_PageProperties__mdt
 				WHERE Active__c = 'Yes' AND Page__c IN ('Event Tile', 'Event Details') AND Object_API__c = 'Launchpad__Event__c'
 				WITH SECURITY_ENFORCED
 			];
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
-				throw new SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
-			}
+
 			for (LaborExchangeCommunity_FieldProperties__mdt ff : [
 				SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
 				FROM LaborExchangeCommunity_FieldProperties__mdt
@@ -91,19 +83,9 @@ public with sharing class LEXEventsController {
 				);
 			}
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('User')) {
-				throw new SObjectHelperException.queryPermissionException('User');
-			}
-
 			User currentUser = [SELECT Id, ContactId, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() WITH SECURITY_ENFORCED LIMIT 1];
 
 			Set<Id> registeredEventIds = new Set<Id>();
-
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event_Attendee_Enrollment__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event_Attendee_Enrollment__c');
-			}
 
 			String companyId = currentUser.Contact.AccountId;
 			String eaeQuery;
@@ -173,10 +155,6 @@ public with sharing class LEXEventsController {
 	@AuraEnabled
 	public static Launchpad__Event__c getEventData(String eventId, List<String> fields, String filterField) {
 		try {
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event__c');
-			}
 			String initialQuery =
 				'SELECT Id, {0} FROM Launchpad__Event__c WHERE Launchpad__Available_in_Community__c = TRUE AND ' +
 				filterField +
@@ -201,10 +179,6 @@ public with sharing class LEXEventsController {
 		Set<Id> documentIdSet = new Set<Id>();
 		Set<Id> contentDocumentIdSet = new Set<Id>();
 
-		/*CRUD/FLS Security check */
-		if (!SobjectHelper.canQueryObj('Launchpad__Document__c')) {
-			throw new SObjectHelperException.queryPermissionException('Launchpad__Document__c');
-		}
 		for (Launchpad__Document__c document : [
 			SELECT Id, Launchpad__Title__c
 			FROM Launchpad__Document__c
@@ -215,10 +189,6 @@ public with sharing class LEXEventsController {
 		}
 
 		if (!documentIdSet.isEmpty()) {
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('ContentDocumentLink')) {
-				throw new SObjectHelperException.queryPermissionException('ContentDocumentLink');
-			}
 			List<ContentDocumentLink> documentLinks = [
 				SELECT Id, ContentDocumentId
 				FROM ContentDocumentLink
@@ -230,21 +200,12 @@ public with sharing class LEXEventsController {
 				contentDocIds.add(cdl.ContentDocumentId);
 			}
 			if (!contentDocIds.isEmpty()) {
-				/*CRUD/FLS Security check */
-				if (!SobjectHelper.canQueryObj('ContentVersion')) {
-					throw new SObjectHelperException.queryPermissionException('ContentVersion');
-				}
 				List<ContentVersion> cvList = [
 					SELECT Id, ContentDocumentID, Title, FileType
 					FROM ContentVersion
 					WHERE ContentDocumentID IN :contentDocIds
 					WITH SECURITY_ENFORCED
 				];
-
-				/*CRUD/FLS Security check */
-				if (!SobjectHelper.canQueryObj('ContentDistribution')) {
-					throw new SObjectHelperException.queryPermissionException('ContentDistribution');
-				}
 				List<ContentDistribution> cdList = [
 					SELECT ContentDownloadURL, ContentDocumentId
 					FROM ContentDistribution
@@ -293,16 +254,8 @@ public with sharing class LEXEventsController {
 	@AuraEnabled
 	public static Boolean registerForEvent(String eventId) {
 		try {
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('User')) {
-				throw new SObjectHelperException.queryPermissionException('User');
-			}
 			User currentUser = [SELECT Id, ContactId, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() WITH SECURITY_ENFORCED LIMIT 1];
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event__c');
-			}
 			Launchpad__Event__c eventToRegisterFor = [
 				SELECT Id, Launchpad__Event_Type__c
 				FROM Launchpad__Event__c
@@ -311,10 +264,6 @@ public with sharing class LEXEventsController {
 				LIMIT 1
 			];
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event_Attendee_Enrollment__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event_Attendee_Enrollment__c');
-			}
 			List<Launchpad__Event_Attendee_Enrollment__c> eaeList = [
 				SELECT Id, Launchpad__Cancelled_via_Community__c
 				FROM Launchpad__Event_Attendee_Enrollment__c
@@ -348,6 +297,7 @@ public with sharing class LEXEventsController {
 
 			return true;
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -355,15 +305,8 @@ public with sharing class LEXEventsController {
 	@AuraEnabled
 	public static Boolean cancelRegisterForEvent(String eventId) {
 		try {
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('User')) {
-				throw new SObjectHelperException.queryPermissionException('User');
-			}
 			User currentUser = [SELECT Id, ContactId, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() WITH SECURITY_ENFORCED LIMIT 1];
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event__c');
-			}
+
 			Launchpad__Event__c eventToRegisterFor = [
 				SELECT Id, Launchpad__Event_Type__c
 				FROM Launchpad__Event__c
@@ -372,10 +315,6 @@ public with sharing class LEXEventsController {
 				LIMIT 1
 			];
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event_Attendee_Enrollment__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event_Attendee_Enrollment__c');
-			}
 			List<Launchpad__Event_Attendee_Enrollment__c> eaeList = [
 				SELECT Id, Launchpad__Cancelled_via_Community__c
 				FROM Launchpad__Event_Attendee_Enrollment__c
@@ -394,6 +333,7 @@ public with sharing class LEXEventsController {
 
 			return true;
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -417,10 +357,6 @@ public with sharing class LEXEventsController {
 			List<String> filters = new List<String>();
 			Map<String, Set<String>> eventTypeRecordTypeMap = new Map<String, Set<String>>();
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
-				throw new SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__mdt');
-			}
 			List<LaborExchangeCommunity_PageProperties__mdt> pageList = [
 				SELECT Id, MasterLabel, Field_Set__c, Event_Fields_Above_Button__c, Page__c, Event_Type__c, Record_Type__c
 				FROM LaborExchangeCommunity_PageProperties__mdt
@@ -519,6 +455,7 @@ public with sharing class LEXEventsController {
 				return events;
 			}
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -563,10 +500,6 @@ public with sharing class LEXEventsController {
 				}
 			);
 
-			/*CRUD/FLS Security check */
-			if (!SobjectHelper.canQueryObj('Launchpad__Event__c')) {
-				throw new SObjectHelperException.queryPermissionException('Launchpad__Event__c');
-			}
 			events = Database.query(query);
 
 			if (priorityFilterField != '') {

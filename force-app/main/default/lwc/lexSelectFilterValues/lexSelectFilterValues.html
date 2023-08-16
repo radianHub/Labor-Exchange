@@ -1,27 +1,52 @@
 <template>
-    <lightning-layout if:true={filter} horizontal-align="center" multiple-rows="true">
-        <lightning-layout-item size="12" large-device-size="12" small-device-size="12" class="slds-p-vertical_medium">
-            <h3 style="font-size: 1rem;
-            font-weight: bold;">{filter.title}:</h3>
-        </lightning-layout-item>
-        <template if:true={filter.values} for:each={filter.values} for:item="option">
-            <lightning-layout-item key={option.value} size="12" large-device-size="12" small-device-size="12" class="slds-p-vertical_small">
-                <div style="display:inline-flex; width:100%">
-                    <lightning-input type="checkbox-button" label={option.label} name={option.value}></lightning-input>
-                    &nbsp;
-                    <span style="margin:5px; width:calc(100% - 40px)" title={option.label}>{option.label}</span>
-                </div>
-            </lightning-layout-item>
-        </template>
-        <lightning-layout-item padding="around-medium" size="12" large-device-size="12" small-device-size="12" style="text-align: right;">
-            <lightning-button 
-                variant="brand" 
-                label={buttonLabel}
-                title={buttonLabel}
-                icon-name="utility:filter" 
-                class="search-button"
-                onclick={handleApplyFilters}
-            ></lightning-button>
-        </lightning-layout-item>
-    </lightning-layout>
+	<lightning-layout
+		if:true={filter}
+		horizontal-align="center"
+		multiple-rows="true">
+		<lightning-layout-item
+			size="12"
+			large-device-size="12"
+			small-device-size="12"
+			class="slds-p-vertical_medium">
+			<h3 class="filter-title">{filter.title}:</h3>
+		</lightning-layout-item>
+		<template
+			if:true={filter.values}
+			for:each={filter.values}
+			for:item="option">
+			<lightning-layout-item
+				key={option.value}
+				size="12"
+				large-device-size="12"
+				small-device-size="12"
+				class="slds-p-vertical_small">
+				<div class="option">
+					<lightning-input
+						type="checkbox-button"
+						label={option.label}
+						name={option.value}></lightning-input>
+					&nbsp;
+					<span
+						class="option-label"
+						title={option.label}
+						>{option.label}</span
+					>
+				</div>
+			</lightning-layout-item>
+		</template>
+		<lightning-layout-item
+			padding="around-medium"
+			size="12"
+			large-device-size="12"
+			small-device-size="12"
+			class="slds-text-align_right">
+			<lightning-button
+				variant="brand"
+				label={buttonLabel}
+				title={buttonLabel}
+				icon-name="utility:filter"
+				class="search-button"
+				onclick={handleApplyFilters}></lightning-button>
+		</lightning-layout-item>
+	</lightning-layout>
 </template>

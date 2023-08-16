@@ -37,7 +37,6 @@ export default class LEXCandidateApplications extends LightningElement {
 
 	renderedCallback() {
 		if (this.applicationData) {
-			console.log('ApplicationData:', JSON.parse(JSON.stringify(this.applicationData)));
 			this.applicationsFound = Object.keys(this.applicationData).length === 0 ? false : true;
 		}
 	}
