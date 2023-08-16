@@ -122,7 +122,7 @@
 }
 
 .THIS button.section-control lightning-primitive-icon {
-    float: right !important;
+    /* float: right !important; */
 }
 
 .THIS .slds-checkbox_add-button [type=checkbox]:checked~.slds-checkbox_faux, 

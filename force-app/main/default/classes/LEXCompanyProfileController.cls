@@ -126,18 +126,12 @@ public with sharing class LEXCompanyProfileController {
 	@AuraEnabled(cacheable=true)
 	public static CompanyProfileData getSections() {
 		try {
-			if (!SObjectHelper.canQueryObj('User')) {
-				throw SobjectHelperException.queryPermissionException('User');
-			}
 			List<User> currentUser = [
 				SELECT Id, ContactId
 				FROM User
 				WHERE Id = :UserInfo.getUserId()
 				WITH SECURITY_ENFORCED
 			];
-			if (!SObjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
-			}
 			String contactId;
 			String accountId;
 			if (currentUser.size() > 0) {
@@ -174,13 +168,7 @@ public with sharing class LEXCompanyProfileController {
 			Schema.DescribeSObjectResult dor = LEXCommunityHelper.getSObjSchema('Account');
 
 			for (Section s : data.sections) {
-				Schema.FieldSet objectFieldSet = LEXCommunityHelper.getFieldSet('Account', s.fieldSetName);
-
-				if (objectFieldSet == null) {
-					continue;
-				}
-
-				for (Schema.FieldSetMember fm : objectFieldSet.getFields()) {
+				for (Schema.FieldSetMember fm : dor.FieldSets.getMap().get(s.fieldSetName).getFields()) {
 					LaborExchangeCommunity_FieldProperties__mdt fp = fieldsMap.containsKey(s.Id + '-' + fm.getFieldPath())
 						? fieldsMap.get(s.Id + '-' + fm.getFieldPath())
 						: null;
@@ -216,15 +204,13 @@ public with sharing class LEXCompanyProfileController {
 				query += ' FROM Account WHERE Id = :accountId WITH SECURITY_ENFORCED';
 			}
 
-			if (!SObjectHelper.canQueryObj('Account')) {
-				throw SObjectHelperException.queryPermissionException('Account');
-			}
-			List<Account> accountList = Database.query(query);
+			List<Account> accountList = Database.query(String.escapeSingleQuotes(query));
 			if (accountList.size() > 0) {
 				data.myAccount = accountList[0];
 			}
 			return data;
 		} catch (Exception e) {
+			System.debug('EXCEPTION: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -241,6 +227,7 @@ public with sharing class LEXCompanyProfileController {
 			SObjectHelper.updateObj(acc);
 			return true;
 		} catch (Exception e) {
+			System.debug('EXCEPTION: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}

@@ -20,11 +20,11 @@
 						size="12"
 						large-device-size="8"
 						small-device-size="12">
-						<div style="float: left">
+						<div class="header-container">
 							<h1 class="header">
 								<span style={headerCSS}> {label.header} </span>
 							</h1>
-							<p class="subHeader">{label.description}</p>
+							<p class="subheader">{label.description}</p>
 						</div>
 					</lightning-layout-item>
 					<lightning-layout-item
@@ -79,13 +79,13 @@
 								size="12"
 								large-device-size="10"
 								small-device-size="12">
-								<div style="float: left">
+								<div class="subheader-container">
 									<h1>
 										<span style={subheaderCSS}> {section.header} </span>
 									</h1>
 									<p
 										if:true={section.subHeader}
-										class="subHeader">
+										class="subheader">
 										{section.subHeader}
 									</p>
 								</div>
@@ -103,15 +103,9 @@
 									medium-device-size={field.screenSize}
 									large-device-size={field.screenSize}
 									key={field.fieldName}>
-									<div
-										style="display: flex"
-										class="slds-grid slds-grid_vertical-align-center">
-										<div
-											style="width: 100%"
-											class="">
-											<label
-												class="slds-form-element__label"
-												style="font-size: 1rem">
+									<div class="slds-grid slds-grid_vertical-align-center, flex-div">
+										<div class="max-width">
+											<label class="slds-form-element__label, field-label">
 												{field.fieldLabel}
 												<template if:false={showEditBtn}>
 													<template if:true={field.isRequired}>*</template>
@@ -275,8 +269,7 @@
 											title={label.errorTitle}></lightning-icon>
 										<div
 											if:true={isDesktop}
-											class="slds-float_right slds-p-around_small success"
-											style="content: ''; width: 48px; height: 48px"></div>
+											class="slds-float_right slds-p-around_small success, content-size"></div>
 									</div>
 								</lightning-layout-item>
 							</template>

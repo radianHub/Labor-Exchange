@@ -31,3 +31,15 @@ hr {
     /* height: 255px; */
     height: 130px;
 }
+
+.item-label {
+    font-size: 1rem;
+}
+
+.item {
+    font-size: 1rem; font-weight: bold;
+}
+
+.layout-align-left {
+    text-align: left;
+}

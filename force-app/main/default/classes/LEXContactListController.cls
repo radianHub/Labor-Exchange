@@ -184,13 +184,7 @@ public with sharing class LEXContactListController {
 
 			Integer i = 0;
 			for (PageProp p : data.pageProp) {
-				Schema.FieldSet objectFieldSet = LEXCommunityHelper.getFieldSet('Contact', p.fieldSetName);
-
-				if (objectFieldSet == null) {
-					continue;
-				}
-
-				for (Schema.FieldSetMember fm : objectFieldSet.getFields()) {
+				for (Schema.FieldSetMember fm : dor.FieldSets.getMap().get(p.fieldSetName).getFields()) {
 					LaborExchangeCommunity_FieldProperties__mdt fp = fieldsMap.containsKey(p.id + '-' + fm.getFieldPath())
 						? fieldsMap.get(p.id + '-' + fm.getFieldPath())
 						: null;
@@ -221,15 +215,13 @@ public with sharing class LEXContactListController {
 				query += ' FROM Contact WHERE AccountId = :accountId AND Launchpad__Active__c = \'Yes\' WITH SECURITY_ENFORCED';
 			}
 
-			if (!SObjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
-			}
-			List<Contact> contactList = Database.query(query);
+			List<Contact> contactList = Database.query(String.escapeSingleQuotes(query));
 			if (contactList.size() > 0) {
 				data.myContacts = contactList;
 			}
 			return data;
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -237,15 +229,9 @@ public with sharing class LEXContactListController {
 	@AuraEnabled
 	public static void archiveContact(String contactId) {
 		try {
-			if (!SObjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
-			}
-			List<Contact> con = [SELECT Id FROM Contact WHERE Id = :contactId];
+			List<Contact> con = [SELECT Id FROM Contact WHERE Id = :contactId WITH SECURITY_ENFORCED];
 
-			if (!SObjectHelper.canQueryObj('User')) {
-				throw SObjectHelperException.queryPermissionException('User');
-			}
-			List<User> conUser = [SELECT Id, IsActive FROM User WHERE ContactId = :contactId];
+			List<User> conUser = [SELECT Id, IsActive FROM User WHERE ContactId = :contactId WITH SECURITY_ENFORCED];
 
 			if (conUser.size() > 0) {
 				LEXContactListController.deactivateUser((String) conUser[0].Id);
@@ -262,7 +248,7 @@ public with sharing class LEXContactListController {
 
 	@future
 	public static void deactivateUser(String userId) {
-		User u = [SELECT Id, IsActive FROM User WHERE Id = :userId];
+		User u = [SELECT Id, IsActive FROM User WHERE Id = :userId WITH SECURITY_ENFORCED];
 		u.IsActive = false;
 		SObjectHelper.updateObj(u);
 	}

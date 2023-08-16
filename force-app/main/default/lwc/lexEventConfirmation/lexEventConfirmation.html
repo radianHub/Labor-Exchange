@@ -13,10 +13,12 @@
 			size="12"
 			large-device-size="12"
 			small-device-size="12">
-			<div style="text-align: center">
-				<h3 style="font-weight: 900; font-size: 26px"><span style={headerCSS}>{title}</span></h3>
+			<div class="align-center">
+				<h3 class="title-container">
+					<span style={headerCSS}>{title}</span>
+				</h3>
 				<br />
-				<div style="font-size: 0.85rem">{subTitle}</div>
+				<div class="subtitle">{subTitle}</div>
 			</div>
 		</lightning-layout-item>
 		<lightning-layout-item
@@ -38,8 +40,8 @@
 						size="12"
 						large-device-size="12"
 						small-device-size="10">
-						<span style="font-size: 1rem">{item.label}:&nbsp;</span>
-						<span style="font-size: 1rem; font-weight: bold; word-wrap: break-word">
+						<span class="item-label">{item.label}:&nbsp;</span>
+						<span class="item">
 							<c-lex-formatted-field field={item}></c-lex-formatted-field>
 						</span>
 					</lightning-layout-item>
@@ -50,7 +52,7 @@
 			size="12"
 			large-device-size="12"
 			small-device-size="10"
-			style="text-align: center">
+			class="align-center">
 			<br />
 			<div class="btn-container">
 				<lightning-button

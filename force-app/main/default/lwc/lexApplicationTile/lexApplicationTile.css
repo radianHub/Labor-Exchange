@@ -1,0 +1,15 @@
+.lightning-layout-align-left {
+    text-align: left;
+}
+
+.layout-item-background-color {
+    background-color: #e5e5e5;
+}
+
+.item-label {
+    font-size: 1rem; font-weight: bold;
+}
+
+.field {
+    font-size: 1rem; color: #747474;
+}

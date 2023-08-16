@@ -24,3 +24,11 @@
 .text-bold {
     font-weight: 700;
 }
+
+.color {
+    color: #ffffff;
+}
+
+.details {
+    font-size: 0.85rem;
+}

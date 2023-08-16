@@ -16,3 +16,7 @@ p.sub-text {
     line-height: 2;
     font-weight: lighter;
 }
+
+.layout-item-buttons {
+    text-align: center;
+}

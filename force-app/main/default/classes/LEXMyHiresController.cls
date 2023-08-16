@@ -16,12 +16,8 @@ public with sharing class LEXMyHiresController {
 			// Get the org defaults for the Labor_Exchange_Community_Setup__c custom setting
 			Labor_Exchange_Community_Setup__c lexConfigDefaults = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
-			// CRUD/FLS Check
-			flsQueryCheck('LaborExchangeCommunity_PageProperties__mdt');
 			List<LaborExchangeCommunity_PageProperties__mdt> pageList = getHiresPageProperties(objectName);
 
-			// CRUD/FLS Check
-			flsQueryCheck('LaborExchangeCommunity_FieldProperties__mdt');
 			for (LaborExchangeCommunity_FieldProperties__mdt ff : getCandidateApplicationsFieldProperties(pageList)) {
 				if (!fieldsMap.containsKey(ff.LaborExchangeCommunity_PageProperties__c)) {
 					fieldsMap.put(ff.LaborExchangeCommunity_PageProperties__c, new Map<String, String>());
@@ -65,8 +61,6 @@ public with sharing class LEXMyHiresController {
 	// * CHILD CLASSES
 	public without sharing class LEXMyApplicationsControllerPrivileged {
 		public HiresData getMyHires(List<String> uniqueFields) {
-			// CRUD/FLS check
-			flsQueryCheck('User');
 			HiresData hiresData = new HiresData();
 
 			// We need to get applications where the parent job's Launchpad__Account__c field matches the user's associated account
@@ -83,7 +77,7 @@ public with sharing class LEXMyHiresController {
 
 			Date today = Date.today();
 
-			List<Launchpad__Hire__c> hires = Database.query(query);
+			List<Launchpad__Hire__c> hires = Database.query(String.escapeSingleQuotes(query));
 			hiresData.hiresData = hires;
 
 			return hiresData;
@@ -111,12 +105,7 @@ public with sharing class LEXMyHiresController {
 			WITH SECURITY_ENFORCED
 		];
 	}
-	// Further abstraction of CRUD/FLS check
-	private static void flsQueryCheck(String objectApiName) {
-		if (!SobjectHelper.canQueryObj(objectApiName)) {
-			throw SObjectHelperException.queryPermissionException(objectApiName);
-		}
-	}
+
 	private static List<LaborExchangeCommunity_FieldProperties__mdt> getCandidateApplicationsFieldProperties(
 		List<LaborExchangeCommunity_PageProperties__mdt> pageList
 	) {

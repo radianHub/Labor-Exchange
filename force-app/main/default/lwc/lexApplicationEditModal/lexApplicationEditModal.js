@@ -230,7 +230,7 @@ export default class LexApplicationEditModal extends LightningModal {
 				const isBlank = inpFields[i].value === '' || inpFields[i].value === undefined;
 				this.data = this.data.map((field) => {
 					return inpFields[i].name === field.fieldApiName
-						? { ...field, value: isBlank && inpFields[i].type !== 'checkbox' ? null : inpFields[i].value }
+						? { ...field, value: isBlank && inp[i].type !== 'checkbox' ? null : inpFields[i].value }
 						: { ...field };
 				});
 			}
@@ -238,7 +238,7 @@ export default class LexApplicationEditModal extends LightningModal {
 				const isBlank = taFields[i].value === '' || taFields[i].value === undefined;
 				this.data = this.data.map((field) => {
 					return taFields[i].name === field.fieldApiName
-						? { ...field, value: isBlank && taFields[i].type !== 'checkbox' ? null : taFields[i].value }
+						? { ...field, value: isBlank && inp[i].type !== 'checkbox' ? null : taFields[i].value }
 						: { ...field };
 				});
 			}
@@ -249,18 +249,9 @@ export default class LexApplicationEditModal extends LightningModal {
 			}
 
 			if (!this.isDesktop) {
-				console.log('this.data:', JSON.parse(JSON.stringify(this.data)));
-
-				console.log('Running Mobile section...');
 				this.data = this.data.map((field) => {
-					console.log('field', JSON.parse(JSON.stringify(field)));
 					if (multiFields.length > 0) {
 						multiFields.forEach((inp) => {
-							console.log('multiFields:', multiFields);
-
-							console.log('inp.title:', inp.title);
-							console.log('field.fieldApiName:', field.fieldApiName);
-
 							if (inp.title === field.fieldApiName) {
 								let values = [];
 								for (let i = 0; i < inp.selectedOptions.length; i++) {
@@ -277,7 +268,6 @@ export default class LexApplicationEditModal extends LightningModal {
 				});
 			}
 		}
-		console.log('this.data:', JSON.parse(JSON.stringify(this.data)));
 
 		this.data.forEach((field) => {
 			this.saveData[field.fieldApiName] = field.value;
@@ -292,7 +282,6 @@ export default class LexApplicationEditModal extends LightningModal {
 			.then((result) => {
 				this.showToast(this.labels.successTitle, 'Application successfully updated!', 'success');
 				this.dispatchEvent(new RefreshApexEvent());
-				console.log('refreshapex fired in lexApplicationEditModal');
 				this.close();
 				this.saving = false;
 			})
