@@ -149,10 +149,4 @@
 		config="{!v.config}"
 		onrefreshcomponent="{!c.refreshData}">
 	</c:lexMyJobs>
-
-	<aura:html tag="style">
-		.search-button button, .search-button button:hover, .search-button button:active { height: 42px; line-height: normal; width: 100%; } .job-button button,
-		.job-button button:hover, .job-button button:active { height: 42px; line-height: normal; width: 100%; } .new-job-button button, .new-job-button
-		button:hover, .new-job-button button:active { height: 42px; line-height: normal; }
-	</aura:html>
 </aura:component>

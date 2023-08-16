@@ -193,17 +193,13 @@ export default class LexJobEditModal extends LightningModal {
 		return FORM_FACTOR === 'Small';
 	}
 
-	// get bodyCSS() {
-	// 	return this.isMobile ? slds- slds-grid slds-wrap slds-gutters
-	// }
-
 	get bodyStyling() {
-		return this.isMobile ? '' : 'padding: 10px 50px';
+		return this.isMobile ? '' : 'modal-body slds-grid slds-wrap slds-gutters';
 	}
 
 	// * SETS THE FIELD COLUMN SIZE BASED ON THE USERS DEVICE SIZE
 	get fieldCSS() {
-		return this.isMobile ? 'slds-col slds-size_1-of-1' : 'slds-col slds-size_1-of-2';
+		return this.isMobile ? 'slds-col slds-size_1-of-1 field' : 'slds-col slds-size_1-of-2 field';
 	}
 
 	// * SETS AND RETURNS THE MODAL HEADER

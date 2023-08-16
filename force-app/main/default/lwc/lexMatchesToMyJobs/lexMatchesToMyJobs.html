@@ -15,8 +15,8 @@
 			large-device-size="11"
 			small-device-size="12">
 			<span style={headerCSS}>
-				<h1 style="font-weight: 900; font-size: 30px">{config.header}</h1>
-				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">{config.description}</p>
+				<h1 class="header-title">{config.header}</h1>
+				<p class="header-description">{config.description}</p>
 			</span>
 		</lightning-layout-item>
 		<lightning-layout-item
@@ -85,9 +85,7 @@
 			size="12"
 			large-device-size="11"
 			small-device-size="9">
-			<div style="text-align: center; font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold">
-				{config.noMatchesMessage}
-			</div>
+			<div class="no-matches">{config.noMatchesMessage}</div>
 		</lightning-layout-item>
 	</lightning-layout>
 </template>

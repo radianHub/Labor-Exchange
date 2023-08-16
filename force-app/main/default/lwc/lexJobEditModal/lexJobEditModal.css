@@ -4,6 +4,19 @@ lightning-modal-header {
     --slds-c-modal-heading-font-weight: 900;
 }
 
+.modal-body {
+    padding: 10px 50px;
+}
+
+.header {
+    font-weight: 900;
+    font-size: 30px
+}
+
+.field {
+    padding: 5px
+}
+
 .btn-container {
     display: flex;
     justify-content: end;

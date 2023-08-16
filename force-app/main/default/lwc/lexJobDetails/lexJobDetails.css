@@ -3,3 +3,27 @@
     justify-content: end;
     gap: 10px;
 }
+
+.header-title {
+    font-weight: 900;
+    font-size: 26px;
+}
+
+.header-subtitle {
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.field-title {
+    font-size: 1rem;
+}
+
+.field-value {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.skills-title {
+    font-weight: 900;
+    font-size: 1rem;
+}
