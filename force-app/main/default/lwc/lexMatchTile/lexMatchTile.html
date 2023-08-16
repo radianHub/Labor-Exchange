@@ -9,10 +9,9 @@
 			<hr />
 
 			<lightning-layout
-				class="slds-p-horizontal_medium"
+				class="slds-p-horizontal_medium slds-text-align_left"
 				vertical-align="center"
-				multiple-rows="true"
-				style="text-align: left">
+				multiple-rows="true">
 				<template
 					if:true={details}
 					for:each={details}
@@ -22,8 +21,8 @@
 						size="12"
 						key={item.label}>
 						<div if:true={item.value}>
-							<span style="font-size: 1rem">{item.label}:&nbsp;</span>
-							<span style="font-size: 1rem; font-weight: bold">
+							<span class="field-label">{item.label}:&nbsp;</span>
+							<span class="field-value">
 								<c-lex-formatted-field field={item}></c-lex-formatted-field>
 							</span>
 						</div>

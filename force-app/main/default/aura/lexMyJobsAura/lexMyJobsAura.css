@@ -1,2 +1,22 @@
-.THIS {
+.THIS .search-button button,
+.THIS .search-button button:hover,
+.THIS .search-button button:active {
+    height: 42px;
+    line-height: normal;
+    width: 100%;
+}
+
+.THIS .job-button button,
+.THIS .job-button button:hover,
+.THIS .job-button button:active {
+    height: 42px;
+    line-height: normal;
+    width: 100%;
+}
+
+.THIS .new-job-button button,
+.THIS .new-job-button button:hover,
+.THIS .new-job-button button:active {
+    height: 42px;
+    line-height: normal;
 }

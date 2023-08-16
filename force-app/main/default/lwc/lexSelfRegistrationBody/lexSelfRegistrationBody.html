@@ -6,9 +6,7 @@
 		class="slds-is-absolute"></lightning-spinner>
 	<div
 		if:false={isLoading}
-		style={contentStyle}
-		class="flex-container">
-		<!--style={contentStyle}-->
+		class={contentCSS}>
 		<lightning-layout horizontal-align="center">
 			<lightning-layout-item
 				size="12"
@@ -22,7 +20,7 @@
 						size="12"
 						large-device-size="10"
 						small-device-size="12">
-						<div style="float: left">
+						<div>
 							<h1
 								class="header"
 								style={headerCSS}>
@@ -42,7 +40,7 @@
 						small-device-size="12">
 						<span
 							if:true={isDesktop}
-							style="float: right; margin-right: 27%; font-size: 1rem"
+							class="step"
 							>{stepText}</span
 						>
 						<span if:false={isDesktop}>{stepText}</span>
@@ -77,13 +75,9 @@
 										medium-device-size={field.screenSize}
 										large-device-size={field.screenSize}
 										key={field.fieldName}>
-										<div
-											style="display: flex"
-											class="slds-grid slds-grid_vertical-align-center">
-											<div style="width: 100%">
-												<label
-													class="slds-form-element__label"
-													style="font-size: 1rem">
+										<div class="field-container slds-grid slds-grid_vertical-align-center">
+											<div class="field">
+												<label class="slds-form-element__label field-label">
 													{field.fieldLabel}<template if:true={field.isRequired}>*</template>
 												</label>
 												<lightning-helptext
@@ -252,8 +246,7 @@
 												title={label.errorTitle}></lightning-icon>
 											<div
 												if:true={isDesktop}
-												class="slds-float_right slds-p-around_small success"
-												style="content: ''; width: 48px; height: 48px"></div>
+												class="slds-float_right slds-p-around_small success"></div>
 										</div>
 									</lightning-layout-item>
 								</template>
@@ -262,7 +255,7 @@
 									size="12"
 									large-device-size="12"
 									small-device-size="12">
-									<div style="float: right; margin-right: 4%">
+									<div class="button-next">
 										<lightning-button
 											label={label.nextStepBtn}
 											variant="brand"
@@ -298,7 +291,7 @@
 									size="12"
 									large-device-size="10"
 									small-device-size="12">
-									<div style="float: left">
+									<div>
 										<h1>
 											<span> {section.header} </span>
 										</h1>
@@ -322,13 +315,9 @@
 										medium-device-size={field.screenSize}
 										large-device-size={field.screenSize}
 										key={field.fieldName}>
-										<div
-											style="display: flex"
-											class="slds-grid slds-grid_vertical-align-center">
-											<div style="width: 100%">
-												<label
-													class="slds-form-element__label"
-													style="font-size: 1rem">
+										<div class="slds-grid slds-grid_vertical-align-center field-container">
+											<div class="field">
+												<label class="slds-form-element__label field-label">
 													{field.fieldLabel}<template if:true={field.isRequired}>*</template>
 												</label>
 												<lightning-helptext
@@ -499,8 +488,7 @@
 												title={label.errorTitle}></lightning-icon>
 											<div
 												if:true={isDesktop}
-												class="slds-float_right slds-p-around_small success"
-												style="content: ''; width: 48px; height: 48px"></div>
+												class="slds-float_right slds-p-around_small success"></div>
 										</div>
 									</lightning-layout-item>
 								</template>
@@ -522,7 +510,7 @@
 				large-device-size="10"
 				small-device-size="12">
 				<br /><br />
-				<div style="float: left">
+				<div>
 					<h1>
 						<span> {label.passwordSectionTitle} </span>
 					</h1>
@@ -541,15 +529,9 @@
 						small-device-size="6"
 						medium-device-size="6"
 						large-device-size="6">
-						<div
-							style="display: flex"
-							class="slds-grid slds-grid_vertical-align-center">
-							<div style="width: 100%">
-								<label
-									class="slds-form-element__label"
-									style="font-size: 1rem">
-									{label.passwordLabel}*
-								</label>
+						<div class="slds-grid slds-grid_vertical-align-center field-container">
+							<div class="field">
+								<label class="slds-form-element__label field"> {label.passwordLabel}* </label>
 								<lightning-input
 									type="password"
 									pattern={config.pattern}
@@ -569,8 +551,7 @@
 								title={label.errorTitle}></lightning-icon>
 							<div
 								if:true={isDesktop}
-								class="slds-float_right slds-p-around_small success"
-								style="content: ''; width: 48px; height: 48px"></div>
+								class="slds-float_right slds-p-around_small success"></div>
 						</div>
 					</lightning-layout-item>
 					<lightning-layout-item
@@ -579,15 +560,9 @@
 						small-device-size="6"
 						medium-device-size="6"
 						large-device-size="6">
-						<div
-							style="display: flex"
-							class="slds-grid slds-grid_vertical-align-center">
-							<div style="width: 100%">
-								<label
-									class="slds-form-element__label"
-									style="font-size: 1rem">
-									{label.confirmPasswordLabel}*
-								</label>
+						<div class="slds-grid slds-grid_vertical-align-center field-container">
+							<div class="field">
+								<label class="slds-form-element__label field-label"> {label.confirmPasswordLabel}* </label>
 								<lightning-input
 									type="password"
 									pattern={config.pattern}
@@ -607,8 +582,7 @@
 								title={label.errorTitle}></lightning-icon>
 							<div
 								if:true={isDesktop}
-								class="slds-float_right slds-p-around_small success"
-								style="content: ''; width: 48px; height: 48px"></div>
+								class="slds-float_right slds-p-around_small success"></div>
 						</div>
 					</lightning-layout-item>
 				</lightning-layout>
@@ -629,7 +603,7 @@
 				<br />
 				<div
 					if:true={showauth}
-					style="text-align: left">
+					class="slds-text-align_left">
 					<lightning-button
 						variant="brand"
 						class="wavier"
@@ -644,7 +618,7 @@
 				size="12"
 				large-device-size="10"
 				small-device-size="12">
-				<div style="float: left">
+				<div>
 					<lightning-button
 						label={label.registerBtn}
 						variant="brand"
@@ -676,11 +650,7 @@
 					variant="inverse"
 					size="small"></lightning-icon>
 				<div class="slds-col slds-align-middle">
-					<h2
-						class="slds-text-heading_small"
-						style="font-weight: bold">
-						{errorMessage}
-					</h2>
+					<h2 class="slds-text-heading_small error-message">{errorMessage}</h2>
 				</div>
 			</div>
 			<div class="slds-notify__close">

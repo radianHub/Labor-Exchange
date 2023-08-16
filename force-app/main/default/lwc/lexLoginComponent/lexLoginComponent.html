@@ -1,126 +1,237 @@
 <template>
-    <lightning-spinner
-        if:true={isLoading} 
-        alternative-text="Loading" 
-        size="large"
-        variant="inverse"
-        class="slds-is-absolute"
-    ></lightning-spinner>
-    <div class={containerCSS}>
-        <div style="text-align:center;">
-            <h1>
-                <span style={headerCSS}>
-                    {header}
-                </span>
-            </h1>
-            <p class="subHeader" >
-                 <span >
-                  {description}
-                 </span>
-            </p>
-        </div>
-        <br if:false={showLoginTile}/>
-        <lightning-layout multiple-rows="true">
-            <lightning-layout-item if:true={showTile1} padding="around-small" size="12" large-device-size={largeDeviceSize} small-device-size="12">
-                <div class={tile1CSS} id="tile1"  style={tileborderCSS1} onclick={handleLoginScreen}>
-                    <span class="text" style={tiletextCSS}>
-                        {tiletitle1}
-                    </span>
-                </div>
-            </lightning-layout-item>
-            <lightning-layout-item if:true={showTile2} padding="around-small" size="12" large-device-size={largeDeviceSize} small-device-size="12">
-                    <div class={tile2CSS}  id="tile2" style={tileborderCSS2}  onclick={handleLoginScreen}>
-                        <span class="text" style={tiletextCSS}>
-                            {tiletitle2}
-                        </span>
-                    </div>
-            </lightning-layout-item>
-            <lightning-layout-item  if:true={showTile3} padding="around-small" size="12" large-device-size={largeDeviceSize} small-device-size="12">
-                    <div class={tile3CSS} id="tile3" style={tileborderCSS3}  onclick={handleLoginScreen}>
-                        <span class="text" style={tiletextCSS}>
-                            {tiletitle3}
-                        </span>
-                    </div>
-            </lightning-layout-item>
-            <lightning-layout-item if:true={showLoginTile} padding="around-small" size="12" large-device-size="2" small-device-size="12"></lightning-layout-item>
-            <lightning-layout-item if:true={showLoginTile} padding="around-small" size="12" large-device-size="8" small-device-size="12">
-                <div class="slds-align_absolute-center" onkeypress={keyCodeChecker}>
-                    <lightning-layout vertical-align="center" multiple-rows="true">
-                        <lightning-layout-item padding="horizontal-small" size="12" large-device-size="12" small-device-size="12">
-                            <div class="slds-form-element">
-                                <span data-aria="" class="slds-assistive-text"></span>
-                                <label for="input-9" class="slds-form-element__label slds-no-flex slds-assistive-text">{usernameLoginLabel}</label>
-                                <div class="slds-form-element__control slds-grow slds-input-has-icon slds-input-has-icon_left">
-                                    <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" size="xx-small" variant="inverse" icon-name="utility:user" alternative-text="Preview" title="Preview"></lightning-icon>
-                                    <input type="text" id="input-9" aria-invalid="false" inputmode="email" name="email" placeholder={usernameLoginLabel} class="slds-input">
-                                </div>
-                            </div>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="12" large-device-size="12" small-device-size="12">
-                            <div class="slds-form-element">
-                                <span data-aria="" class="slds-assistive-text"></span>
-                                <label for="input-12" class="slds-form-element__label slds-no-flex slds-assistive-text">{passwordLoginLabel}</label>
-                                <div class="slds-form-element__control slds-grow slds-input-has-icon slds-input-has-icon_left">
-                                    <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" size="xx-small" variant="inverse" icon-name="utility:lock" alternative-text="Preview" title="Preview"></lightning-icon>
-                                    <input type="password" id="input-12" aria-invalid="false" name="password" placeholder={passwordLoginLabel} class="slds-input">
-                                </div>
-                            </div>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="horizontal-small" size="12" large-device-size="12" small-device-size="12">
-                            <lightning-button variant="brand" style="display: grid; text-align:center;width: 100%;height: 40px;font-size: 18px;" onclick={handleLogin} label={loginButtonLabel}></lightning-button>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="12" large-device-size="12" small-device-size="12">
-                            <div class="slds-grid slds-wrap">
-                                <div class="slds-col slds-size_6-of-6">
-                                    <a onclick={handleForgotPassword} style="float: left; font-size: 16px;height: 40px;">
-                                        <u>
-                                        {forgotpasswordlabel}
-                                       </u>
-                                    </a>
-                                </div>
-                            </div>
-                        </lightning-layout-item>
-                    </lightning-layout>
-                </div>
-            </lightning-layout-item>
-            <lightning-layout-item if:true={showLoginTile} padding="around-small" size="12" large-device-size="2" small-device-size="12"></lightning-layout-item>
-        </lightning-layout>
-    </div>
-    <div if:true={errorMessage} class="slds-notify_container">
-        <div class="slds-notify slds-notify--toast slds-theme--error" role="alert">
-            <div class="slds-notify__content slds-grid">
-                <lightning-icon
-                    icon-name="utility:error"
-                    alternative-text={label.errorTitle}
-                    title={label.errorTitle}
-                    class="slds-m-right--small"
-                    variant="inverse"
-                    size="small"
-                ></lightning-icon>
-                <div class="slds-col slds-align-middle">
-                    <h2 class="slds-text-heading_small">{errorMessage}</h2>
-                </div>
-            </div>
-            <div class="slds-notify__close">
-                <lightning-button-icon 
-                    icon-name="utility:close"  
-                    alternative-text={label.closeButton} 
-                    title={label.closeButton}
-                    size="large"
-                    variant="bare-inverse"
-                    onclick={handleErrorClose}
-                ></lightning-button-icon>
-                <span class="slds-assistive-text">{label.closeButton}</span>
-            </div>
-        </div>
-    </div>
-    <footer>
-    <lightning-layout horizontal-align="center" multiple-rows="false">
-        <lightning-layout-item padding="around-medium" size="12" small-device-size="6" medium-device-size="6" large-device-size="6">
-         <div style="width:100%;text-align:center;" >
-          {footer}
-        </div>
-        </lightning-layout-item>
-      </lightning-layout>
-    </footer>
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		variant="inverse"
+		class="slds-is-absolute"></lightning-spinner>
+	<div class={containerCSS}>
+		<div class="slds-text-align_center">
+			<h1>
+				<span style={headerCSS}> {header} </span>
+			</h1>
+			<p class="subHeader">
+				<span> {description} </span>
+			</p>
+		</div>
+		<br if:false={showLoginTile} />
+		<lightning-layout multiple-rows="true">
+			<lightning-layout-item
+				if:true={showTile1}
+				padding="around-small"
+				size="12"
+				large-device-size={largeDeviceSize}
+				small-device-size="12">
+				<div
+					class={tile1CSS}
+					id="tile1"
+					style={tileborderCSS1}
+					onclick={handleLoginScreen}>
+					<span
+						class="text"
+						style={tiletextCSS}>
+						{tiletitle1}
+					</span>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item
+				if:true={showTile2}
+				padding="around-small"
+				size="12"
+				large-device-size={largeDeviceSize}
+				small-device-size="12">
+				<div
+					class={tile2CSS}
+					id="tile2"
+					style={tileborderCSS2}
+					onclick={handleLoginScreen}>
+					<span
+						class="text"
+						style={tiletextCSS}>
+						{tiletitle2}
+					</span>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item
+				if:true={showTile3}
+				padding="around-small"
+				size="12"
+				large-device-size={largeDeviceSize}
+				small-device-size="12">
+				<div
+					class={tile3CSS}
+					id="tile3"
+					style={tileborderCSS3}
+					onclick={handleLoginScreen}>
+					<span
+						class="text"
+						style={tiletextCSS}>
+						{tiletitle3}
+					</span>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item
+				if:true={showLoginTile}
+				padding="around-small"
+				size="12"
+				large-device-size="2"
+				small-device-size="12"></lightning-layout-item>
+			<lightning-layout-item
+				if:true={showLoginTile}
+				padding="around-small"
+				size="12"
+				large-device-size="8"
+				small-device-size="12">
+				<div
+					class="slds-align_absolute-center"
+					onkeypress={keyCodeChecker}>
+					<lightning-layout
+						vertical-align="center"
+						multiple-rows="true">
+						<lightning-layout-item
+							padding="horizontal-small"
+							size="12"
+							large-device-size="12"
+							small-device-size="12">
+							<div class="slds-form-element">
+								<span
+									data-aria=""
+									class="slds-assistive-text"></span>
+								<label
+									for="input-9"
+									class="slds-form-element__label slds-no-flex slds-assistive-text"
+									>{usernameLoginLabel}</label
+								>
+								<div class="slds-form-element__control slds-grow slds-input-has-icon slds-input-has-icon_left">
+									<lightning-icon
+										class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default"
+										size="xx-small"
+										variant="inverse"
+										icon-name="utility:user"
+										alternative-text="Preview"
+										title="Preview"></lightning-icon>
+									<input
+										type="text"
+										id="input-9"
+										aria-invalid="false"
+										inputmode="email"
+										name="email"
+										placeholder={usernameLoginLabel}
+										class="slds-input" />
+								</div>
+							</div>
+						</lightning-layout-item>
+						<lightning-layout-item
+							padding="around-small"
+							size="12"
+							large-device-size="12"
+							small-device-size="12">
+							<div class="slds-form-element">
+								<span
+									data-aria=""
+									class="slds-assistive-text"></span>
+								<label
+									for="input-12"
+									class="slds-form-element__label slds-no-flex slds-assistive-text"
+									>{passwordLoginLabel}</label
+								>
+								<div class="slds-form-element__control slds-grow slds-input-has-icon slds-input-has-icon_left">
+									<lightning-icon
+										class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default"
+										size="xx-small"
+										variant="inverse"
+										icon-name="utility:lock"
+										alternative-text="Preview"
+										title="Preview"></lightning-icon>
+									<input
+										type="password"
+										id="input-12"
+										aria-invalid="false"
+										name="password"
+										placeholder={passwordLoginLabel}
+										class="slds-input" />
+								</div>
+							</div>
+						</lightning-layout-item>
+						<lightning-layout-item
+							padding="horizontal-small"
+							size="12"
+							large-device-size="12"
+							small-device-size="12">
+							<lightning-button
+								variant="brand"
+								class="login-button"
+								onclick={handleLogin}
+								label={loginButtonLabel}></lightning-button>
+						</lightning-layout-item>
+						<lightning-layout-item
+							padding="around-small"
+							size="12"
+							large-device-size="12"
+							small-device-size="12">
+							<div class="slds-grid slds-wrap">
+								<div class="slds-col slds-size_6-of-6">
+									<a
+										onclick={handleForgotPassword}
+										class="password-label">
+										<u> {forgotpasswordlabel} </u>
+									</a>
+								</div>
+							</div>
+						</lightning-layout-item>
+					</lightning-layout>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item
+				if:true={showLoginTile}
+				padding="around-small"
+				size="12"
+				large-device-size="2"
+				small-device-size="12"></lightning-layout-item>
+		</lightning-layout>
+	</div>
+	<div
+		if:true={errorMessage}
+		class="slds-notify_container">
+		<div
+			class="slds-notify slds-notify--toast slds-theme--error"
+			role="alert">
+			<div class="slds-notify__content slds-grid">
+				<lightning-icon
+					icon-name="utility:error"
+					alternative-text={label.errorTitle}
+					title={label.errorTitle}
+					class="slds-m-right--small"
+					variant="inverse"
+					size="small"></lightning-icon>
+				<div class="slds-col slds-align-middle">
+					<h2 class="slds-text-heading_small">{errorMessage}</h2>
+				</div>
+			</div>
+			<div class="slds-notify__close">
+				<lightning-button-icon
+					icon-name="utility:close"
+					alternative-text={label.closeButton}
+					title={label.closeButton}
+					size="large"
+					variant="bare-inverse"
+					onclick={handleErrorClose}></lightning-button-icon>
+				<span class="slds-assistive-text">{label.closeButton}</span>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<lightning-layout
+			horizontal-align="center"
+			multiple-rows="false">
+			<lightning-layout-item
+				padding="around-medium"
+				size="12"
+				small-device-size="6"
+				medium-device-size="6"
+				large-device-size="6">
+				<div class="footer">{footer}</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</footer>
 </template>
