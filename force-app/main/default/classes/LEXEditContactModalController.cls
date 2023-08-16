@@ -159,14 +159,13 @@ public without sharing class LEXEditContactModalController {
 			Schema.DescribeSObjectResult dor = LEXCommunityHelper.getSObjSchema('Contact');
 
 			for (Section s : data.sections) {
-				Schema.FieldSet objectFieldSet = LEXCommunityHelper.getFieldSet('Contact', s.fieldSetName);
+        Schema.FieldSet objectFieldSet = LEXCommunityHelper.getFieldSet('Contact', s.fieldSetName);
 
 				if (objectFieldSet == null) {
 					continue;
 				}
 
-				for (Schema.FieldSetMember fm : objectFieldSet.getFields()) {
-					LaborExchangeCommunity_FieldProperties__mdt fp = fieldsMap.containsKey(s.Id + '-' + fm.getFieldPath())
+				for (Schema.FieldSetMember fm : objectFieldSet.getFields()) {					LaborExchangeCommunity_FieldProperties__mdt fp = fieldsMap.containsKey(s.Id + '-' + fm.getFieldPath())
 						? fieldsMap.get(s.Id + '-' + fm.getFieldPath())
 						: null;
 
@@ -201,15 +200,13 @@ public without sharing class LEXEditContactModalController {
 				query += ' FROM Contact WHERE Id = :contactId WITH SECURITY_ENFORCED';
 			}
 
-			if (!SobjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
-			}
-			List<Contact> contactList = Database.query(query);
+			List<Contact> contactList = Database.query(String.escapeSingleQuotes(query));
 			if (contactList.size() > 0) {
 				data.myContact = contactList[0];
 			}
 			return data;
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -223,7 +220,6 @@ public without sharing class LEXEditContactModalController {
 	public static Boolean upsertContact(String conString) {
 		try {
 			Contact con = (Contact) JSON.deserialize(conString, Contact.class);
-			System.debug('contact ' + con);
 			// ! User needs system context to Assign a New Contact Owner.
 			Database.UpsertResult[] urList = Database.upsert(new List<Contact>{ con });
 			for (Database.UpsertResult ur : urList) {
@@ -237,6 +233,7 @@ public without sharing class LEXEditContactModalController {
 			}
 			return true;
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}

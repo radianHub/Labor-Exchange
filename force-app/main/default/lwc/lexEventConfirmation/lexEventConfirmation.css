@@ -3,3 +3,23 @@
     justify-content: end;
     gap: 10px;
 }
+
+.align-center {
+    text-align: center;
+}
+
+.title-container {
+    font-weight: 900; font-size: 26px;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+}
+
+.item-label {
+    font-size: 1rem;
+}
+
+.item {
+    font-size: 1rem; font-weight: bold; word-wrap: break-word;
+}

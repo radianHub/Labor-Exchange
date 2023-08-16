@@ -1,0 +1,19 @@
+.header {
+    font-weight: 900; font-size: 30px;
+}
+
+.header-description {
+    font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100;
+}
+
+.event-btn-redirect-description {
+    font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100;
+}
+
+.event-btn-redirect-label {
+    color: rgb(255, 255, 255); height: 42px;
+}
+
+.no-result-message {
+    font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold;
+}

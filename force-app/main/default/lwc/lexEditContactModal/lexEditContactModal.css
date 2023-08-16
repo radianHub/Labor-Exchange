@@ -27,3 +27,27 @@ p.subHeader {
 select.multiselect {
     height: 42px;
 }
+
+.popup-header-container {
+    padding: 10px 50px;
+}
+
+.popup-header-container-inner {
+    width: 100%;
+}
+
+.subheader-container {
+    float: left;
+}
+
+.field-label-container {
+    display: flex;
+}
+
+.field-label-container-inner {
+    width: 100%;
+}
+
+.content-size {
+    content: ''; width: 48px; height: 48px;
+}

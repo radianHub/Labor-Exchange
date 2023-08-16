@@ -41,7 +41,6 @@ export default class lexCandidateApplicationsPage extends LightningElement {
 			this.newApplications = data.applications.newApplicationsData;
 			this.pendingApplications = data.applications.pendingApplicationsData;
 			this.processedApplications = data.applications.processedApplicationsData;
-			console.log('this.newApplications in lexCandidateApplicationsTiles:', JSON.parse(JSON.stringify(this.newApplications)));
 
 			this.newApplicationsCount = data.applications.newApplicationsCount;
 			this.pendingApplicationsCount = data.applications.pendingApplicationsCount;
@@ -62,7 +61,6 @@ export default class lexCandidateApplicationsPage extends LightningElement {
 				})
 			);
 		} else if (error) {
-			console.log('ERROR FIRED AT LINE 54 of lexCandidateApplications');
 			this.showNotification(this.label.errorTitle, error.body.message, 'error');
 			this.loadingData = false;
 		}
@@ -77,7 +75,6 @@ export default class lexCandidateApplicationsPage extends LightningElement {
 	// then fire a custom event to pass the application type "newApplications" to the parent component
 	handleClickTile1() {
 		this.applicationData = this.newApplications;
-		console.log('Submitted (new) applicationData:', JSON.parse(JSON.stringify(this.applicationData)));
 		this.handleClickTile(true, false, false, 'newApplications');
 	}
 	// Set tile2Clicked to true and all other tileClicked values to false
@@ -174,7 +171,6 @@ export default class lexCandidateApplicationsPage extends LightningElement {
 		if (this.myApplicationFields !== undefined && this.applicationData !== undefined) {
 			this.applicationData.forEach((record) => {
 				let recordData = [];
-				console.log('record:', record);
 				this.myApplicationFields.forEach((field) => {
 					let value;
 					if (!field.fieldApiName.includes('.')) {
@@ -198,7 +194,6 @@ export default class lexCandidateApplicationsPage extends LightningElement {
 				});
 			});
 		}
-		console.log('result:', JSON.parse(JSON.stringify(result)));
 		return result;
 	}
 }

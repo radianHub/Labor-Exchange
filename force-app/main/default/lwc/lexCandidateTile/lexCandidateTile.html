@@ -12,10 +12,9 @@
             <p class="slds-text-heading_small slds-m-top_xx-small crayon-color slds-p-horizontal_medium">{subTitle}</p-->
 			<hr />
 			<lightning-layout
-				class="slds-p-horizontal_medium"
+				class="slds-p-horizontal_medium, layout-align-left"
 				vertical-align="center"
-				multiple-rows="true"
-				style="text-align: left">
+				multiple-rows="true">
 				<template
 					if:true={details}
 					for:each={details}
@@ -25,8 +24,8 @@
 						size="12"
 						key={item.label}>
 						<div if:true={item.value}>
-							<span style="font-size: 1rem">{item.label}:&nbsp;</span>
-							<span style="font-size: 1rem; font-weight: bold">
+							<span class="item-label">{item.label}:&nbsp;</span>
+							<span class="item">
 								<c-lex-formatted-field field={item}></c-lex-formatted-field>
 							</span>
 						</div>
@@ -36,8 +35,8 @@
 				<lightning-layout-item
 					if:true={skillsString}
 					size="12">
-					<span style="font-size: 1rem">Skills:&nbsp;</span>
-					<span style="font-size: 1rem; font-weight: bold">
+					<span class="item-label">Skills:&nbsp;</span>
+					<span class="item">
 						<lightning-formatted-text value={skillsString}> </lightning-formatted-text>
 					</span>
 				</lightning-layout-item>
@@ -45,8 +44,8 @@
 					size="12"
 					if:true={record.matchPercent}>
 					<div>
-						<span style="font-size: 1rem">{label.matchScoreLabel}:&nbsp;</span>
-						<span style="font-size: 1rem; font-weight: bold"> {record.matchPercent}% </span>
+						<span class="item-label">{label.matchScoreLabel}:&nbsp;</span>
+						<span class="item"> {record.matchPercent}% </span>
 					</div>
 				</lightning-layout-item>
 			</lightning-layout>
@@ -56,10 +55,9 @@
 			class={footerCSS}
 			style={footerStyle}>
 			<lightning-layout
-				class="slds-p-around_medium"
+				class="slds-p-around_medium, layout-align-left"
 				vertical-align="center"
-				multiple-rows="true"
-				style="text-align: left">
+				multiple-rows="true">
 				<!--lightning-layout-item padding="around-medium" size="12" large-device-size="6" small-device-size="12">
                     <lightning-button variant="brand" label={label.viewDetailsBtnLabel}
                         title={label.viewDetailsBtnLabel} icon-name="utility:preview" class="candidate-button"

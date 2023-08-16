@@ -13,7 +13,7 @@ h1 span {
     font-weight: 900;
 }
 
-p.subHeader {
+p.subheader {
     font-size: 1rem;
     line-height: 2;
     font-weight: lighter;
@@ -36,9 +36,9 @@ select.multiselect {
     background-color: rgb(5,69,71);*/
 }
 
-.floatRight {
+/* .floatRight {
     float:right;
-}
+} */
 
 lightning-icon {
     display: none;
@@ -46,4 +46,8 @@ lightning-icon {
 
 div.customError + lightning-icon {
     display: unset;
+}
+
+.content-size {
+    content: ''; width: 48px; height: 48px;
 }

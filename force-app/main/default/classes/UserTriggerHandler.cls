@@ -15,7 +15,4 @@ public with sharing class UserTriggerHandler extends TriggerHandler {
 		// Assign permission sets
 		UserService.assignPermissionSets(newUsers);
 	}
-
-	public override void afterUpdate() {
-	}
 }

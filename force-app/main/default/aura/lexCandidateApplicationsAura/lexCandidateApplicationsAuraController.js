@@ -46,7 +46,6 @@
 
 	handleRefreshApex: function (cmp, event, helper) {
 		const refreshApex = cmp.getEvent('refreshApex');
-		console.log('refreshApex fired');
 		refreshApex.fire();
 	},
 });
