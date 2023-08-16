@@ -1,3 +1,148 @@
+.THIS .filterValues .slds-modal__container {
+    margin: 0 auto;
+    width: 30% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .viewCourse .slds-modal__container {
+    margin: 0 auto;
+    width: 90% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .eventRegistration .slds-modal__container {
+    margin: 0 auto;
+    width: 50% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .slds-is-absolute {
+    position: fixed !important;
+}
+
+.THIS .view-button button,
+.THIS .view-button button:hover,
+.THIS .view-button button:active {
+    height: 42px;
+    width: 180px;
+    line-height: normal;
+    top: 21px;
+}
+
+.THIS .registered-button button,
+.THIS .registered-button button:hover,
+.THIS .registered-button button:active {
+    height: 42px;
+    width: calc(100%/2 - 15px);
+    line-height:
+        normal;
+    top: 21px;
+}
+
+.THIS .view-register button,
+.THIS .view-register button:hover,
+.THIS .view-register button:active {
+    height: 42px;
+    line-height: normal;
+}
+
+.THIS .view-button button[disabled] {
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    width: 200px;
+}
+
+.THIS c-lex-tiles-pagination .download button {
+    height: 42px;
+    color: #FFFFFF !important;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.THIS c-lex-tiles-pagination .page button,
+.THIS c-lex-tiles-pagination .page button:hover,
+.THIS c-lex-tiles-pagination .page button:active {
+    height: 42px;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.THIS c-lex-tiles-pagination .page .slds-button[disabled] {
+    color: rgb(217, 219, 221) !important;
+}
+
+.THIS c-lex-events-filter lightning-input input {
+    height: 42px;
+}
+
+.THIS c-lex-events-filter .search-button button,
+.THIS c-lex-events-filter .search-button button:hover,
+.THIS c-lex-events-filter .search-button button:active,
+.THIS .filterValues .search-button button,
+.THIS .filterValues .search-button button:hover,
+.THIS .filterValues .search-button button:active {
+    height: 42px;
+    line-height: normal;
+    width: 100%;
+}
+
+.THIS .filter-button button,
+.THIS .filter-button button:hover,
+.THIS .filter-button button:active {
+    height: 42px;
+    width: 75%;
+    line-height: normal;
+    padding: 0px;
+}
+
+.THIS .mobile .filter-button button,
+.THIS .mobile .filter-button button:hover,
+.THIS .mobile .filter-button button:active,
+.THIS c-lex-events-filter .mobile .search-button button,
+.THIS c-lex-events-filter .mobile .search-button button:hover,
+.THIS c-lex-events-filter .mobile .search-button button:active {
+    width: 100%
+}
+
+.THIS .no-filter-button button,
+.THIS .no-filter-button button:hover,
+.THIS .no-filter-button button:active {
+    width: 100% !important;
+    line-height: normal;
+    height: 42px;
+}
+
+@media only screen and (max-width: 47.9375em) {
+
+    .THIS .registered-button button,
+    .THIS .registered-button button:hover,
+    .THIS .registered-button button:active {
+        height: 42px;
+        width: calc(100%/2 - 15px);
+        line-height: normal;
+        top: 21px;
+    }
+
+    .THIS c-lex-event-tile .text-desc {
+        color: #828282;
+        font-weight: 300;
+        font-size: 0.9rem;
+        height: 70px !important;
+        overflow: hidden;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+    }
+
+    .THIS c-lex-events-filter input[type="date"] {
+        width: 284px !important;
+    }
+}
+
+
 .THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox_faux:after, 
 .THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox--faux:after, 
 .THIS .slds-checkbox [type=checkbox]:checked~.slds-checkbox_faux:after, 

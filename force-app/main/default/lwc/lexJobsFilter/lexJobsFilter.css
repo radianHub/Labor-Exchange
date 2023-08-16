@@ -1,3 +1,16 @@
+.modal {
+    background-color: #ebebeb
+}
+
+.header {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 1rem;
+}
+
 .btn-container {
     display: flex;
     justify-content: end;

@@ -1,24 +1,6 @@
 <aura:component
 	implements="forceCommunity:availableForAllPageTypes"
 	access="global">
-	<aura:html tag="style">
-		.mymodal .slds-modal__container { margin: 0 auto; width: 80% !important; max-width: 100% !important; min-width: 20rem; } .confirmation
-		.slds-modal__container { margin: 0 auto; width: 40% !important; max-width: 100% !important; min-width: 20rem; } .maps .slds-modal__container { margin: 0
-		auto; width: 80% !important; max-width: 100% !important; min-width: 20rem; } .maps button.slds-button_brand, .maps button.slds-button_brand:hover, .maps
-		button.slds-button_brand:active, .confirmation button.slds-button_brand, .confirmation button.slds-button_brand:hover, .confirmation
-		button.slds-button_brand:active { color:#FFFFFF !important; height:42px; width: 15%; } .maps button.slds-button[disabled] { background-color: #BDBEC0
-		!important; border-color: #BDBEC0 !important; color:#FFFFFF !important; height:42px; width: 15%; } .viewCourse .slds-modal__container { margin: 0 auto;
-		width: 90% !important; max-width: 100% !important; min-width: 20rem; } .eventRegistration .slds-modal__container { margin: 0 auto; width: 50%
-		!important; max-width: 100% !important; min-width: 20rem; }
-
-		<aura:if isTrue="{!$Browser.isPhone}">
-			.slds-modal__container .modal-body { padding-left: 0px !important; padding-right: 0px !important; } .maps button.slds-button_brand, .maps
-			button.slds-button_brand:hover, .maps button.slds-button_brand:active, .confirmation button.slds-button_brand, .confirmation
-			button.slds-button_brand:hover, .confirmation button.slds-button_brand:active { color:#FFFFFF !important; height:42px; width: 30%; } .maps
-			button.slds-button[disabled] { background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; color:#FFFFFF !important; height:42px; width:
-			30%; } .maps button.backToHome { width: 50% !important; } lightning-button button { width: 100% }
-		</aura:if>
-	</aura:html>
 	<lightning:overlayLibrary aura:id="overlayLib" />
 
 	<aura:attribute

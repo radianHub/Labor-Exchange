@@ -13,13 +13,11 @@
 			onsubmit={saveRecordForm}>
 			<lightning-modal-body>
 				<lightning-messages></lightning-messages>
-				<div
-					class="slds-grid slds-wrap slds-gutters"
-					style={bodyStyling}>
+				<div class={bodyStyling}>
 					<div
 						style={headerCSS}
 						class="slds-col slds-size_1-of-1">
-						<h1 style="font-weight: 900; font-size: 30px">{headerLabel}</h1>
+						<h1 class="header">{headerLabel}</h1>
 					</div>
 
 					<template
@@ -27,8 +25,7 @@
 						for:item="field">
 						<div
 							class={fieldCSS}
-							key={field.name}
-							style="padding: 5px">
+							key={field.name}>
 							<template lwc:if={showEditField}>
 								<lightning-input-field
 									field-name={field.name}
@@ -89,9 +86,6 @@
 							label="Back"
 							title="Back"
 							onclick={clickBackBtn}>
-							<!-- label={labels.editBtnLabel}
-							title={labels.editBtnLabel}
-							onclick={clickEditBtn} -->
 						</lightning-button>
 					</template>
 				</div>

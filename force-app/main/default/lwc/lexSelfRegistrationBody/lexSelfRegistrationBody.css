@@ -1,5 +1,5 @@
 label>i {
-    display:inline-block;
+    display: inline-block;
     font-size: 0.75em;
 }
 
@@ -62,8 +62,46 @@ div.customError + lightning-icon {
     margin: 0;
     max-width: 100%;
 }
+
 @media screen and (max-width: 600px) {
     .waiver {
         height: 52px;
     }
-  }
+}
+
+.container {
+    height: calc(100% - 78px);
+}
+
+.step {
+    float: right;
+    margin-right: 27%;
+    font-size: 1rem;
+}
+
+.field-container {
+    display: flex;
+}
+
+.field {
+    width: 100%;
+}
+
+.field-label {
+    font-size: 1rem;
+}
+
+.success {
+    content: '';
+    width: 48px;
+    height: 48px;
+}
+
+.button-next {
+    margin-left: auto;
+    margin-right: 4%;
+}
+
+.error-message {
+    font-weight: bold;
+}
