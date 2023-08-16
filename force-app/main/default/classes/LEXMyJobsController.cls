@@ -2,6 +2,9 @@ public with sharing class LEXMyJobsController {
 	@AuraEnabled(cacheable=true)
 	public static JobFieldSet getJobData(String filterField) {
 		try {
+			// if (!SObjectHelper.canQueryObj('User')) {
+			// 	throw SObjectHelperException.queryPermissionException('User');
+			// }
 			List<User> currentUser = [
 				SELECT Id, ContactId
 				FROM User
@@ -9,6 +12,9 @@ public with sharing class LEXMyJobsController {
 				WITH SECURITY_ENFORCED
 			];
 
+			// if (!SObjectHelper.canQueryObj('Contact')) {
+			// 	throw SObjectHelperException.queryPermissionException('Contact');
+			// }
 			String accountId;
 			if (currentUser.size() > 0) {
 				String contactId = currentUser[0].ContactId;
@@ -32,6 +38,9 @@ public with sharing class LEXMyJobsController {
 
 			Labor_Exchange_Community_Setup__c lexcs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
+			// if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
+			// 	throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__c');
+			// }
 			List<LaborExchangeCommunity_PageProperties__mdt> ppList = [
 				SELECT Id, MasterLabel, Field_Set__c, Page__c
 				FROM LaborExchangeCommunity_PageProperties__mdt
@@ -39,6 +48,9 @@ public with sharing class LEXMyJobsController {
 				WITH SECURITY_ENFORCED
 			];
 
+			// if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
+			// 	throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
+			// }
 			for (LaborExchangeCommunity_FieldProperties__mdt ff : [
 				SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
 				FROM LaborExchangeCommunity_FieldProperties__mdt
@@ -118,9 +130,8 @@ public with sharing class LEXMyJobsController {
 				}
 			}
 			return data;
-		} catch (Exception e) {
-			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
-			throw new SObjectHelperException(e.getMessage());
+		} catch (Exception ex) {
+			throw new SObjectHelperException(ex.getMessage());
 		}
 	}
 
@@ -128,7 +139,6 @@ public with sharing class LEXMyJobsController {
 		try {
 			return new JobSearch().getFilteredJobs(uniqueFields, accountId, obj);
 		} catch (Exception e) {
-			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new SObjectHelperException(e.getMessage());
 		}
 	}
@@ -144,7 +154,7 @@ public with sharing class LEXMyJobsController {
 		try {
 			return new JobSearch().searchJobs(keyword, filterMap, uniqueFields, filterFields, accountId);
 		} catch (Exception e) {
-			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
+			System.debug('EXCEPTION: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new SObjectHelperException(e.getMessage());
 		}
 	}
@@ -159,17 +169,29 @@ public with sharing class LEXMyJobsController {
 
 			return skills;
 		} catch (Exception e) {
-			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new SObjectHelperException(e.getMessage());
 		}
 	}
 
+	// @AuraEnabled
+	// public static void deactivateJob(List<String> jobIds) {
+	// 	try {
+	// 		JobSearch data = new JobSearch();
+	// 		data.deactivateJob(jobIds);
+	// 	} catch (Exception e) {
+	// 		throw new AuraHandledException(e.getMessage());
+	// 	}
+	// }
+
 	public without sharing class JobSearch {
 		public List<Launchpad__Job__c> getFilteredJobs(List<String> uniqueFields, String accountId, String obj) {
+			// if (!SObjectHelper.canQueryObj(obj)) {
+			// 	throw SObjectHelperException.queryPermissionException(obj);
+			// }
 			String initialQuery = 'SELECT Id, {0} FROM ' + obj + ' WHERE Launchpad__Available_in_Community__c = TRUE AND {1} ORDER BY CreatedDate DESC';
 			String query = String.format(initialQuery, new List<String>{ String.join(uniqueFields, ', '), 'Launchpad__Account__c = :accountId' });
 
-			return new List<Launchpad__Job__c>((List<Launchpad__Job__c>) Database.query(String.escapeSingleQuotes(query)));
+			return new List<Launchpad__Job__c>((List<Launchpad__Job__c>) Database.query(query));
 		}
 
 		public List<Launchpad__Job__c> searchJobs(
@@ -218,10 +240,7 @@ public with sharing class LEXMyJobsController {
 			Set<Id> jobMatchedBySkillIds = new Set<Id>();
 
 			if (keyword != '') {
-				String searchQuery =
-					'FIND \'*' +
-					String.escapeSingleQuotes(keyword) +
-					'*\' IN ALL FIELDS RETURNING Launchpad__Skill1__c(Id, Name, Launchpad__ZID__c)';
+				String searchQuery = 'FIND \'*' + keyword + '*\' IN ALL FIELDS RETURNING Launchpad__Skill1__c(Id, Name, Launchpad__ZID__c)';
 				List<List<SObject>> sr = Search.query(searchQuery);
 
 				if (sr != null && !sr.isEmpty()) {
@@ -230,7 +249,9 @@ public with sharing class LEXMyJobsController {
 						skillIds.add(matchingSkill.Id);
 					}
 					String skillQuery = 'SELECT Launchpad__Job__c FROM Launchpad__JobSkill__c WHERE Launchpad__Job__r.Launchpad__Available_in_Community__c = TRUE and Launchpad__Skill1__c IN :skillIds ';
-
+					// if (!SObjectHelper.canQueryObj('Launchpad__JobSkill__c')) {
+					// 	throw SObjectHelperException.queryPermissionException('Launchpad__JobSkill__c');
+					// }
 					for (Launchpad__JobSkill__c jobSkill : Database.query(String.escapeSingleQuotes(skillQuery))) {
 						jobMatchedBySkillIds.add(jobSkill.Launchpad__Job__c);
 					}
@@ -248,7 +269,10 @@ public with sharing class LEXMyJobsController {
 
 			String query = String.format(initialQuery, new List<String>{ String.join(uniqueFields, ','), whereClause, ' CreatedDate DESC' });
 
-			List<Launchpad__Job__c> jobs = new List<Launchpad__Job__c>((List<Launchpad__Job__c>) Database.query(String.escapeSingleQuotes(query)));
+			// if (!SObjectHelper.canQueryObj('Launchpad__Job__c')) {
+			// 	throw SObjectHelperException.queryPermissionException('Launchpad__Job__c');
+			// }
+			List<Launchpad__Job__c> jobs = new List<Launchpad__Job__c>((List<Launchpad__Job__c>) Database.query(query));
 
 			if (keyword != '' && !searchFields.isEmpty()) {
 				List<Launchpad__Job__c> searchedJobs = new List<Launchpad__Job__c>();
@@ -273,13 +297,13 @@ public with sharing class LEXMyJobsController {
 
 				query = String.format(initialQuery, new List<String>{ String.join(uniqueFields, ', '), whereClause, ' CreatedDate DESC' });
 
-				jobs.addAll((List<Launchpad__Job__c>) Database.query(String.escapeSingleQuotes(query)));
+				jobs.addAll((List<Launchpad__Job__c>) Database.query(query));
 			}
 
 			if (!jobs.isEmpty()) {
 				query = String.format(initialQuery, new List<String>{ String.join(uniqueFields, ', '), ' AND Id IN :jobs ', 'CreatedDate DESC' });
 
-				List<Launchpad__Job__c> searchedJobs = new List<Launchpad__Job__c>((List<Launchpad__Job__c>) Database.query(String.escapeSingleQuotes(query)));
+				List<Launchpad__Job__c> searchedJobs = new List<Launchpad__Job__c>((List<Launchpad__Job__c>) Database.query(query));
 
 				return searchedJobs;
 			}
@@ -288,6 +312,9 @@ public with sharing class LEXMyJobsController {
 		}
 
 		public List<Launchpad__JobSkill__c> getJobSkills(String jobId) {
+			// if (!SObjectHelper.canQueryObj('Launchpad__JobSkill__c')) {
+			// 	throw SObjectHelperException.queryPermissionException('Launchpad__JobSkill__c');
+			// }
 			return [
 				SELECT Id, Launchpad__Skill1__c, Launchpad__Skill1__r.Name
 				FROM Launchpad__JobSkill__c
@@ -295,6 +322,22 @@ public with sharing class LEXMyJobsController {
 				ORDER BY Launchpad__Skill1__r.Name ASC
 			];
 		}
+
+		// public void deactivateJob(List<String> jobIds) {
+		// 	if (!SObjectHelper.canQueryObj('Launchpad__Job__c')) {
+		// 		throw SObjectHelperException.queryPermissionException('Launchpad__Job__c');
+		// 	}
+		// 	List<Launchpad__Job__c> jobList = [
+		// 		SELECT Id, Launchpad__Available_in_Community__c
+		// 		FROM Launchpad__Job__c
+		// 		WHERE Id IN :jobIds
+		// 		WITH SECURITY_ENFORCED
+		// 	];
+		// 	for (Launchpad__Job__c job : jobList) {
+		// 		job.Launchpad__Available_in_Community__c = false;
+		// 	}
+		// 	SObjectHelper.objUpdate(jobList);
+		// }
 	}
 
 	public class Skill {
