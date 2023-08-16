@@ -108,7 +108,7 @@ public with sharing class LEXEventsController {
 				}
 			}
 
-			for (Launchpad__Event_Attendee_Enrollment__c eae : Database.query(String.escapeSingleQuotes(eaeQuery))) {
+			for (Launchpad__Event_Attendee_Enrollment__c eae : Database.query(eaeQuery)) {
 				registeredEventIds.add(eae.Launchpad__Event__c);
 			}
 
@@ -163,7 +163,7 @@ public with sharing class LEXEventsController {
 
 			String query = String.format(initialQuery, new List<String>{ String.join(fields, ', '), ' Id = :eventId ', ' Name ASC' });
 
-			List<Launchpad__Event__c> events = Database.query(String.escapeSingleQuotes(query));
+			List<Launchpad__Event__c> events = Database.query(query);
 			if (!events.isEmpty()) {
 				return events[0];
 			}
@@ -500,7 +500,7 @@ public with sharing class LEXEventsController {
 				}
 			);
 
-			events = Database.query(String.escapeSingleQuotes(query));
+			events = Database.query(query);
 
 			if (priorityFilterField != '') {
 				String otherQuery = String.format(
@@ -514,7 +514,7 @@ public with sharing class LEXEventsController {
 					}
 				);
 
-				otherEvents = Database.query(String.escapeSingleQuotes(otherQuery));
+				otherEvents = Database.query(otherQuery);
 			}
 		}
 
@@ -531,7 +531,7 @@ public with sharing class LEXEventsController {
 				}
 			);
 
-			events.addAll((List<Launchpad__Event__c>) Database.query(String.escapeSingleQuotes(query)));
+			events.addAll((List<Launchpad__Event__c>) Database.query(query));
 
 			if (priorityFilterField != '') {
 				String otherQuery = String.format(
@@ -545,7 +545,7 @@ public with sharing class LEXEventsController {
 					}
 				);
 
-				otherEvents.addAll((List<Launchpad__Event__c>) Database.query(String.escapeSingleQuotes(otherQuery)));
+				otherEvents.addAll((List<Launchpad__Event__c>) Database.query(otherQuery));
 			}
 		}
 

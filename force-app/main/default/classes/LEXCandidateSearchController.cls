@@ -1,6 +1,6 @@
 public with sharing class LEXCandidateSearchController {
 	//public static final String NAMESPACE_PREFIX = SObjectHelper.getNamespace();
-	public static final Labor_Exchange_Community_Setup__c LEX_CS = Labor_Exchange_Community_Setup__c.getOrgDefaults();
+	public static final Labor_Exchange_Community_Setup__c lexCS = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 	public static final List<String> CONTACT_RECORD_TYPE_API_NAMES = getContactRecordTypes();
 	public static final List<String> CONTACT_STAGE_API_NAMES = getContactStages();
 
@@ -26,6 +26,9 @@ public with sharing class LEXCandidateSearchController {
 
 			//Labor_Exchange_Community_Setup__c jscs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
+			if (!SobjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
+				throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__mdt');
+			}
 			List<LaborExchangeCommunity_PageProperties__mdt> pageList = [
 				SELECT Id, MasterLabel, Field_Set__c, Event_Fields_Above_Button__c, Page__c
 				FROM LaborExchangeCommunity_PageProperties__mdt
@@ -33,6 +36,9 @@ public with sharing class LEXCandidateSearchController {
 				WITH SECURITY_ENFORCED
 			];
 
+			if (!SobjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
+				throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
+			}
 			for (LaborExchangeCommunity_FieldProperties__mdt fieldList : [
 				SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
 				FROM LaborExchangeCommunity_FieldProperties__mdt
@@ -68,6 +74,9 @@ public with sharing class LEXCandidateSearchController {
 				}
 			}
 
+			if (!SobjectHelper.canQueryObj('User')) {
+				throw SObjectHelperException.queryPermissionException('User');
+			}
 			List<User> currentUser = [SELECT Id, ContactId FROM User WHERE Id = :UserInfo.getUserId() WITH SECURITY_ENFORCED];
 			Map<Id, Launchpad__Match__c> matchMap = new Map<Id, Launchpad__Match__c>();
 
@@ -90,7 +99,7 @@ public with sharing class LEXCandidateSearchController {
 			data.savedCandidateIds = new List<Id>(savedCandidateIds);
 			data.appliedCandidateIds = new List<Id>(appliedCandidateIds);
 			data.uniqueFields = new List<String>(uniqueFields);
-			data.noOfTilesPerPage = Integer.valueOf(LEX_CS.of_Tiles_Per_Page__c);
+			data.noOfTilesPerPage = Integer.valueOf(lexCS.of_Tiles_Per_Page__c);
 
 			if (!uniqueFields.isEmpty()) {
 				if (!isHomePage && !isSavedPage) {
@@ -161,7 +170,6 @@ public with sharing class LEXCandidateSearchController {
 			}
 			return data;
 		} catch (Exception e) {
-			System.debug('EXCEPTION: ' + e.getMessage() + '@' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -209,7 +217,6 @@ public with sharing class LEXCandidateSearchController {
 		try {
 			return new CandidateSearchPrivileged().getCandidateData(candidateId, fields, filterField);
 		} catch (Exception e) {
-			System.debug('EXCEPTION: ' + e.getMessage() + '@' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -238,7 +245,6 @@ public with sharing class LEXCandidateSearchController {
 					searchFilterFields
 				);
 		} catch (Exception e) {
-			System.debug('EXCEPTION: ' + e.getMessage() + '@' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -271,9 +277,9 @@ public with sharing class LEXCandidateSearchController {
 	@TestVisible
 	private static List<String> getContactRecordTypes() {
 		// store the values in a list of values
-		if (LEX_CS != null) {
+		if (lexCS != null) {
 			// Store the comma separated list as provided in the ContactRecordTypes__c field
-			String recordTypesString = LEX_CS.ContactRecordTypes__c;
+			String recordTypesString = lexCS.ContactRecordTypes__c;
 			// Separate the values into a list
 			List<String> recordTypes = recordTypesString.split(',');
 			// Initialize an empty list to store the final list
@@ -293,9 +299,9 @@ public with sharing class LEXCandidateSearchController {
 	@TestVisible
 	private static List<String> getContactStages() {
 		// store the values in a list of values
-		if (LEX_CS != null) {
+		if (lexCS != null) {
 			// Store the comma separated list as provided in the ContactRecordTypes__c field
-			String stagesString = LEX_CS.Searchable_Contact_Stages__c;
+			String stagesString = lexCS.Searchable_Contact_Stages__c;
 
 			// Separate the values into a list
 			List<String> stages = stagesString.split(',');
@@ -318,11 +324,14 @@ public with sharing class LEXCandidateSearchController {
 
 	public without sharing class CandidateSearchPrivileged {
 		public Launchpad__Match__c getMatch(Id matchId) {
+			if (!SobjectHelper.canQueryObj('Launchpad__Match__c')) {
+				throw SObjectHelperException.queryPermissionException('Launchpad__Match__c');
+			}
+
 			return [
 				SELECT Id, Launchpad__Client__c
 				FROM Launchpad__Match__c
 				WHERE Id = :matchId
-				WITH SECURITY_ENFORCED
 			];
 		}
 
@@ -335,6 +344,11 @@ public with sharing class LEXCandidateSearchController {
 			String filterField,
 			String priorityFilterField
 		) {
+			//,String matchFilterField
+			if (!SobjectHelper.canQueryObj('Contact')) {
+				throw SObjectHelperException.queryPermissionException('Contact');
+			}
+
 			String initialQuery = 'SELECT Id, {0} , (SELECT Launchpad__Skill1__r.Name FROM Launchpad__Client_Skills__r) FROM Contact WHERE RecordType.DeveloperName IN :CONTACT_RECORD_TYPE_API_NAMES AND Launchpad__Stage__c IN :CONTACT_STAGE_API_NAMES AND {1} WITH SECURITY_ENFORCED ORDER BY {2} ';
 			String query = String.format(
 				initialQuery,
@@ -352,7 +366,7 @@ public with sharing class LEXCandidateSearchController {
 				}
 			);
 
-			List<Contact> candidates = new List<Contact>((List<Contact>) Database.query(String.escapeSingleQuotes(query)));
+			List<Contact> candidates = new List<Contact>((List<Contact>) Database.query(query));
 
 			List<Candidate> candidatesToReturn = new List<Candidate>();
 
@@ -374,6 +388,9 @@ public with sharing class LEXCandidateSearchController {
 		}
 
 		public List<Launchpad__Match__c> getMatchRecords(List<Launchpad__Job__c> myJobs) {
+			if (!SobjectHelper.canQueryObj('Launchpad__Match__c')) {
+				throw SObjectHelperException.queryPermissionException('Launchpad__Match__c');
+			}
 			return [
 				SELECT Id, Launchpad__Match__c, Launchpad__Client__c
 				FROM Launchpad__Match__c
@@ -384,6 +401,9 @@ public with sharing class LEXCandidateSearchController {
 		}
 
 		public List<Launchpad__Job__c> getMyJobs(User currentUser) {
+			if (!SobjectHelper.canQueryObj('Launchpad__Job__c')) {
+				throw SObjectHelperException.queryPermissionException('Launchpad__Job__c');
+			}
 			return [
 				SELECT Id
 				FROM Launchpad__Job__c
@@ -413,7 +433,11 @@ public with sharing class LEXCandidateSearchController {
 				' {1} WITH SECURITY_ENFORCED';
 			String query = String.format(initialQuery, new List<String>{ String.join(fields, ', '), ' AND Id = : candidateId ' });
 
-			List<Contact> candidateList = (List<Contact>) Database.query(String.escapeSingleQuotes(query));
+			if (!SobjectHelper.canQueryObj('Contact')) {
+				throw SObjectHelperException.queryPermissionException('Contact');
+			}
+
+			List<Contact> candidateList = (List<Contact>) Database.query(query);
 			if (!candidateList.isEmpty()) {
 				myCandidate = new Candidate(candidateList[0], null);
 			}
@@ -502,10 +526,11 @@ public with sharing class LEXCandidateSearchController {
 			if (keyword != '') {
 				// query skills
 				Set<Id> skillIds = new Set<Id>();
-				String keywordQuery = '\'%' + String.escapeSingleQuotes(keyword) + '%\'';
+				String keywordQuery = '\'%' + keyword + '%\'';
 
 				String skillQuery = 'SELECT Id, Name FROM Launchpad__Skill1__c WHERE Name LIKE ' + keywordQuery;
-				List<Launchpad__Skill1__c> matchingSkills = Database.query(String.escapeSingleQuotes(skillQuery));
+				//Launchpad__Skill1__c testQuery = [SELECT Id, Name FROM Launchpad__Skill1__c WHERE Name LIKE :keywordQuery];
+				List<Launchpad__Skill1__c> matchingSkills = Database.query(skillQuery);
 
 				for (Launchpad__Skill1__c matchingSkill : matchingSkills) {
 					skillIds.add(matchingSkill.Id);
@@ -515,7 +540,9 @@ public with sharing class LEXCandidateSearchController {
 					'SELECT Launchpad__Client__c FROM Launchpad__Client_Skill__c WHERE Launchpad__Client__r.RecordType.DeveloperName IN :CONTACT_RECORD_TYPE_API_NAMES AND Launchpad__Skill1__c IN :skillIds ' +
 					(!String.isEmpty(filterField) ? ' AND Launchpad__Candidate__r.' + filterField + ' = TRUE ' : '') +
 					' WITH SECURITY_ENFORCED ';
-
+				if (!SobjectHelper.canQueryObj('Launchpad__Client_Skill__c')) {
+					throw SObjectHelperException.queryPermissionException('Launchpad__Client_Skill__c');
+				}
 				for (Launchpad__Client_Skill__c candidateSkill : Database.query(String.escapeSingleQuotes(candidateSkillsQuery))) {
 					//add to candidates list
 					candidateMatchedBySkillIds.add(candidateSkill.Launchpad__Client__c);
@@ -539,7 +566,10 @@ public with sharing class LEXCandidateSearchController {
 				}
 			);
 
-			List<Contact> candidates = new List<Contact>((List<Contact>) Database.query(String.escapeSingleQuotes(contactquery)));
+			if (!SobjectHelper.canQueryObj('Contact')) {
+				throw SObjectHelperException.queryPermissionException('Contact');
+			}
+			List<Contact> candidates = new List<Contact>((List<Contact>) Database.query(contactquery));
 
 			if (priorityFilterField != '') {
 				contactquery = String.format(
@@ -584,7 +614,7 @@ public with sharing class LEXCandidateSearchController {
 					}
 				);
 
-				candidates.addAll((List<Contact>) Database.query(String.escapeSingleQuotes(contactquery)));
+				candidates.addAll((List<Contact>) Database.query(contactquery));
 
 				if (priorityFilterField != '') {
 					contactquery = String.format(
@@ -592,7 +622,7 @@ public with sharing class LEXCandidateSearchController {
 						new List<String>{ String.join(uniqueFields, ', '), whereClause + ' AND ' + priorityFilterField + ' = FALSE ', ' Name ASC' }
 					);
 
-					candidates.addAll((List<Contact>) Database.query(String.escapeSingleQuotes(contactquery)));
+					candidates.addAll((List<Contact>) Database.query(contactquery));
 				}
 			}
 
@@ -606,7 +636,7 @@ public with sharing class LEXCandidateSearchController {
 						'Name ASC'
 					}
 				);
-				List<Contact> searchedCandidates = new List<Contact>((List<Contact>) Database.query(String.escapeSingleQuotes(contactquery)));
+				List<Contact> searchedCandidates = new List<Contact>((List<Contact>) Database.query(contactquery));
 
 				return searchedCandidates;
 			}
@@ -614,6 +644,9 @@ public with sharing class LEXCandidateSearchController {
 		}
 
 		public void emailCandidate(Id candidateId, String emailBody) {
+			if (!SobjectHelper.canQueryObj('Contact')) {
+				throw SObjectHelperException.queryPermissionException('Contact');
+			}
 			try {
 				//get personal details for Job Seeker
 				Contact toContact = [SELECT Id, Name, Email, Owner.Email FROM Contact WHERE Id = :candidateId WITH SECURITY_ENFORCED LIMIT 1];
@@ -629,6 +662,7 @@ public with sharing class LEXCandidateSearchController {
 				email.setReplyTo(senderEmail);
 				email.setSenderDisplayName(UserInfo.getName());
 				email.setSubject('Contact Request');
+				//email.setPlainTextBody(emailBody);
 				email.setHtmlBody(emailBody);
 
 				//log email to contact record
@@ -637,8 +671,11 @@ public with sharing class LEXCandidateSearchController {
 
 				Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ email });
 				return;
+
+				/*} catch (HandledException e){
+				result.overLimit = true;
+				return result;*/
 			} catch (Exception e) {
-				System.debug('EXCEPTION: ' + e.getMessage() + '@' + e.getStackTraceString());
 				throw new AuraHandledException(e.getMessage());
 			}
 		}
