@@ -22,7 +22,8 @@ export default class lexCandidateTile extends LightningElement {
 	connectedCallback() {
 		this.fields.forEach((field) => {
 			var value;
-			if (!field.fieldApiName.includes('.')) {s
+			if (!field.fieldApiName.includes('.')) {
+				s;
 			} else {
 				const tempArray = field.fieldApiName.split('.');
 				value = this.record.candidate[tempArray[0]][tempArray[1]];

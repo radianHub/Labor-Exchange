@@ -47,16 +47,19 @@ export default class lexCandidatesFilter extends LightningElement {
 
 	handleSearch() {
 		this.isLoading = true;
+		// *Get the text input from the component
 		const inputs = this.template.querySelectorAll('lightning-input');
 		const keyword = inputs[0].value;
 		let filterOptionsMap = {};
 
+		//
 		if (this.appliedFilters && Object.keys(this.appliedFilters).length) {
 			Object.keys(this.appliedFilters).forEach((key) => {
 				filterOptionsMap[key] = Object.values({ ...this.appliedFilters[key] });
 			});
 		}
 
+		//  *Check if the minimum number of search characters has been provided
 		const minimumCharacters = this.candidateConfig.minimumSearchCharacters;
 		if (minimumCharacters && keyword.length < minimumCharacters) {
 			this.showNotification(this.candidateConfig.minimumSearchCharactersErrorHeader, this.candidateConfig.minimumSearchCharactersErrorMessage, 'warning');

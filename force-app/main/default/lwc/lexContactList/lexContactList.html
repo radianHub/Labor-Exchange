@@ -17,7 +17,7 @@
 					size="12"
 					large-device-size="8"
 					small-device-size="12">
-					<div style="float: left">
+					<div class="header-container">
 						<h1 class="header">
 							<span style={headerCSS}> {label.contactListHeader} </span>
 						</h1>
@@ -31,7 +31,7 @@
 					small-device-size="12">
 					<div
 						if:true={showNewBtn}
-						class={floatRight}>
+						class={c}>
 						<lightning-button
 							label={label.newContactButtonLabel}
 							title={label.newContactButtonLabel}
@@ -305,13 +305,13 @@
 								<lightning-layout-item
 									size="12"
 									padding="around-small"
-									style="display: flex">
+									class="button-container">
 									<lightning-button
 										label="Edit"
 										title="More actions"
 										value={row.Id}
 										variant="brand"
-										style="flex: 1"
+										class="edit-button"
 										onclick={clickEditBtn}>
 									</lightning-button>
 								</lightning-layout-item>

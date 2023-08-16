@@ -48,7 +48,4 @@ export default class LEXSelfRegistrationHeader extends LightningElement {
 		return FORM_FACTOR !== 'Large' ? 'slds-button slds-button_brand' : 'slds-button slds-button_brand';
 	}
 
-	get loginCSS() {
-		return FORM_FACTOR !== 'Large' ? 'float:right;margin-right: 8%;' : 'float:right;margin-right: 8%;';
-	}
 }

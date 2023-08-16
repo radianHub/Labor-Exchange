@@ -5,7 +5,6 @@ export default class LEXFormattedField extends LightningElement {
 	regex = /^\d{2}[:]\d{2}[:]\d{2}[.]\d{3}[Z]$/;
 
 	get isText() {
-		// console.log('field', JSON.parse(JSON.stringify(this.field)));
 		return (
 			this.field !== undefined &&
 			(this.field.type === 'STRING' || this.field.type === 'PICKLIST' || this.field.type === 'MULTIPICKLIST') &&

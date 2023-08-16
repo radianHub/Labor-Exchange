@@ -5,7 +5,7 @@
 		<a
 			if:true={tile.LaunchpadCo__Redirect_URL__c}
 			href={tile.LaunchpadCo__Redirect_URL__c}
-			style="color: #ffffff"
+			class="color"
 			target={target}>
 			<div
 				class="bg-image"
@@ -13,9 +13,7 @@
 			<div class="inner-div">
 				<div class="slds-text-heading_large text-bold">{tile.LaunchpadCo__Header__c}</div>
 				<!-- <div class="slds-text-heading_large text-bold">{tile.Header__c}</div> -->
-				<div
-					class="slds-text-heading_small slds-m-top_medium"
-					style="font-size: 0.85rem">
+				<div class="slds-text-heading_small slds-m-top_medium, details">
 					<!-- {tile.Details__c} -->
 					{tile.LaunchpadCo__Details__c}
 				</div>
