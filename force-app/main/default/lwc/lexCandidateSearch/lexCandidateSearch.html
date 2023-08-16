@@ -5,8 +5,8 @@
         <lightning-layout-item if:true={candidateConfig.header} padding="around-medium" size="12" large-device-size="11"
             small-device-size="9">
             <span style={headerCSS}>
-                <h1 style="font-weight: 900;font-size:30px;">{candidateConfig.header}</h1>
-                <p style="font-size: 16px;font-family: 'Open Sans';line-height: 30px;opacity: 100;font-weight:100">
+                <h1 class="candidate-config-header">{candidateConfig.header}</h1>
+                <p class="candidate-config-description">
                     {candidateConfig.description}
                 </p>
             </span>
@@ -34,7 +34,7 @@
         <template if:true={isMyCandidatesPage}>
             <lightning-layout-item if:true={totalMatchedRecords} padding="around-medium" size="12"
                 large-device-size="11" small-device-size="12">
-                <div style="float:left;" data-id="candidateMatches">
+                <div class="candidate" data-id="candidateMatches">
                     <h1>
                         <span>
                             {candidateConfig.candidateMatchesHeader}
@@ -65,7 +65,7 @@
                 </lightning-layout-item>
             </template>
             <lightning-layout-item if:true={totalOtherRecords} padding="around-medium" size="12" large-device-size="11" small-device-size="12">
-                <div style="float:left;" data-id="otherCandidates">
+                <div class="candidate" data-id="otherCandidates">
                     <h1>
                         <span>
                             {candidatesTitle}
@@ -97,7 +97,7 @@
             small-device-size="9">
             <br />
             <span
-                style="font-size: 1.5rem;font-family: 'Open Sans';line-height: 30px;opacity: 100;font-weight:bold">{candidateConfig.noResultsMessage}</span>
+                class="no-candidate-message">{candidateConfig.noResultsMessage}</span>
             <br />
             <br />
             <br />

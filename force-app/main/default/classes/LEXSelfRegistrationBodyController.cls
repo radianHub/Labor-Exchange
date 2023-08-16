@@ -1,10 +1,6 @@
 public without sharing class LEXSelfRegistrationBodyController {
 	@AuraEnabled(cacheable=true)
 	public static list<String> getAttestationList() {
-		if (!SobjectHelper.canQueryObj('LEXRegistration_AttestationSetup__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LEXRegistration_AttestationSetup__mdt');
-		}
-
 		List<String> attestationList = new List<String>();
 
 		for (LEXRegistration_AttestationSetup__mdt attestation : [
@@ -22,10 +18,6 @@ public without sharing class LEXSelfRegistrationBodyController {
 
 	@AuraEnabled(cacheable=true)
 	public static String getStaticResource(String staticResource) {
-		if (!SobjectHelper.canQueryObj('StaticResource')) {
-			throw SObjectHelperException.queryPermissionException('StaticResource');
-		}
-
 		List<StaticResource> sr = [SELECT Id, NamespacePrefix, SystemModstamp FROM StaticResource WHERE Name = :staticResource WITH SECURITY_ENFORCED LIMIT 1];
 		if (!sr.isEmpty()) {
 			String prefix = sr[0].NamespacePrefix;
@@ -48,15 +40,7 @@ public without sharing class LEXSelfRegistrationBodyController {
 			Schema.DescribeSObjectResult contactObjDescribeResult = contactObjDescribe.getDescribe();
 			Map<String, Schema.SObjectField> contactFields = contactObjDescribeResult.fields.getMap();
 
-			if (!SobjectHelper.canQueryObj('LEXRegistration_PageProperties__mdt')) {
-				throw SObjectHelperException.queryPermissionException('LEXRegistration_PageProperties__mdt');
-			}
-
 			List<Section> sections = createInitialSections();
-
-			if (!SobjectHelper.canQueryObj('LEXRegistration_FieldProperties__mdt')) {
-				throw SObjectHelperException.queryPermissionException('LEXRegistration_FieldProperties__mdt');
-			}
 
 			Map<String, LEXRegistration_FieldProperties__mdt> fieldsMap = createFieldsMap();
 
@@ -76,15 +60,8 @@ public without sharing class LEXSelfRegistrationBodyController {
 		contactUserDupeCheck.dupeInactiveUserFound = false;
 		contactUserDupeCheck.dupeAccountFound = false;
 
-		if (!SobjectHelper.canQueryObj('Contact')) {
-			throw SObjectHelperException.queryPermissionException('Contact');
-		}
 		List<Contact> conList = [SELECT Id FROM Contact WHERE Email = :email WITH SECURITY_ENFORCED LIMIT 1];
 		List<User> dupeCheckedUser;
-
-		if (!SobjectHelper.canQueryObj('User')) {
-			throw SObjectHelperException.queryPermissionException('User');
-		}
 
 		if (!conList.isEmpty()) {
 			contactUserDupeCheck.dupeContactFound = true;
@@ -109,10 +86,6 @@ public without sharing class LEXSelfRegistrationBodyController {
 		accountDupeCheck.dupeInactiveUserFound = false;
 		accountDupeCheck.dupeAccountFound = false;
 
-		if (!SobjectHelper.canQueryObj('Account')) {
-			throw SObjectHelperException.queryPermissionException('Account');
-		}
-
 		List<Account> dupeAccountList = [SELECT Id FROM Account WHERE Name = :accountName WITH SECURITY_ENFORCED LIMIT 1];
 		if (!dupeAccountList.isEmpty()) {
 			accountDupeCheck.dupeAccountFound = true;
@@ -134,29 +107,18 @@ public without sharing class LEXSelfRegistrationBodyController {
 			Savepoint sp = Database.setSavepoint();
 
 			// ! This will not be able to be queried by a guest user, so this must be queried in system context
-			// if (!SobjectHelper.canQueryObj('UserRole')) {
-			// 	throw SObjectHelperException.queryPermissionException('UserRole');
-			// }
 			List<UserRole> portalRole = [SELECT Id FROM UserRole WHERE PortalType = 'None' LIMIT 1];
 
 			if (portalRole.isEmpty()) {
 				throw new PortalRoleException(
-					'A role must be set up in the role heirarchy and a system administrator assigned to that role before self registration can be used.'
+					'A role must be set up in the role heirarchy and the default Account Owner must be assigned to that role before self registration can be used.'
 				);
 			}
 
 			// ! This will not be able to be queried by a guest user, so this must be queried in system context
-			// CRUD/FLS check
-			// if (!SobjectHelper.canQueryObj('Profile')) {
-			// 	throw SObjectHelperException.queryPermissionException('Profile');
-			// }
 			// Query for the System Administrator profile to query for a user to use as an owner
 			Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
 
-			// CRUD/FLS check
-			if (!SobjectHelper.canQueryObj('User')) {
-				throw SObjectHelperException.queryPermissionException('User');
-			}
 			// Query for a user that can be used as a portal user owner
 			List<User> portalAccountOwner = [
 				SELECT Id
@@ -189,8 +151,8 @@ public without sharing class LEXSelfRegistrationBodyController {
 			con.AccountId = acc.Id;
 			con.Launchpad__Stage__c = 'Assessment';
 
-			// ! CRUD/FLS commented out
-			// SObjectHelper.insertObj(con);
+			// ! This will not be insertable by a guest user within the package,
+			// ! so we are running in system context
 			insert con;
 
 			User u = new User(

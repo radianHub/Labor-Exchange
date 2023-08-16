@@ -2,10 +2,6 @@ public with sharing class LEXMatchesToMyJobsController {
 	@AuraEnabled(cacheable=true)
 	public static List<Launchpad__Job__c> getJobData() {
 		try {
-			if (!SObjectHelper.canQueryObj('User')) {
-				throw SObjectHelperException.queryPermissionException('User');
-			}
-
 			List<User> currentUser = [
 				SELECT Id, ContactId
 				FROM User
@@ -16,10 +12,6 @@ public with sharing class LEXMatchesToMyJobsController {
 			if (currentUser.size() == 0) {
 				// * THIS SPECIFIC ERROR MESSAGE IS REFERENCED IN MATCHES TO MY JOBS LWC
 				throw new CustomException('No user found');
-			}
-
-			if (!SObjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
 			}
 
 			String contactId = currentUser[0].ContactId;
@@ -38,10 +30,6 @@ public with sharing class LEXMatchesToMyJobsController {
 
 			String accountId = userContact[0].AccountId;
 
-			// if (!SObjectHelper.canQueryObj('launchpad__Job__c')) {
-			// 	throw SObjectHelperException.queryPermissionException('launchpad__Job__c');
-			// }
-
 			String query = 'SELECT Id, Name FROM Launchpad__Job__c WHERE Launchpad__Account__c = :accountId';
 
 			Labor_Exchange_Community_Setup__c lexCommunitySetup = Labor_Exchange_Community_Setup__c.getOrgDefaults();
@@ -57,122 +45,108 @@ public with sharing class LEXMatchesToMyJobsController {
 				query += ' AND launchpad__Stage__c IN :openStages';
 			}
 
-			// query += ' WITH SECURITY_ENFORCED ORDER BY Name';
 			query += ' ORDER BY Name';
 
-			return Database.query(query);
+			return Database.query(String.escapeSingleQuotes(query));
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
 
 	@AuraEnabled(cacheable=true)
 	public static MatchFieldSet getJobMatches(String jobFilter) {
-		String accountId;
+		try {
+			String accountId;
 
-		if (jobFilter == 'All') {
-			if (!SObjectHelper.canQueryObj('User')) {
-				throw SObjectHelperException.queryPermissionException('User');
+			if (jobFilter == 'All') {
+				List<launchpad__Match__c> matches = new List<launchpad__Match__c>();
+
+				List<User> currentUser = [
+					SELECT Id, ContactId
+					FROM User
+					WHERE Id = :UserInfo.getUserId()
+					WITH SECURITY_ENFORCED
+				];
+
+				if (currentUser.size() == 0) {
+					// * THIS SPECIFIC ERROR MESSAGE IS REFERENCED IN MATCHES TO MY JOBS LWC
+					throw new CustomException('No user found');
+				}
+
+				String contactId = currentUser[0].ContactId;
+
+				List<Contact> userContact = [
+					SELECT Id, AccountId
+					FROM Contact
+					WHERE Id = :contactId
+					WITH SECURITY_ENFORCED
+				];
+
+				if (userContact.size() == 0) {
+					// * THIS SPECIFIC ERROR MESSAGE IS REFERENCED IN MATCHES TO MY JOBS LWC
+					throw new CustomException('No user contact found');
+				}
+
+				accountId = userContact[0].AccountId;
 			}
 
-			List<launchpad__Match__c> matches = new List<launchpad__Match__c>();
+			MatchFieldSet data = new MatchFieldSet();
+			data.accountId = accountId;
 
-			List<User> currentUser = [
-				SELECT Id, ContactId
-				FROM User
-				WHERE Id = :UserInfo.getUserId()
+			Map<String, Map<String, String>> fieldMap = new Map<String, Map<String, String>>();
+			Set<String> uniqueFields = new Set<String>();
+
+			String objectName = 'launchpad__Match__c';
+			Set<String> pages = new Set<String>{ 'Matches to My Jobs' };
+			Map<String, Map<String, String>> fieldsMap = new Map<String, Map<String, String>>();
+
+			List<LaborExchangeCommunity_PageProperties__mdt> pageProperties = [
+				SELECT Id, MasterLabel, Field_Set__c, Page__c
+				FROM LaborExchangeCommunity_PageProperties__mdt
+				WHERE Active__c = 'Yes' AND Page__c IN :pages AND Object_API__c = :objectName
 				WITH SECURITY_ENFORCED
 			];
 
-			if (currentUser.size() == 0) {
-				// * THIS SPECIFIC ERROR MESSAGE IS REFERENCED IN MATCHES TO MY JOBS LWC
-				throw new CustomException('No user found');
-			}
+			Labor_Exchange_Community_Setup__c lexcs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
-			if (!SObjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
-			}
+			LaborExchangeCommunity_PageProperties__mdt pageProperty = LaborExchangeCommunity_PageProperties__mdt.getInstance('Matches_to_My_Jobs');
+		  String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaunchpadCo__LaborExchange_Match_Details';
 
-			String contactId = currentUser[0].ContactId;
-
-			List<Contact> userContact = [
-				SELECT Id, AccountId
-				FROM Contact
-				WHERE Id = :contactId
+			for (LaborExchangeCommunity_FieldProperties__mdt ff : [
+				SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
+				FROM LaborExchangeCommunity_FieldProperties__mdt
+				WHERE Active__c = 'Yes' AND LaborExchangeCommunity_PageProperties__c = :pageProperty.Id
 				WITH SECURITY_ENFORCED
-			];
+			]) {
+				if (!fieldsMap.containsKey(ff.LaborExchangeCommunity_PageProperties__c)) {
+					fieldsMap.put(ff.LaborExchangeCommunity_PageProperties__c, new Map<String, String>());
+				}
 
-			if (userContact.size() == 0) {
-				// * THIS SPECIFIC ERROR MESSAGE IS REFERENCED IN MATCHES TO MY JOBS LWC
-				throw new CustomException('No user contact found');
+				fieldsMap.get(ff.LaborExchangeCommunity_PageProperties__c).put(ff.Field_API_Name__c, ff.Field_Label__c);
 			}
 
-			accountId = userContact[0].AccountId;
+			List<LEXCommunityHelper.FieldWrapper> fields = LEXCommunityHelper.getFieldsByObjectAndFieldSet(objectName, fieldSet);
 
-			// if (!SObjectHelper.canQueryObj('launchpad__Match__c')) {
-			// 	throw SObjectHelperException.queryPermissionException('launchpad__Match__c');
-			// }
-		}
-
-		MatchFieldSet data = new MatchFieldSet();
-		data.accountId = accountId;
-
-		Map<String, Map<String, String>> fieldMap = new Map<String, Map<String, String>>();
-		Set<String> uniqueFields = new Set<String>();
-
-		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__mdt');
-		}
-
-		String objectName = 'launchpad__Match__c';
-		Set<String> pages = new Set<String>{ 'Matches to My Jobs' };
-		Map<String, Map<String, String>> fieldsMap = new Map<String, Map<String, String>>();
-
-		List<LaborExchangeCommunity_PageProperties__mdt> pageProperties = [
-			SELECT Id, MasterLabel, Field_Set__c, Page__c
-			FROM LaborExchangeCommunity_PageProperties__mdt
-			WHERE Active__c = 'Yes' AND Page__c IN :pages AND Object_API__c = :objectName
-			WITH SECURITY_ENFORCED
-		];
-
-		Labor_Exchange_Community_Setup__c lexcs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
-
-		LaborExchangeCommunity_PageProperties__mdt pageProperty = LaborExchangeCommunity_PageProperties__mdt.getInstance('Matches_to_My_Jobs');
-		String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaunchpadCo__LaborExchange_Match_Details';
-
-		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
-		}
-		for (LaborExchangeCommunity_FieldProperties__mdt ff : [
-			SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
-			FROM LaborExchangeCommunity_FieldProperties__mdt
-			WHERE Active__c = 'Yes' AND LaborExchangeCommunity_PageProperties__c = :pageProperty.Id
-			WITH SECURITY_ENFORCED
-		]) {
-			if (!fieldsMap.containsKey(ff.LaborExchangeCommunity_PageProperties__c)) {
-				fieldsMap.put(ff.LaborExchangeCommunity_PageProperties__c, new Map<String, String>());
-			}
-
-			fieldsMap.get(ff.LaborExchangeCommunity_PageProperties__c).put(ff.Field_API_Name__c, ff.Field_Label__c);
-		}
-
-		List<LEXCommunityHelper.FieldWrapper> fields = LEXCommunityHelper.getFieldsByObjectAndFieldSet(objectName, fieldSet);
-
-		if (fieldsMap.containsKey(pageProperty.Id) && !fieldsMap.get(pageProperty.Id).keySet().isEmpty()) {
-			for (LEXCommunityHelper.FieldWrapper fw : fields) {
-				if (fieldsMap.get(pageProperty.Id).containsKey(fw.fieldApiName)) {
-					fw.fieldLabel = fieldsMap.get(pageProperty.Id).get(fw.fieldApiName);
+			if (fieldsMap.containsKey(pageProperty.Id) && !fieldsMap.get(pageProperty.Id).keySet().isEmpty()) {
+				for (LEXCommunityHelper.FieldWrapper fw : fields) {
+					if (fieldsMap.get(pageProperty.Id).containsKey(fw.fieldApiName)) {
+						fw.fieldLabel = fieldsMap.get(pageProperty.Id).get(fw.fieldApiName);
+					}
 				}
 			}
+
+			data.matchTileFields = fields;
+			data.myMatches = new MatchesSearch().getMatches(fields, accountId, jobFilter);
+
+			Labor_Exchange_Community_Setup__c laborExchangeCommunitySetup = Labor_Exchange_Community_Setup__c.getOrgDefaults();
+			data.noOfTilesPerPage = Integer.valueOf(laborExchangeCommunitySetup.of_Tiles_Per_Page__c);
+
+			return data;
+		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
+			throw new AuraHandledException(e.getMessage());
 		}
-
-		data.matchTileFields = fields;
-		data.myMatches = new MatchesSearch().getMatches(fields, accountId, jobFilter);
-
-		Labor_Exchange_Community_Setup__c laborExchangeCommunitySetup = Labor_Exchange_Community_Setup__c.getOrgDefaults();
-		data.noOfTilesPerPage = Integer.valueOf(laborExchangeCommunitySetup.of_Tiles_Per_Page__c);
-
-		return data;
 	}
 
 	public without sharing class MatchesSearch {
@@ -214,7 +188,7 @@ public with sharing class LEXMatchesToMyJobsController {
 				}
 			);
 
-			return Database.query(query);
+			return Database.query(String.escapeSingleQuotes(query));
 		}
 	}
 

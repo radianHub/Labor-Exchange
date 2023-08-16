@@ -5,11 +5,11 @@
         size="large"
         class="slds-is-absolute"
     ></lightning-spinner>
-    <lightning-layout if:true={filterOptions} horizontal-align="spread" multiple-rows="true" style="background-color: #ebebeb;">
+    <lightning-layout if:true={filterOptions} horizontal-align="spread" multiple-rows="true" class="layout-main">
         <lightning-layout-item size="12">
             <lightning-layout horizontal-align="spread" multiple-rows="true">
                 <lightning-layout-item padding="around-medium" size="12" large-device-size="3" small-device-size="12">
-                    <span style="font-size: 1rem;font-weight: bold;">
+                    <span class="filter-header">
                         {eventConfig.filterHeader}
                     </span>
                 </lightning-layout-item>
@@ -24,7 +24,7 @@
                     <lightning-input if:true={isMobile} type="date" placeholder={eventConfig.startDateInputLabel} label={eventConfig.startDateInputLabel} name="startDate"></lightning-input>
                 </lightning-layout-item>
                 <lightning-layout-item padding="around-medium" size="12" large-device-size="12" small-device-size="12">
-                    <span style="font-size:1rem;">{eventConfig.filterHelp}</span>
+                    <span class="filter-help">{eventConfig.filterHelp}</span>
                 </lightning-layout-item>
             </lightning-layout>
         </lightning-layout-item>

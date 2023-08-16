@@ -323,7 +323,7 @@ export default class LexCompanyProfile extends LightningElement {
 
 	// * CHECKS FOR MOBILE AND APPLIES FLOAT-RIGHT
 	get floatRight() {
-		return this.isMobile ? '' : 'floatRight';
+		return this.isMobile ? '' : '';
 	}
 
 	// * CHECKS IF A HEADER COLOR IS SET, IF NOT SETS A DEFAULT

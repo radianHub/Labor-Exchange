@@ -3,3 +3,11 @@
     justify-content: end;
     gap: 10px;
 }
+
+.header-container{
+    text-align: center; font-weight: 900; font-size: 26px;
+}
+
+.align-center {
+    text-align: center;
+}

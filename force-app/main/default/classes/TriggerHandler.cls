@@ -1,4 +1,4 @@
-public virtual class TriggerHandler {
+public without sharing virtual class TriggerHandler {
 	// static map of handlername, times run() was invoked
 	private static Map<String, LoopCount> loopCountMap;
 	private static Set<String> bypassedHandlers;
@@ -61,6 +61,7 @@ public virtual class TriggerHandler {
 				SELECT Id, Active__c, beforeInsert__c, beforeUpdate__c, beforeDelete__c, afterInsert__c, afterUpdate__c, afterDelete__c, afterUndelete__c
 				FROM sObject_Trigger__mdt
 				WHERE sObject_API_Name__c = :sObjectApiName
+				WITH SECURITY_ENFORCED
 				LIMIT 1
 			];
 		}
