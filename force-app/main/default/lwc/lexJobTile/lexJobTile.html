@@ -12,10 +12,9 @@
 			<p class="slds-text-heading_small slds-var-m-top_xx-small crayon-color slds-var-p-horizontal_medium">{subTitle}</p>
 			<hr />
 			<lightning-layout
-				class="slds-var-p-horizontal_medium"
+				class="slds-var-p-horizontal_medium slds-text-align_left"
 				vertical-align="center"
-				multiple-rows="true"
-				style="text-align: left">
+				multiple-rows="true">
 				<template
 					if:true={details}
 					for:each={details}
@@ -29,12 +28,12 @@
 								<lightning-layout-item
 									size="12"
 									large-device-size="6">
-									<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+									<span class="field-label">{item.label}:&nbsp;</span>
 								</lightning-layout-item>
 								<lightning-layout-item
 									size="12"
 									large-device-size="6">
-									<span style="font-size: 1rem; font-weight: bold">
+									<span class="field-value">
 										<c-lex-formatted-field field={item}></c-lex-formatted-field>
 									</span>
 								</lightning-layout-item>
@@ -45,12 +44,11 @@
 				</template>
 			</lightning-layout>
 		</div>
-		<div style={footerStyle}>
+		<div style={footerCSS}>
 			<lightning-layout
-				class="slds-var-p-around_medium"
+				class="slds-var-p-around_medium slds-text-align_left"
 				vertical-align="center"
-				multiple-rows="true"
-				style="text-align: left">
+				multiple-rows="true">
 				<lightning-layout-item
 					padding="around-medium"
 					size="12"

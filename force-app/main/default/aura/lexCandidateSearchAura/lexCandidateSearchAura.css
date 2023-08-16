@@ -1,3 +1,136 @@
+.THIS .filterValues .slds-modal__container {
+    margin: 0 auto;
+    width: 30% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .viewDetail .slds-modal__container {
+    margin: 0 auto;
+    width: 50% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .applyCandidate .slds-modal__container {
+    margin: 0 auto;
+    width: 50% !important;
+    max-width: 100% !important;
+    min-width: 20rem;
+}
+
+.THIS .slds-is-absolute {
+    position: fixed !important;
+}
+
+.THIS .candidate-button button,
+.THIS .candidate-button button:hover,
+.THIS .candidate-button button:active {
+    height: 42px;
+    line-height: normal;
+    width: 100%;
+}
+
+.THIS .view-apply button,
+.THIS .view-apply button:hover,
+.THIS .view-apply button:active {
+    height: 42px;
+    line-height: normal;
+}
+
+.THIS .save-button button,
+.THIS .save-button button:hover,
+.THIS .save-button button:active {
+    height: 42px;
+    line-height: normal;
+    width: 100%;
+    font-weight: bold;
+}
+
+.THIS .uiButton--brand {}
+
+.THIS .save-button button[disabled] {
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    line-height: normal;
+    font-weight: normal !important;
+}
+
+.THIS .candidate-button button[disabled],
+.THIS .view-apply button[disabled] {
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    line-height: normal;
+    font-weight: normal !important;
+}
+
+.THIS c-lex-tiles-pagination .download button {
+    height: 42px;
+    color: #FFFFFF !important;
+    font-size: 1rem;
+    text-decoration:
+        underline;
+}
+
+.THIS c-lex-tiles-pagination .page button,
+.THIS c-lex-tiles-pagination .page button:hover,
+.THIS c-lex-tiles-pagination .page button:active {
+    height: 42px;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.THIS c-lex-tiles-pagination .page .slds-button[disabled] {
+    color: rgb(217, 219, 221) !important;
+}
+
+.THIS c-lex-candidates-filter lightning-input input,
+.THIS c-lex-candidates-filter lightning-combobox input {
+    height: 42px;
+}
+
+.THIS c-lex-candidates-filter .search-button button,
+.THIS c-lex-candidates-filter .search-button button:hover,
+.THIS c-lex-candidates-filter .search-button button:active,
+.THIS .filterValues .search-button button,
+.THIS .filterValues .search-button button:hover,
+.THIS .filterValues .search-button button:active {
+    line-height: normal;
+    height: 42px;
+    width: 100%;
+}
+
+.THIS .filter-button button,
+.THIS .filter-button button:hover,
+.THIS .filter-button button:active {
+    width: 70%;
+    height: 42px;
+    line-height: normal;
+    padding: 0px;
+}
+
+.THIS .mobile .filter-button button,
+.THIS .mobile .filter-button button:hover,
+.THIS .mobile .filter-button button:active,
+.THIS c-lex-candidates-filter .mobile .search-button button,
+.THIS c-lex-candidates-filter .mobile .search-button button:hover,
+.THIS c-lex-candidates-filter .mobile .search-button button:active {
+    line-height: normal;
+    width: 100%
+}
+
+.THIS .no-filter-button button,
+.THIS .no-filter-button button:hover,
+.THIS .no-filter-button button:active {
+    width: 100% !important;
+    line-height: normal;
+    height: 42px;
+}
+
+.THIS lightning-combobox .slds-listbox {
+    font-size: 1rem;
+}
+
 .THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox_faux:after,
 .THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox--faux:after,
 .THIS .slds-checkbox [type=checkbox]:checked~.slds-checkbox_faux:after,

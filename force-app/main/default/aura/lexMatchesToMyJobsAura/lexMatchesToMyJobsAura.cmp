@@ -1,12 +1,6 @@
 <aura:component
 	implements="forceCommunity:availableForAllPageTypes"
 	access="global">
-	<aura:html tag="style">
-		.save-button button, .save-button button:hover, .save-button button:active { height: 42px; line-height: normal; width: 100%; } .uiButton--brand { }
-		.save-button button[disabled] { background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; line-height: normal; font-weight: normal
-		!important; }
-	</aura:html>
-
 	<!-- * MATCHES TO MY JOBS CONFIG -->
 	<aura:attribute
 		name="header"

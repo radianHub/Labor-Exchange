@@ -128,7 +128,7 @@ export default class LexJobTile extends LightningElement {
 	}
 
 	// * SETS THE FOOTER COLOR IF SUPPLIED OTHERWISE SETS THE DEFAULT COLOR
-	get footerStyle() {
+	get footerCSS() {
 		return this.labels && this.labels.jobTileFooterColor ? 'background-color:' + this.labels.jobTileFooterColor : 'background-color:rgb(180, 188, 201)';
 	}
 }
