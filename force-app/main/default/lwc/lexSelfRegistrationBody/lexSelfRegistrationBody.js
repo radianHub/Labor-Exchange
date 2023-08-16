@@ -547,20 +547,20 @@ export default class LEXSelfRegistrationBody extends LightningElement {
 	addToContactOrAccountData(inputComponent, iterator) {
 		if (iterator == null) {
 			let isAccountSection = inputComponent.dataset.isAccountSection;
-			if (isAccountSection == 'true') {
+			if (isAccountSection === 'true') {
 				this.accountData[inputComponent.name] = inputComponent.value;
-			} else if (isAccountSection == 'false') {
+			} else if (isAccountSection === 'false') {
 				this.contactData[inputComponent.name] = inputComponent.value;
 			}
 			this.form1Data[inputComponent.name] = inputComponent.value;
 		} else {
 			let isAccountSection = inputComponent[iterator].dataset.isAccountSection;
-			if (isAccountSection == 'true') {
+			if (isAccountSection === 'true') {
 				this.accountData = {
 					...this.accountData,
 					[inputComponent[iterator].name]: inputComponent[iterator].value,
 				};
-			} else if (isAccountSection == 'false') {
+			} else if (isAccountSection === 'false') {
 				this.contactData = {
 					...this.contactData,
 					[inputComponent[iterator].name]: inputComponent[iterator].value,
@@ -604,18 +604,14 @@ export default class LEXSelfRegistrationBody extends LightningElement {
 	}
 
 	get registerDisabled() {
-		//alert('u');
 		if (this.config.authorizationChbkLabelshow) {
-			//alert(''+this.config.authorizationChbkLabelshow );
-
 			return !this.agreed;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
-	get contentStyle() {
-		return this.showDupeCheck && FORM_FACTOR !== 'Small' ? 'height:calc(100% - 78px);' : '';
+	get contentCSS() {
+		return this.showDupeCheck && FORM_FACTOR !== 'Small' ? 'flex-container container' : 'flex-container';
 	}
 
 	get headerCSS() {

@@ -4,7 +4,7 @@
 		alternative-text="Loading"
 		size="large"
 		class="slds-is-absolute">
-    </lightning-spinner>
+	</lightning-spinner>
 	<lightning-layout
 		horizontal-align="center"
 		multiple-rows="true">
@@ -15,23 +15,23 @@
 			large-device-size="11"
 			small-device-size="9">
 			<span style={headerCSS}>
-				<h1 style="font-weight: 900; font-size: 30px">{config.header}</h1>
-				<p style="font-size: 16px; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: 100">{config.description}</p>
+				<h1 class="header-title">{config.header}</h1>
+				<p class="header-description">{config.description}</p>
 			</span>
 		</lightning-layout-item>
-        <lightning-layout-item
+		<lightning-layout-item
 			if:true={config.showNewJobBtn}
 			padding="around-medium"
 			size="12"
 			large-device-size="11"
 			small-device-size="9">
 			<lightning-button
-                variant="brand"
-                label={config.newJobBtnLabel}
-                title={config.newJobBtnLabel}
-                icon-name="utility:new"
-                class="new-job-button"
-                onclick={clickNewJobBtn}>
+				variant="brand"
+				label={config.newJobBtnLabel}
+				title={config.newJobBtnLabel}
+				icon-name="utility:new"
+				class="new-job-button"
+				onclick={clickNewJobBtn}>
 			</lightning-button>
 		</lightning-layout-item>
 	</lightning-layout>
@@ -59,9 +59,7 @@
 				size="12"
 				large-device-size="11"
 				small-device-size="12">
-				<div
-					style="float: left"
-					data-id="jobs">
+				<div>
 					<h1>
 						<span> {config.jobsHeader} </span>
 					</h1>
@@ -115,7 +113,7 @@
 			large-device-size="11"
 			small-device-size="9">
 			<br />
-			<span style="font-size: 1.5rem; font-family: 'Open Sans'; line-height: 30px; opacity: 100; font-weight: bold">{config.noResultMessage}</span>
+			<span class="no-results">{config.noResultMessage}</span>
 			<br />
 			<br />
 			<br />

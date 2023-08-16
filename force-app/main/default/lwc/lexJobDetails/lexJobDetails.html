@@ -15,9 +15,9 @@
 					size="12"
 					large-device-size="12"
 					small-device-size="12">
-					<div style="text-align: center">
-						<h1 style="font-weight: 900; font-size: 26px"><span style={headerCSS}>{title}</span></h1>
-						<h3 style="font-weight: 900; font-size: 20px">{subTitle}</h3>
+					<div class="slds-text-align_center">
+						<h1 class="header-title"><span style={headerCSS}>{title}</span></h1>
+						<h3 class="header-subtitle">{subTitle}</h3>
 					</div>
 				</lightning-layout-item>
 				<lightning-layout-item
@@ -43,21 +43,16 @@
 									<lightning-layout-item
 										size="12"
 										large-device-size="3">
-										<span style="font-size: 1rem">{item.label}:&nbsp;</span>
+										<span class="field-title">{item.label}:&nbsp;</span>
 									</lightning-layout-item>
 									<lightning-layout-item
 										size="12"
 										large-device-size="9">
-										<span style="font-size: 1rem; font-weight: bold">
+										<span class="field-value">
 											<c-lex-formatted-field field={item}></c-lex-formatted-field>
 										</span>
 									</lightning-layout-item>
 								</lightning-layout>
-
-								<!-- <span style="font-size: 1rem">{item.label}:&nbsp;</span>
-								<span style="font-size: 1rem; font-weight: bold">
-									<c-lex-formatted-field field={item}></c-lex-formatted-field>
-								</span> -->
 							</lightning-layout-item>
 						</template>
 					</lightning-layout>
@@ -70,7 +65,7 @@
 					<br if:true={jobSkills} />
 					<h3
 						if:true={jobSkills}
-						style="font-weight: 900; font-size: 1rem">
+						class="skills-title">
 						<span style={headerCSS}>Job Skills</span>
 					</h3>
 					<lightning-layout multiple-rows="true">
@@ -111,13 +106,6 @@
 					title={labels.editJobDetailBtnLabel}
 					onclick={clickEditBtn}>
 				</lightning-button>
-				<!-- <lightning-button
-					variant="brand"
-					icon-name="utility:archive"
-					label={labels.archiveBtnLabel}
-					title={labels.archiveBtnLabel}
-					onclick={clickArchiveBtn}>
-				</lightning-button> -->
 			</div>
 		</lightning-modal-footer>
 	</div>

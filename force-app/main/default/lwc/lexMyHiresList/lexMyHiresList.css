@@ -1,0 +1,52 @@
+.header-title {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.header-description {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    line-height: 30px;
+    opacity: 100;
+    font-weight: 100;
+}
+
+.hire-field {
+    background-color: #e5e5e5;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.button-column {
+    background-color: #e5e5e5;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.redirect-button {
+    width: 100%;
+    min-width: 150px;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+    height: 42px;
+    font-weight: normal;
+}
+
+.details-field {
+    font-size: 1rem;
+    color: #747474;
+}
+
+.field-label {
+    background-color: #e5e5e5;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.no-applications {
+    font-size: 1.5rem;
+    font-family: 'Open Sans';
+    line-height: 30px;
+    opacity: 100;
+    font-weight: bold;
+}
