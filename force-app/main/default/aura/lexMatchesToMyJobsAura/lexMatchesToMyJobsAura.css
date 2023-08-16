@@ -1,2 +1,16 @@
-.THIS {
+.THIS .save-button button,
+.THIS .save-button button:hover,
+.THIS .save-button button:active {
+    height: 42px;
+    line-height: normal;
+    width: 100%;
+}
+
+.THIS .uiButton--brand {}
+
+.THIS .save-button button[disabled] {
+    background-color: #BDBEC0 !important;
+    border-color: #BDBEC0 !important;
+    line-height: normal;
+    font-weight: normal !important;
 }

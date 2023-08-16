@@ -1,27 +1,6 @@
 <aura:component
 	implements="forceCommunity:availableForAllPageTypes"
 	access="global">
-	<aura:html tag="style">
-		.filterValues .slds-modal__container { margin: 0 auto; width: 30% !important; max-width: 100% !important; min-width: 20rem; } .viewDetail
-		.slds-modal__container { margin: 0 auto; width: 50% !important; max-width: 100% !important; min-width: 20rem; } .applyCandidate .slds-modal__container {
-		margin: 0 auto; width: 50% !important; max-width: 100% !important; min-width: 20rem; } .slds-is-absolute { position: fixed !important; }
-		.candidate-button button, .candidate-button button:hover, .candidate-button button:active { height:42px; line-height: normal; width: 100%; } .view-apply
-		button, .view-apply button:hover, .view-apply button:active { height: 42px; line-height: normal; } .save-button button, .save-button button:hover,
-		.save-button button:active { height: 42px; line-height: normal; width: 100%; font-weight: bold; } .uiButton--brand { } .save-button button[disabled] {
-		background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; line-height: normal; font-weight: normal !important; } .candidate-button
-		button[disabled], .view-apply button[disabled] { background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; line-height: normal;
-		font-weight: normal !important; } c-lex-tiles-pagination .download button { height: 42px; color: #FFFFFF !important; font-size: 1rem; text-decoration:
-		underline; } c-lex-tiles-pagination .page button, c-lex-tiles-pagination .page button:hover, c-lex-tiles-pagination .page button:active { height: 42px;
-		font-size: 1rem; text-decoration: underline; } c-lex-tiles-pagination .page .slds-button[disabled] { color: rgb(217, 219, 221)!important; }
-		c-lex-candidates-filter lightning-input input, c-lex-candidates-filter lightning-combobox input{ height:42px; } c-lex-candidates-filter .search-button
-		button, c-lex-candidates-filter .search-button button:hover, c-lex-candidates-filter .search-button button:active, .filterValues .search-button button,
-		.filterValues .search-button button:hover, .filterValues .search-button button:active{ line-height: normal; height: 42px; width:100%; } .filter-button
-		button, .filter-button button:hover, .filter-button button:active { width:70%; height:42px; line-height: normal; padding: 0px; } .mobile .filter-button
-		button, .mobile .filter-button button:hover, .mobile .filter-button button:active, c-lex-candidates-filter .mobile .search-button button,
-		c-lex-candidates-filter .mobile .search-button button:hover, c-lex-candidates-filter .mobile .search-button button:active,{ line-height: normal; width:
-		100% } .no-filter-button button, .no-filter-button button:hover, .no-filter-button button:active { width:100% !important; line-height: normal;
-		height:42px; } lightning-combobox .slds-listbox { font-size:1rem; }
-	</aura:html>
 	<aura:attribute
 		name="appliedFilters"
 		type="Object" />
