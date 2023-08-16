@@ -1,28 +1,6 @@
 <aura:component
 	implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
 	access="global">
-	<aura:html tag="style">
-		.filterValues .slds-modal__container { margin: 0 auto; width: 30% !important; max-width: 100% !important; min-width: 20rem; } .viewCourse
-		.slds-modal__container { margin: 0 auto; width: 90% !important; max-width: 100% !important; min-width: 20rem; } .eventRegistration
-		.slds-modal__container { margin: 0 auto; width: 50% !important; max-width: 100% !important; min-width: 20rem; } .slds-is-absolute { position: fixed
-		!important; } .view-button button, .view-button button:hover, .view-button button:active { height:42px; width:180px; line-height:normal; top:21px; }
-		.registered-button button, .registered-button button:hover, .registered-button button:active { height:42px; width: calc(100%/2 - 15px); line-height:
-		normal; top:21px; } .view-register button, .view-register button:hover, .view-register button:active { height: 42px; line-height:normal; } .view-button
-		button[disabled]{ background-color: #BDBEC0 !important; border-color: #BDBEC0 !important; width: 200px; } c-lex-tiles-pagination .download button {
-		height: 42px; color: #FFFFFF !important; font-size: 1rem; text-decoration: underline; } c-lex-tiles-pagination .page button, c-lex-tiles-pagination
-		.page button:hover, c-lex-tiles-pagination .page button:active { height: 42px; font-size: 1rem; text-decoration: underline; } c-lex-tiles-pagination
-		.page .slds-button[disabled] { color: rgb(217, 219, 221)!important; } c-lex-events-filter lightning-input input { height:42px; } c-lex-events-filter
-		.search-button button, c-lex-events-filter .search-button button:hover, c-lex-events-filter .search-button button:active, .filterValues .search-button
-		button, .filterValues .search-button button:hover, .filterValues .search-button button:active{ height: 42px; line-height:normal; width:100%; }
-		.filter-button button, .filter-button button:hover, .filter-button button:active { height:42px; width:75%; line-height:normal; padding: 0px; } .mobile
-		.filter-button button, .mobile .filter-button button:hover, .mobile .filter-button button:active, c-lex-events-filter .mobile .search-button button,
-		c-lex-events-filter .mobile .search-button button:hover, c-lex-events-filter .mobile .search-button button:active,{ width: 100% } .no-filter-button
-		button, .no-filter-button button:hover, .no-filter-button button:active { width:100% !important; line-height:normal; height:42px; } @media only screen
-		and (max-width: 47.9375em) { .registered-button button, .registered-button button:hover, .registered-button button:active { height:42px; width:
-		calc(100%/2 - 15px); line-height: normal; top:21px; } c-lex-event-tile .text-desc { color: #828282; font-weight: 300; font-size: 0.9rem; height: 70px
-		!important; overflow: hidden; -webkit-line-clamp: 4; -webkit-box-orient: vertical; display: -webkit-box; } c-lex-events-filter input[type="date"] {
-		width:284px !important; } }
-	</aura:html>
 	<aura:attribute
 		name="appliedFilters"
 		type="Object"

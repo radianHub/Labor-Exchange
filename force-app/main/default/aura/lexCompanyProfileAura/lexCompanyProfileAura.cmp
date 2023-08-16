@@ -1,9 +1,6 @@
 <aura:component
 	implements="forceCommunity:availableForAllPageTypes"
 	access="global">
-	<aura:html tag="style">
-		<aura:if isTrue="{!$Browser.isPhone}"> lightning-button button { width: 100% } </aura:if>
-	</aura:html>
 	<!-- * COMPANY PROFILE CONFIG -->
 	<aura:attribute
 		name="header"
