@@ -27,3 +27,27 @@
 .footer-container {
     height: 200px;
 }
+
+.align-left {
+    text-align:left;
+}
+
+.item-label {
+    font-size:1rem;
+}
+
+.item {
+    font-size:1rem;font-weight:bold;
+}
+
+.item-label-two {
+    font-size:12px;
+}
+
+.item-two {
+    font-size:12px;font-weight:bold;
+}
+
+.documents-container {
+    position: absolute;bottom: 5px;left: 20px;right: 20px;
+}

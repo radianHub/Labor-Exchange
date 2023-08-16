@@ -16,3 +16,7 @@ p.sub-text {
     line-height: 2;
     font-weight: lighter;
 }
+
+.align-center {
+    text-align: center;
+}

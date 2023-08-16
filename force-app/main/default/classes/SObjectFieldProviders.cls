@@ -134,7 +134,7 @@ public class SObjectFieldProviders {
 		}
 		public Object getValue() {
 			if (queriedParentId == null) {
-				List<SObject> candidates = Database.query(query);
+				List<SObject> candidates = Database.query(String.escapeSingleQuotes(query));
 				if (candidates.isEmpty())
 					throw new EmptyQueryException();
 				queriedParentId = candidates[0].Id;

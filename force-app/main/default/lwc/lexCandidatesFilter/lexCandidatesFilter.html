@@ -1,16 +1,27 @@
 <template>
-    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="large"
-        class="slds-is-absolute"></lightning-spinner>
-    <lightning-layout if:true={filterOptions} horizontal-align="spread" multiple-rows="true"
-        style="background-color: #ebebeb;">
-        <lightning-layout-item size="12">
-            <lightning-layout horizontal-align="spread" multiple-rows="true">
-                <lightning-layout-item if:true={candidateConfig.filterHeader} padding="around-medium" size="12" large-device-size="4" small-device-size="12">
-                    <span style="font-size: 1rem;font-weight: bold;">
-                        {candidateConfig.filterHeader}
-                    </span>
-                </lightning-layout-item>
-                <!--lightning-layout-item padding="around-medium" size="12" large-device-size="2" small-device-size="12">
+	<lightning-spinner
+		if:true={isLoading}
+		alternative-text="Loading"
+		size="large"
+		class="slds-is-absolute"></lightning-spinner>
+	<lightning-layout
+		if:true={filterOptions}
+		horizontal-align="spread"
+		multiple-rows="true"
+		class="layout-background">
+		<lightning-layout-item size="12">
+			<lightning-layout
+				horizontal-align="spread"
+				multiple-rows="true">
+				<lightning-layout-item
+					if:true={candidateConfig.filterHeader}
+					padding="around-medium"
+					size="12"
+					large-device-size="4"
+					small-device-size="12">
+					<span class="candidate-filter-header"> {candidateConfig.filterHeader} </span>
+				</lightning-layout-item>
+				<!--lightning-layout-item padding="around-medium" size="12" large-device-size="2" small-device-size="12">
                     <lightning-combobox variant="label-hidden" options={hourlyWageOptions}
                         placeholder={candidateConfig.wageInputLabel} label={candidateConfig.wageInputLabel} name="wage"
                         value={selectedWageOption} onchange={handleWageChange}>
@@ -21,21 +32,32 @@
                         placeholder={candidateConfig.cityZipCodeInputLabel}
                         label={candidateConfig.cityZipCodeInputLabel} name="zipCode"></lightning-input>
                 </lightning-layout-item-->
-                <lightning-layout-item padding="around-medium" size="12" large-device-size="12" small-device-size="12">
-                    <lightning-input if:false={isMobile} type="text" placeholder={candidateConfig.searchInputLabel}
-                        label={candidateConfig.searchInputLabel} variant="label-hidden"
-                        name="keyword"></lightning-input>
-                    <lightning-input if:true={isMobile} type="text" label={candidateConfig.searchInputLabel}
-                        name="keyword"></lightning-input>
-                </lightning-layout-item>
-                <!--lightning-layout-item padding="around-medium" size="12" large-device-size="12" small-device-size="12">
+				<lightning-layout-item
+					padding="around-medium"
+					size="12"
+					large-device-size="12"
+					small-device-size="12">
+					<lightning-input
+						if:false={isMobile}
+						type="text"
+						placeholder={candidateConfig.searchInputLabel}
+						label={candidateConfig.searchInputLabel}
+						variant="label-hidden"
+						name="keyword"></lightning-input>
+					<lightning-input
+						if:true={isMobile}
+						type="text"
+						label={candidateConfig.searchInputLabel}
+						name="keyword"></lightning-input>
+				</lightning-layout-item>
+				<!--lightning-layout-item padding="around-medium" size="12" large-device-size="12" small-device-size="12">
                     <span style="font-size:1rem;">{candidateConfig.filterSectionHelpText}</span>
                 </lightning-layout-item-->
-            </lightning-layout>
-        </lightning-layout-item>
-        <lightning-layout-item size="12">
-            <div class="slds-grid slds-wrap">
-                <!-- Apply Filter buttons
+			</lightning-layout>
+		</lightning-layout-item>
+		<lightning-layout-item size="12">
+			<div class="slds-grid slds-wrap">
+				<!-- Apply Filter buttons
                 <template if:true={moreFilters} for:each={moreFilters} for:item="filter">
                     <div class={filterCSS} key={filter.fieldName}>
                         <lightning-button if:true={filter.isFilterApplied} variant="brand"
@@ -50,18 +72,26 @@
                             name={filter.fieldName} onclick={handleSelectFilterValues}></lightning-button>
                     </div>
                 </template-->
-                <div class={filterCSS}>
-                    <lightning-button variant="brand" label={candidateConfig.searchBtnLabel}
-                        title={candidateConfig.searchBtnLabel} icon-name="utility:search" class="search-button"
-                        onclick={handleSearch}></lightning-button>
-                </div>
-                <div class={filterCSS}>
-                    <lightning-button variant="brand" class="search-button" icon-name="utility:clear"
-                        label={candidateConfig.clearFilterLabel} title={candidateConfig.clearFilterLabel}
-                        onclick={handleClearFilters}>
-                    </lightning-button>
-                </div>
-            </div>
-        </lightning-layout-item>
-    </lightning-layout>
+				<div class={filterCSS}>
+					<lightning-button
+						variant="brand"
+						label={candidateConfig.searchBtnLabel}
+						title={candidateConfig.searchBtnLabel}
+						icon-name="utility:search"
+						class="search-button"
+						onclick={handleSearch}></lightning-button>
+				</div>
+				<div class={filterCSS}>
+					<lightning-button
+						variant="brand"
+						class="search-button"
+						icon-name="utility:clear"
+						label={candidateConfig.clearFilterLabel}
+						title={candidateConfig.clearFilterLabel}
+						onclick={handleClearFilters}>
+					</lightning-button>
+				</div>
+			</div>
+		</lightning-layout-item>
+	</lightning-layout>
 </template>

@@ -93,7 +93,6 @@ export default class pcApplicationTile extends LightningElement {
 
 	// * OPENS THE APPLICATION EDIT MODAL
 	async applicationModal(appData, jobData) {
-		console.log('appData:', JSON.parse(JSON.stringify(appData)));
 		const r = await LexApplicationEditModal.open({
 			size: 'medium',
 			application: appData,
