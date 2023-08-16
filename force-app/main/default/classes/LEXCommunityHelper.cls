@@ -18,9 +18,6 @@ public inherited sharing class LEXCommunityHelper {
 	 * @RETURN List<LaborExchangeCommunity_PageProperties__mdt>                    *
 	 *******************************************************************************/
 	public static List<LaborExchangeCommunity_PageProperties__mdt> getLEXPageProperties(String page) {
-		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_PageProperties__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_PageProperties__mdt');
-		}
 		List<LaborExchangeCommunity_PageProperties__mdt> pp = [
 			SELECT Id, Field_Set__c, Section_Header__c, Sub_Header__c, Section_Order__c
 			FROM LaborExchangeCommunity_PageProperties__mdt
@@ -37,9 +34,6 @@ public inherited sharing class LEXCommunityHelper {
 	 * @RETURN List<LaborExchangeCommunity_FieldProperties__mdt>                    *
 	 ********************************************************************************/
 	public static List<LaborExchangeCommunity_FieldProperties__mdt> getLEXFieldProperties(Set<Id> pagePropertyIds) {
-		if (!SObjectHelper.canQueryObj('LaborExchangeCommunity_FieldProperties__mdt')) {
-			throw SObjectHelperException.queryPermissionException('LaborExchangeCommunity_FieldProperties__mdt');
-		}
 		List<LaborExchangeCommunity_FieldProperties__mdt> fp = [
 			SELECT
 				LaborExchangeCommunity_PageProperties__c,
@@ -52,7 +46,7 @@ public inherited sharing class LEXCommunityHelper {
 			FROM LaborExchangeCommunity_FieldProperties__mdt
 			WHERE Active__c = 'Yes' AND LaborExchangeCommunity_PageProperties__c IN :pagePropertyIds
 			WITH SECURITY_ENFORCED
-		];	
+		];
 		return fp;
 	}
 

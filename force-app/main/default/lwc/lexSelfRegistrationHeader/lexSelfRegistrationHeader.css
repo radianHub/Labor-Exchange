@@ -1,3 +1,16 @@
 .registration-header{
     background-color: white;
+    height:90px;
+    z-index:10;
+    border-bottom:1px solid lightgray;
+}
+
+.link-container {
+    /* float:right; */
+    margin-right: 8%;
+}
+
+.image-container {
+    text-align:center; 
+    /* float:left; */
 }

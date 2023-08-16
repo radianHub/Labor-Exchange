@@ -54,6 +54,7 @@ public with sharing class LEXCandidateApplicationsController {
 
 			return data;
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -82,6 +83,7 @@ public with sharing class LEXCandidateApplicationsController {
 		try {
 			return new LEXMyApplicationsControllerPrivileged().getResumes(applicationId);
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -92,6 +94,7 @@ public with sharing class LEXCandidateApplicationsController {
 			Schema.DescribeFieldResult dfr = Schema.getGlobalDescribe().get(objName).getDescribe().fields.getMap().get(field).getDescribe();
 			return LEXCommunityHelper.fetchPicklistValues(dfr);
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -102,6 +105,7 @@ public with sharing class LEXCandidateApplicationsController {
 			LEXMyApplicationsControllerPrivileged appUpdate = new LEXMyApplicationsControllerPrivileged();
 			appUpdate.updateApplication(applicationJson);
 		} catch (Exception e) {
+			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
@@ -114,9 +118,6 @@ public with sharing class LEXCandidateApplicationsController {
 	// * CHILD CLASSES
 	public without sharing class LEXMyApplicationsControllerPrivileged {
 		public void emailCandidate(Id candidateId, String emailBody) {
-			if (!SobjectHelper.canQueryObj('Contact')) {
-				throw SObjectHelperException.queryPermissionException('Contact');
-			}
 			try {
 				//get personal details for Job Seeker
 				Contact toContact = [SELECT Id, Name, Email, Owner.Email FROM Contact WHERE Id = :candidateId LIMIT 1];
@@ -132,7 +133,6 @@ public with sharing class LEXCandidateApplicationsController {
 				email.setReplyTo(senderEmail);
 				email.setSenderDisplayName(UserInfo.getName());
 				email.setSubject('Contact Request');
-				//email.setPlainTextBody(emailBody);
 				email.setHtmlBody(emailBody);
 
 				//log email to contact record
@@ -141,70 +141,11 @@ public with sharing class LEXCandidateApplicationsController {
 
 				Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ email });
 				return;
-
-				/*} catch (HandledException e){
-				result.overLimit = true;
-				return result;*/
 			} catch (Exception e) {
+				System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 				throw new AuraHandledException(e.getMessage());
 			}
 		}
-		// public Boolean createUpdateRequestTask(String applicationId, String comments) {
-		// 	List<Launchpad__Applicant_Tracking__c> applications = [
-		// 		SELECT Id, Launchpad__Participant__c, Launchpad__Participant__r.ownerId
-		// 		FROM Launchpad__Applicant_Tracking__c
-		// 		WHERE Id = :applicationId
-		// 		WITH SECURITY_ENFORCED
-		// 		LIMIT 1
-		// 	];
-
-		// 	List<LaborExchangeCommunity_Task_Config__mdt> taskConfig = [
-		// 		SELECT
-		// 			Id,
-		// 			Field_Value_DateTime__c,
-		// 			Field_Value_Check_Box__c,
-		// 			Field_Value_Date__c,
-		// 			Data_Type__c,
-		// 			Field_API_Name__c,
-		// 			Field_Value__c,
-		// 			Field_Value_Text_Area__c,
-		// 			Field_Value_Text_Area_Long__c
-		// 		FROM LaborExchangeCommunity_Task_Config__mdt
-		// 		WHERE Active__c = 'Yes'
-		// 		WITH SECURITY_ENFORCED
-		// 	];
-
-		// 	if (!applications.isEmpty()) {
-		// 		Task newTask = new Task(
-		// 			WhoId = applications[0].Launchpad__Participant__c,
-		// 			WhatId = applications[0].Id,
-		// 			OwnerId = applications[0].Launchpad__Participant__r.ownerId,
-		// 			Description = comments
-		// 		);
-
-		// 		for (LaborExchangeCommunity_Task_Config__mdt tac : taskConfig) {
-		// 			if (tac.Data_Type__c == 'Text') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value__c);
-		// 			} else if (tac.Data_Type__c == 'Picklist') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value__c);
-		// 			} else if (tac.Data_Type__c == 'Text Area') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value_Text_Area__c);
-		// 			} else if (tac.Data_Type__c == 'Text Area Long') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value_Text_Area__c);
-		// 			} else if (tac.Data_Type__c == 'Date') {
-		// 				Integer addDate = Integer.valueOf(tac.Field_Value_Date__c);
-		// 				newTask.put(tac.Field_API_Name__c, System.Today().addDays(addDate));
-		// 			} else if (tac.Data_Type__c == 'DateTime') {
-		// 				Integer addHours = Integer.valueOf(tac.Field_Value_DateTime__c);
-		// 				newTask.put(tac.Field_API_Name__c, System.now().addhours(addHours));
-		// 			} else if (tac.Data_Type__c == 'Checkbox') {
-		// 				newTask.put(tac.Field_API_Name__c, tac.Field_Value_Check_Box__c);
-		// 			}
-		// 		}
-		// 		insert newTask;
-		// 	}
-		// 	return true;
-		// }
 
 		public JobApplicationsData getMyApplications(List<String> uniqueFields) {
 			JobApplicationsData jobApplicationData = new JobApplicationsData();
@@ -223,7 +164,7 @@ public with sharing class LEXCandidateApplicationsController {
 
 			List<List<String>> listOfApplicationsStageLists = getApplicationStageListOfLists();
 
-			for (Launchpad__Applicant_Tracking__c application : Database.query(query)) {
+			for (Launchpad__Applicant_Tracking__c application : Database.query(String.escapeSingleQuotes(query))) {
 				if (listOfApplicationsStageLists[0].contains(application.Launchpad__Stage__c)) {
 					jobApplicationData.newApplicationsData.add(application);
 					jobApplicationData.newApplicationsCount++;
@@ -281,7 +222,7 @@ public with sharing class LEXCandidateApplicationsController {
 					query = String.format(query, new List<String>{ String.join(new List<String>(uniqueFields), ', ') });
 				}
 
-				job.job = Database.query(query);
+				job.job = Database.query(String.escapeSingleQuotes(query));
 				return job;
 			} catch (Exception e) {
 				System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
@@ -392,12 +333,6 @@ public with sharing class LEXCandidateApplicationsController {
 			WHERE Active__c = 'Yes' AND Page__c = 'Candidate Applications' AND Object_API__c = :objectName
 			WITH SECURITY_ENFORCED
 		];
-	}
-	// Further abstraction of CRUD/FLS check
-	private static void flsQueryCheck(String objectApiName) {
-		if (!SobjectHelper.canQueryObj(objectApiName)) {
-			throw SObjectHelperException.queryPermissionException(objectApiName);
-		}
 	}
 	private static List<LaborExchangeCommunity_FieldProperties__mdt> getCandidateApplicationsFieldProperties(
 		List<LaborExchangeCommunity_PageProperties__mdt> pageList

@@ -3,11 +3,10 @@
 		if:false={isDesktop}
 		vertical-align="center"
 		multiple-rows="true"
-		style="text-align: left">
+		class="lightning-layout-align-left">
 		<lightning-layout-item
 			size="12"
-			class="slds-p-vertical_medium slds-p-horizontal_large"
-			style="background-color: #e5e5e5">
+			class="slds-p-vertical_medium slds-p-horizontal_large, layout-item-background-color">
 			<div
 				if:true={title.isJobName}
 				class="slds-text-heading_medium text-bold">
@@ -33,7 +32,7 @@
 				key={item.label}
 				if:true={item.value}
 				class="slds-p-vertical_medium slds-p-left_large">
-				<span style="font-size: 1rem; font-weight: bold">{item.label}</span>
+				<span class="item-label">{item.label}</span>
 			</lightning-layout-item>
 			<lightning-layout-item
 				size="6"
@@ -42,17 +41,17 @@
 				class="slds-p-vertical_medium slds-p-right_large">
 				<span
 					if:true={item.isStandardField}
-					style="font-size: 1rem; color: #747474">
+					class="field">
 					<c-lex-formatted-field field={item}></c-lex-formatted-field>
 				</span>
 				<span
 					if:true={item.isJobName}
-					style="font-size: 1rem; color: #747474">
+					class="field">
 					<a onclick={clickJobNameLink}>{item.value}</a>
 				</span>
 				<span
 					if:true={item.isAppNumber}
-					style="font-size: 1rem; color: #747474">
+					class="field">
 					<a onclick={clickAppNumberLink}>{item.value}</a>
 				</span>
 			</lightning-layout-item>

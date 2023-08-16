@@ -8,7 +8,7 @@ public with sharing class LEXCommunityLoginController {
 			ApexPages.PageReference lgn = Site.login(username, password, startUrl);
 			return lgn.getUrl();
 		} catch (Exception e) {
-			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
+			System.debug('EXCEPTION: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
 		}
 	}
