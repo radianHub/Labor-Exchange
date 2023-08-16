@@ -1,0 +1,14 @@
+.filter-values {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.option {
+    display: inline-flex;
+    width: 100%;
+}
+
+.option-label {
+    margin: 5px;
+    width: calc(100% - 40px);
+}
