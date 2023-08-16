@@ -45,7 +45,7 @@ public with sharing class LEXMatchesToMyJobsController {
 				query += ' AND launchpad__Stage__c IN :openStages';
 			}
 
-			query += ' WITH SECURITY_ENFORCED ORDER BY Name';
+			query += ' ORDER BY Name';
 
 			return Database.query(String.escapeSingleQuotes(query));
 		} catch (Exception e) {
@@ -111,7 +111,7 @@ public with sharing class LEXMatchesToMyJobsController {
 			Labor_Exchange_Community_Setup__c lexcs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
 			LaborExchangeCommunity_PageProperties__mdt pageProperty = LaborExchangeCommunity_PageProperties__mdt.getInstance('Matches_to_My_Jobs');
-			String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaborExchange_Match_Details';
+		  String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaunchpadCo__LaborExchange_Match_Details';
 
 			for (LaborExchangeCommunity_FieldProperties__mdt ff : [
 				SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
@@ -161,7 +161,8 @@ public with sharing class LEXMatchesToMyJobsController {
 			if (uniqueFieldsSize > 0) {
 				initialQuery += ', {0} ';
 			}
-			initialQuery += ' FROM {1} WHERE {2} WITH SECURITY_ENFORCED';
+			// ! WITH SECURITY ENFORCED IS NOT USED BECAUSE USER PERMISSION SET CANNOT GIVE READ ACCESS TO THE OBJECT, LAUNCHPAD__MATCH__C, DUE TO PACKAGING AN OBJECT WITH A M-D RELATIONSHIP
+			initialQuery += ' FROM {1} WHERE {2}';
 
 			String whereStages = '';
 			Labor_Exchange_Community_Setup__c lexCommunitySetup = Labor_Exchange_Community_Setup__c.getInstance();

@@ -156,8 +156,10 @@ public with sharing class LEXCandidateApplicationsController {
 			List<User> lstUser = [SELECT Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() WITH SECURITY_ENFORCED];
 			String accountId = lstUser[0].Contact.AccountId;
 
-			String query = 'SELECT Id, Launchpad__Participant__c, {0} FROM Launchpad__Applicant_Tracking__c WHERE Launchpad__Job_Order__r.Launchpad__Available_in_Community__c = TRUE AND {1} WITH SECURITY_ENFORCED ORDER BY {2} ';
-			query = String.format(
+			// ! WITH SECURITY ENFORCED IS NOT USED BECAUSE USER PERMISSION SET CANNOT GIVE READ ACCESS TO THE OBJECT, LAUNCHPAD__APPLICANT_TRACKING__C, DUE TO PACKAGING AN OBJECT WITH A M-D RELATIONSHIP
+			String query = 'SELECT Id, Launchpad__Participant__c, {0} FROM Launchpad__Applicant_Tracking__c WHERE Launchpad__Job_Order__r.Launchpad__Available_in_Community__c = TRUE AND {1} ORDER BY {2} ';			
+      
+      query = String.format(
 				query,
 				new List<String>{ String.join(uniqueFields, ', '), 'Launchpad__Job_Order__r.Launchpad__Account__c = :accountId', ' CreatedDate DESC' }
 			);

@@ -168,7 +168,13 @@ public with sharing class LEXCompanyProfileController {
 			Schema.DescribeSObjectResult dor = LEXCommunityHelper.getSObjSchema('Account');
 
 			for (Section s : data.sections) {
-				for (Schema.FieldSetMember fm : dor.FieldSets.getMap().get(s.fieldSetName).getFields()) {
+				Schema.FieldSet objectFieldSet = LEXCommunityHelper.getFieldSet('Account', s.fieldSetName);
+
+				if (objectFieldSet == null) {
+					continue;
+				}
+
+				for (Schema.FieldSetMember fm : objectFieldSet.getFields()) {
 					LaborExchangeCommunity_FieldProperties__mdt fp = fieldsMap.containsKey(s.Id + '-' + fm.getFieldPath())
 						? fieldsMap.get(s.Id + '-' + fm.getFieldPath())
 						: null;

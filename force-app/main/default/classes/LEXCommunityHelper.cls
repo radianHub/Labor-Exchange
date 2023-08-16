@@ -72,8 +72,19 @@ public inherited sharing class LEXCommunityHelper {
 		Schema.DescribeSObjectResult describeSObjectResultObj = SObjectHelper.getDescribeSObjectResult(objectName);
 		//sObjectTypeObj.getDescribe();
 
-		return describeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
-	}
+    Schema.FieldSet fieldSet = describeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
+		
+		if (fieldSet == null && fieldSetName.countMatches('__') == 1) {
+			Integer index = fieldSetName.indexOf('__') + 2;
+			fieldSetName = fieldSetName.right(fieldSetName.length() - index);
+
+			fieldSet = describeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
+		}
+
+		if (fieldSet == null) {
+			System.debug('field set not found. Make sure the namespace and field set api name are correct');
+		}
+		return fieldSet;	}
 
 	public static List<Option> fetchPicklistValues(Schema.DescribeFieldResult fieldResult) {
 		List<Option> values = new List<Option>();

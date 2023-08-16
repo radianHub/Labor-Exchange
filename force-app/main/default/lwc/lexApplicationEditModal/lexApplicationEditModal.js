@@ -230,7 +230,7 @@ export default class LexApplicationEditModal extends LightningModal {
 				const isBlank = inpFields[i].value === '' || inpFields[i].value === undefined;
 				this.data = this.data.map((field) => {
 					return inpFields[i].name === field.fieldApiName
-						? { ...field, value: isBlank && inp[i].type !== 'checkbox' ? null : inpFields[i].value }
+						? { ...field, value: isBlank && inpFields[i].type !== 'checkbox' ? null : inpFields[i].value }
 						: { ...field };
 				});
 			}
@@ -238,7 +238,7 @@ export default class LexApplicationEditModal extends LightningModal {
 				const isBlank = taFields[i].value === '' || taFields[i].value === undefined;
 				this.data = this.data.map((field) => {
 					return taFields[i].name === field.fieldApiName
-						? { ...field, value: isBlank && inp[i].type !== 'checkbox' ? null : taFields[i].value }
+						? { ...field, value: isBlank && taFields[i].type !== 'checkbox' ? null : taFields[i].value }
 						: { ...field };
 				});
 			}
