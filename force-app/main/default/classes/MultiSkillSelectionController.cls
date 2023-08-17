@@ -66,7 +66,7 @@ public with sharing class MultiSkillSelectionController {
 
 			String query = String.format(initialQuery, new List<String>{ String.join(new List<String>(queryFields), ','), queryObject, queryWhere });
 
-			return Database.query(String.escapeSingleQuotes(query));
+			return Database.query(query);
 		} catch (Exception e) {
 			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new SObjectHelperException(e.getMessage());

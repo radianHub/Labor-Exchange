@@ -47,7 +47,7 @@ public with sharing class LEXMatchesToMyJobsController {
 
 			query += ' ORDER BY Name';
 
-			return Database.query(String.escapeSingleQuotes(query));
+			return Database.query(query);
 		} catch (Exception e) {
 			System.debug('Exception: ' + e.getMessage() + ' @ ' + e.getStackTraceString());
 			throw new AuraHandledException(e.getMessage());
@@ -111,7 +111,7 @@ public with sharing class LEXMatchesToMyJobsController {
 			Labor_Exchange_Community_Setup__c lexcs = Labor_Exchange_Community_Setup__c.getOrgDefaults();
 
 			LaborExchangeCommunity_PageProperties__mdt pageProperty = LaborExchangeCommunity_PageProperties__mdt.getInstance('Matches_to_My_Jobs');
-		  String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaunchpadCo__LaborExchange_Match_Details';
+			String fieldSet = pageProperty != null ? pageProperty.Field_Set__c : 'LaunchpadCo__LaborExchange_Match_Details';
 
 			for (LaborExchangeCommunity_FieldProperties__mdt ff : [
 				SELECT Id, Field_API_Name__c, Field_Label__c, LaborExchangeCommunity_PageProperties__c
@@ -188,7 +188,7 @@ public with sharing class LEXMatchesToMyJobsController {
 				}
 			);
 
-			return Database.query(String.escapeSingleQuotes(query));
+			return Database.query(query);
 		}
 	}
 
