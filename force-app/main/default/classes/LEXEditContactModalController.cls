@@ -200,7 +200,7 @@ public without sharing class LEXEditContactModalController {
 				query += ' FROM Contact WHERE Id = :contactId WITH SECURITY_ENFORCED';
 			}
 
-			List<Contact> contactList = Database.query(String.escapeSingleQuotes(query));
+			List<Contact> contactList = Database.query(query);
 			if (contactList.size() > 0) {
 				data.myContact = contactList[0];
 			}
