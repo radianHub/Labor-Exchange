@@ -77,7 +77,7 @@ public with sharing class LEXMyHiresController {
 
 			Date today = Date.today();
 
-			List<Launchpad__Hire__c> hires = Database.query(String.escapeSingleQuotes(query));
+			List<Launchpad__Hire__c> hires = Database.query(query);
 			hiresData.hiresData = hires;
 
 			return hiresData;

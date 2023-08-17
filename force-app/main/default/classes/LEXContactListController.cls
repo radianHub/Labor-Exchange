@@ -221,7 +221,7 @@ public with sharing class LEXContactListController {
 				query += ' FROM Contact WHERE AccountId = :accountId AND Launchpad__Active__c = \'Yes\' WITH SECURITY_ENFORCED';
 			}
 
-			List<Contact> contactList = Database.query(String.escapeSingleQuotes(query));
+			List<Contact> contactList = Database.query(query);
 			if (contactList.size() > 0) {
 				data.myContacts = contactList;
 			}
