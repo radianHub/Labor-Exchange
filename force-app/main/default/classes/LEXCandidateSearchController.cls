@@ -543,7 +543,7 @@ public with sharing class LEXCandidateSearchController {
 				if (!SobjectHelper.canQueryObj('Launchpad__Client_Skill__c')) {
 					throw SObjectHelperException.queryPermissionException('Launchpad__Client_Skill__c');
 				}
-				for (Launchpad__Client_Skill__c candidateSkill : Database.query(String.escapeSingleQuotes(candidateSkillsQuery))) {
+				for (Launchpad__Client_Skill__c candidateSkill : Database.query(candidateSkillsQuery)) {
 					//add to candidates list
 					candidateMatchedBySkillIds.add(candidateSkill.Launchpad__Client__c);
 				}

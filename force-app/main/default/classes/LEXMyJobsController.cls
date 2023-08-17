@@ -252,7 +252,7 @@ public with sharing class LEXMyJobsController {
 					// if (!SObjectHelper.canQueryObj('Launchpad__JobSkill__c')) {
 					// 	throw SObjectHelperException.queryPermissionException('Launchpad__JobSkill__c');
 					// }
-					for (Launchpad__JobSkill__c jobSkill : Database.query(String.escapeSingleQuotes(skillQuery))) {
+					for (Launchpad__JobSkill__c jobSkill : Database.query(skillQuery)) {
 						jobMatchedBySkillIds.add(jobSkill.Launchpad__Job__c);
 					}
 				}
