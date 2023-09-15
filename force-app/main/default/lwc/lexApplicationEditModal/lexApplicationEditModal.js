@@ -308,23 +308,11 @@ export default class LexApplicationEditModal extends LightningModal {
 		});
 	}
 
-	// * DOWNLOADS A RESUME IS AVAILABLE
-	clickDownloadBtn() {
-		const downloadContainer = this.template.querySelector('.download-container');
-		const downloadUrl = 'data:application/pdf;base64,' + this.documentList[0].encodedData;
-		const fileName = this.documentList[0].documentTitle + '.pdf';
-
-		let a = document.createElement('a');
-		a.href = downloadUrl;
-		a.target = '_parent';
-		a.download = fileName;
-		if (downloadContainer) {
-			downloadContainer.appendChild(a);
-		}
-		if (a.click) {
-			a.click();
-		}
-		downloadContainer.removeChild(a);
+	get fileName() {
+		return this.documentList[0]?.documentTitle + '.pdf';
+	}
+	get downloadUrl() {
+		return this.documentList[0] ? 'data:application/pdf;base64,' + this.documentList[0].encodedData : '#';
 	}
 
 	// * OPENS THE CONTACT JOB SEEKER MODAL
