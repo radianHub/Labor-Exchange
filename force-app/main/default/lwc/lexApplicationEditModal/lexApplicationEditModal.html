@@ -279,13 +279,17 @@
 					<div
 						lwc:dom="manual"
 						class="download-container"></div>
-					<lightning-button
-						label="Download Resume"
-						title="Download Resume"
-						icon-name="utility:download"
-						variant="brand"
-						onclick={clickDownloadBtn}>
-					</lightning-button>
+					<a
+						href={downloadUrl}
+						target="_parent"
+						download={fileName}>
+						<lightning-button
+							label="Download Resume"
+							title="Download Resume"
+							icon-name="utility:download"
+							variant="brand">
+						</lightning-button>
+					</a>
 				</div>
 			</div>
 		</lightning-modal-footer>
